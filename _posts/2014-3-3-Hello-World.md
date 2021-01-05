@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Une odyssée pour 2021!
+title: Une odyssée pour 2021 !
 published: true
 ---
 
