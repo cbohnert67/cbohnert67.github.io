@@ -11,4 +11,4 @@ A place to include any other types of information that you'd like to include abo
 
 ### Pour me contacter
 
-[email@domain.com](mailto:cbohnert.datascience@gmail.com)
+[cbohnert.datascience@gmail.com](mailto:cbohnert.datascience@gmail.com)
