@@ -12,7 +12,7 @@ Un site compilant des articles et travaux autour de l'analyse et la science des 
 
 ### Un peu de moi
 
-Cédric Bohnert, strasbourgeois. Intéressé par les problèmes de la modélisation mathématique de la réalité et leurs résolutions avec l'outil informatique. Je relate mon aprentissage de la programmation en python, de certains aspects des mathématiques appliquées et de l'intelligence artificielle. Vous trouverez donc ici mes écrits. 
+Cédric Bohnert, strasbourgeois. Intéressé par les problèmes de la modélisation mathématique de la réalité et leurs résolutions avec l'outil informatique. Je relate mon aprentissage de la programmation en python, de certains aspects des mathématiques appliquées et de l'intelligence artificielle. 
 
 ### Pour me contacter
 
