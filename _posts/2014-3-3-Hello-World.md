@@ -22,7 +22,7 @@ Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en 
 
 Je déterminais le volume équivalent nécessaire pour calculer la concentration d'acide ou de base     recherchée par une méthode dite des tangentes. Je traçais des tangentes à la règle et au crayon !
 
-![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png){: style="float: right; margin-left: 10px;width:50%"}
+![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png){:class="img-right"}
 
 <br>
 
