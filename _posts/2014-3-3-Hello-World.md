@@ -18,7 +18,7 @@ Je m'intéresse à la relation entre outils mathématiques et leurs applications
 
 Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étudiant en chimie analytique. 
 
-Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en relevant des mesures de volumes lors de dosages pH-métriques. 
+Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en relevant des mesures de volumes lors de dosages pH-métriques.
 
 ![Courbe pH-métrique]({{site.baseurl}}/_posts/courbe_dosage_phmetrique.png)
 
