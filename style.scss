@@ -218,10 +218,11 @@ img {
 }
 
 .vertical-menu a {
+  font-size: 10px;
   background-color: #eee; /* Grey background color */
   color: black; /* Black text color */
   display: block; /* Make the links appear below each other */
-  padding: 10px; /* Add some padding */
+  padding: 5px; /* Add some padding */
   text-decoration: none; /* Remove underline from links */
 }
 
