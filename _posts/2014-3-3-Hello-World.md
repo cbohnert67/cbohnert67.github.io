@@ -24,7 +24,6 @@ Je déterminais le volume équivalent nécessaire pour calculer la concentration
 
 ![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png){:class="img-right"}
 
-<br>
 
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
