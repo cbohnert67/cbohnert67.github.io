@@ -21,7 +21,7 @@ Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étu
 Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en relevant des mesures de volumes lors de dosages pH-métriques.
 
 
-![Une courbe pH-métrique](/images/courbe_dosage_phmetrique.png)
+![Une courbe pH-métrique](/images/courbe_dosage_phmetrique.png#right)
 
 
 
