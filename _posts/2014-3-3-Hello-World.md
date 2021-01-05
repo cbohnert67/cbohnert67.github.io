@@ -22,7 +22,7 @@ Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en 
 
 Je déterminais le volume équivalent nécessaire pour calculer la concentration d'acide ou de base     recherchée par une méthode dite des tangentes. Je traçais des tangentes à la règle et au crayon !
 
-![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png){: style="float: right"; margin-left: 10px;width:50%"}
+![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png){: style="float: right; margin-left: 10px;width:50%"}
 
 <br>
 
@@ -31,7 +31,7 @@ Je me souviens quand en binôme nous entrions des valeurs dans un tableur et che
 
 ![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png){:class="img-left"}
 
-|![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png)|![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png)|
+|![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png)  |  ![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png)|
 
 
 Des faits marquants pour qui apprécie comprendre son environnement.
