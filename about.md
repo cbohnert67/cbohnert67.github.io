@@ -5,12 +5,10 @@ permalink: /about/
 published: true
 ---
 
-À propos de moi :
-
-### More Information
+### Un peu de moi
 
 A place to include any other types of information that you'd like to include about yourself.
 
-### Contact me
+### Pour me contacter
 
-[email@domain.com](mailto:email@domain.com)
+[email@domain.com](mailto:cbohnert.datascience@gmail.com)
