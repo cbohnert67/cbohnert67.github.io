@@ -30,7 +30,5 @@ Je me souviens quand en binôme nous entrions des valeurs dans un tableur et che
 
 ![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png){:class="img-left"}
 
-|![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png)  |  ![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png)|
-
 
 Des faits marquants pour qui apprécie comprendre son environnement.
