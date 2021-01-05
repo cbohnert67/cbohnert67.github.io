@@ -20,6 +20,9 @@ Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étu
 
 Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en relevant des mesures de volumes lors de dosages pH-métriques. 
 
+![Courbe pH-métrique]({{site.baseurl}}/_posts/courbe_dosage_phmetrique.png)
+
+
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
 Des faits marquants pour qui apprécie comprendre son environnement.
