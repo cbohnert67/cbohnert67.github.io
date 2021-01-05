@@ -1,10 +1,11 @@
 ---
 layout: page
-title: About
+title: À propos
 permalink: /about/
+published: true
 ---
 
-Some information about you!
+À propos de moi :
 
 ### More Information
 
