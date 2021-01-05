@@ -203,7 +203,7 @@ img {
 .site-description {
   margin: -5px 0 0 0;
   color: $gray;
-  font-size: 40px;
+  font-size: 30px;
   padding-top: 15px;
   float: left;
   @include mobile {
@@ -219,7 +219,8 @@ img {
 }
 
 .vertical-menu a {
-  font-size: 10px;
+  font-size: 15px;
+  text-align:center;
   background-color: #eee; /* Grey background color */
   color: black; /* Black text color */
   display: block; /* Make the links appear below each other */
