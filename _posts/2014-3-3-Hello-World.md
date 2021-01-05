@@ -21,7 +21,7 @@ Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étu
 Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en relevant des mesures de volumes lors de dosages pH-métriques.
 
 
-<div style="float:right;margin-left: 40px;max-width: 50%;">
+<div style="float:right;margin-left: 40px;width: 50%;">
 	<img src="/images/courbe_dosage_phmetrique.png">
 </div>
 
@@ -29,7 +29,7 @@ On déterminait le volume équivalent nécessaire pour calculer la concentration
 
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
-<div style="float:left;margin-right: 40px;max-width: 50%;">
+<div style="float:left;margin-right: 40px;width: 50%;">
 	<img src="/images/courbe_dosage_colorimetrique.png">
 </div>
 
