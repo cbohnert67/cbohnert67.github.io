@@ -22,7 +22,9 @@ Je découvrais de fascinantes courbes se dessinant sur papier millimetré à mes
 
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression entre la concentration d'un soluté et son absorbance colorimétrique. 
 
-Des faits marquants.
+Des faits marquants pour qui apprécie comprendre son environnement.
+
+
 
 
 
