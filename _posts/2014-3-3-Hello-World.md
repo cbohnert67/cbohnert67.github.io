@@ -10,6 +10,8 @@ Tout au long de l'année, je vais tenter de comprendre et d'assimiler une sélec
 
 Mon objectif : devenir data scientist et décrocher un emploi dans ce domaine dans les années qui suivent.
 
+Mon plan : 
+
 
 
 
