@@ -22,7 +22,7 @@ Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en 
 
 
 <div style="float:right;margin-left: 40px;max-width: 50%;" markdown="1">
-![Une courbe pH-métrique](/images/courbe_dosage_phmetrique.png#right)
+![Une courbe pH-métrique](/images/courbe_dosage_phmetrique.png)
 </div>
 
 
