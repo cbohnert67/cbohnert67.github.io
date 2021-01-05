@@ -21,13 +21,13 @@ Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étu
 Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en relevant des mesures de volumes lors de dosages pH-métriques.
 
 
-![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png){:class="img-right"}
+![Courbe dosage pH-métrique](/images/courbe_dosage_phmetrique.png)
 
 Je déterminais le volume équivalent nécessaire pour calculer la concentration d'acide ou de base     recherchée par une méthode dite des tangentes. Je traçais des tangentes à la règle et au crayon !
 
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
 
-![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png){:class="img-left"}
+![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png)
 
 Des faits marquants pour qui apprécie comprendre son environnement.
