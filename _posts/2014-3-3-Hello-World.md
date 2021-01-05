@@ -20,7 +20,7 @@ Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étu
 
 Je découvrais de fascinantes courbes se dessinant sur papier millimetré à mesure de dosages pH-métriques. 
 
-Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression entre la concentration d'un soluté et son absorbance colorimétrique. 
+Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
 Des faits marquants pour qui apprécie comprendre son environnement.
 
