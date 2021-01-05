@@ -210,35 +210,10 @@ img {
   }
 }
 
-nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
-  font-size: 18px;
 
-  @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
-  }
-
-  a {
-    margin-left: 20px;
-    color: $darkGray;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    @include mobile {
-      margin: 0 10px;
-      color: $blue;
-    }
-  }
-}
 
 .vertical-menu {
-  width: 200px; /* Set a width if you like */
+  width: 60px; /* Set a width if you like */
 }
 
 .vertical-menu a {
@@ -254,7 +229,7 @@ nav {
 }
 
 .vertical-menu a.active {
-  background-color: #4CAF50; /* Add a green color to the "active/current" link */
+  background-color: rgb(4,3,87); /* Add a green color to the "active/current" link */
   color: white;
 }
 
