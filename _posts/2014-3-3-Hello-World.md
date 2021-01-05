@@ -28,6 +28,6 @@ Je déterminais le volume équivalent nécessaire pour calculer la concentration
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
 
-![Régression linéaire dosage colorimétrique](/images/courbe_dosage_phmetrique.png){:class="img-left"}
+![Régression linéaire dosage colorimétrique](/images/courbe_dosage_colorimetrique.png){:class="img-left"}
 
 Des faits marquants pour qui apprécie comprendre son environnement.
