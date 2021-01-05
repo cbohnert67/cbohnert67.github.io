@@ -25,7 +25,13 @@ Je découvrais de fascinantes courbes se dessinant sur du papier millimetré en 
 	<img src="/images/courbe_dosage_phmetrique.png">
 </div>
 
+On déterminait le volume équivalent nécessaire pour calculer la concentration d'acide ou de base recherchée par une méthode dite des tangentes. Nous traçions des tangentes à la règle et au crayon !
 
 Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
+
+<div style="float:left;margin-right: 40px;max-width: 50%;">
+	<img src="/images/courbe_dosage_colorimetrique.png">
+</div>
+
 
 Des faits marquants pour qui apprécie comprendre son environnement.
