@@ -111,13 +111,15 @@ img {
 }
 
 .img-left {
-	float:left;
+	position: relative;
+  	left: 20px;
     margin: 30px 40px 30px 20px;
     width: 50%;
 }
 
 .img-right {
-	float:right;
+	position: relative;
+    right: 20px;
     margin: 30px 20px 30px 40px;
     width: 50%;
 }
