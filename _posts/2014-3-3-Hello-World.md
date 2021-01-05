@@ -6,7 +6,7 @@ published: true
 
 Un défi pour démarrer 2021 ? Me former aux outils de la science des données. 
 
-Tout au long de l'année, je vais tenter de comprendre et d'assimiler une sélection de connaissances et compétences en analyse de données et machine learning.
+Tout au long de l'année, je vais tenter de comprendre et d'assimiler une sélection de connaissances et de compétences en analyse de données et machine learning.
 
 ### Mon objectif 
 
@@ -20,9 +20,11 @@ Je me souviens de moments excitants au laboratoire entre 1996 et 1999 alors étu
 
 Je découvrais de fascinantes courbes se dessinant sur papier millimetré à mesure de dosages pH-métriques. 
 
-Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression entre la concentration d'un soluté et son absorbance en colorimétrie. 
+Je me souviens quand en binôme nous entrions des valeurs dans un tableur et cherchions une regression linéaire entre la concentration d'un soluté et son absorbance en colorimétrie. 
 
 Des faits marquants pour qui apprécie comprendre son environnement.
+
+
 
 
 
