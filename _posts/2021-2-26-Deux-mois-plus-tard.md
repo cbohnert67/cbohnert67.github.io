@@ -14,6 +14,8 @@ J'ai bien entendu postulé pour le parcours Data Scientist et je me réjouis d'a
 
 La candidature est assez accessible et classique si toutefois l'on dispose d'un niveau bac+2: décrire ses motivations, présenter son parcours par le CV et une petite vidéo d'une minute. 
 
-Sur cette dernière, j'estime que j'ai été assez original : j'y ai présenté trois livres de ma bibliothèque. Trois livres que je recommande fortement à quiconque s'intéresse aux mathématiques appliquées. En voici les couvertures :
+Sur cette dernière, j'estime que j'ai été assez original : j'y ai présenté trois livres de ma bibliothèque. 
+
+Trois livres que je recommande fortement à quiconque s'intéresse aux mathématiques appliquées. En voici les couvertures :
 
 
