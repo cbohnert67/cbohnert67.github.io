@@ -16,6 +16,15 @@ La candidature est assez accessible et classique si toutefois l'on dispose d'un 
 
 Sur cette dernière, j'estime que j'ai été assez original : j'y ai présenté trois livres de ma bibliothèque. 
 
-Trois livres que je recommande fortement à quiconque s'intéresse aux mathématiques appliquées. En voici les couvertures :
+Trois livres que je recommande fortement à quiconque s'intéresse aux mathématiques appliquées. 
+
+En voici les couvertures :
+
+![Trois livres de modélisation mathématique](/images/trois_livres_modelisation.png){:class="img-center"}
+
+Le fait est que j'ai été placé sur liste d'attente par la suite, jusqu'à ce que je reçoive un jour... le mardi 9 février un email d'Openclassrooms me disant que ma candidature a été étudiée que j'ai droit à un entretien de préadmission en visio conférence. Youpi !
+
+J'ai aussitôt choisi une date, le 19 février 2021, un jour avant mon anniversaire... Puis j'ai réfléchi au meilleur moyen d'appuyer ma candidature pour être admis dans ce programme.
+
 
 
