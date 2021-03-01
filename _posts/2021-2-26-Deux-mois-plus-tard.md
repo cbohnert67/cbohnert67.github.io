@@ -30,7 +30,7 @@ L'idée que j'ai retenue est celle d'un jupyter notebook interactif du marché d
 
 Durant la visio le jour J, après une petite présentation de mon parcours puis de mes motivations, je présente le 'prototype' de mon application BMO à mon interlocuteur qui a été assez... impressionné !
 
-Ainsi, j'ai eu la chance, à la fin de l'entretien, d'obtenir en direct un avis favorable d'admission au parcours Data Scientist chez Openclassrooms. 
+Ainsi, j'ai eu la chance, à la fin de l'entretien, d'avoir obtenu en direct un avis favorable d'admission au parcours Data Scientist chez Openclassrooms. 
 
 Je débute la formation le 18 mars 2021.
 
