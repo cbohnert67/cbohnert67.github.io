@@ -26,13 +26,11 @@ Mais un jour... le mardi 9 février, un email d'Openclassrooms me parvient et me
 
 J'ai aussitôt choisi une date, le 19 février 2021, la veille de mon anniversaire, par défaut puisque c'était la première date disponible. J'ai aussitôt réfléchi au meilleur moyen d'appuyer ma candidature pour être admis dans ce programme.
 
-L'idée que j'ai retenue est celle d'un jupyter notebook interactif du marché de l'emploi selon une enquête Pôle Emploi. J'ai tout simplement téléchargé le dataset du BMO 2020 et je me suis amusé à implémenter deux petites fonctionnalités de visualisation des projets de recrutements en métropole.
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cbohnert67/Enquete-BMO.git/HEAD?urlpath=voila%2Frender%2Frecherche_metiers_2020.ipynb)
+L'idée que j'ai retenue est celle d'un jupyter notebook interactif du marché de l'emploi selon une enquête Pôle Emploi. J'ai tout simplement téléchargé le dataset du BMO 2020 et je me suis amusé à implémenter deux petites fonctionnalités de visualisation des projets de recrutements en métropole : [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cbohnert67/Enquete-BMO.git/HEAD?urlpath=voila%2Frender%2Frecherche_metiers_2020.ipynb)
 
 Durant la visio le jour J, après une petite présentation de mon parcours puis de mes motivations, je présente le 'prototype' de mon application BMO à mon interlocuteur qui a été assez... impressionné !
 
-Ainsi, j'ai eu la chance, à la fin de l'entretien, d'avoir eu en direct un avis favorable d'admission au parcours Data Scientist chez Openclassrooms. 
+Ainsi, j'ai eu la chance, à la fin de l'entretien, d'obtenir en direct un avis favorable d'admission au parcours Data Scientist chez Openclassrooms. 
 
 Je débute la formation le 18 mars 2021.
 
