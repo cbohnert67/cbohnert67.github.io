@@ -42,13 +42,24 @@ J’en estime probablement autant sur le travail ‘à côté’ pour acquérir 
 
 Il s’agit donc de s’organiser et de planifier son apprentissage ! Vous comprenez l’objet du P1.
 
-Ci-dessous vous trouverez ainsi un planning prévisionnel, puis un résumé des stratégies que je vais déployer pour arriver à mon objectif :
+Ci-dessous vous trouverez ainsi un planning prévisionnel, puis un résumé des stratégies que je vais déployer pour atteindre mon objectif :
 
 
 ![Planning prévisionnel des projets](/images/planning_previsionnel.png){:class="img-center"}
 
 
 ![Stratégies à déployer](/images/strategies_deployees.png){:class="img-center"}
+
+
+
+Voici à présent un aperçu de ce qui m'attend comme travail pour développer les compétences métier :
+
+
+![Objectif smart Python](/images/objectifs_python.png){:class="img-center"}
+
+![Objectif smart Maths](/images/objectifs_maths.png){:class="img-center"}
+
+![Objectif smart Communication](/images/objectifs_communication.png){:class="img-center"}
 
 
 
