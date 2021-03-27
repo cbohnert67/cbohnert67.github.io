@@ -45,3 +45,7 @@ Il s’agit donc de s’organiser et de planifier son apprentissage ! Vous compr
 Ci-dessous vous trouverez ainsi un planning prévisionnel, puis un résumé des stratégies que je vais déployer pour arriver à mon objectif :
 
 
+![Planning prévisionnel des projets](/images/planning_previsionnel.png){:class="img-center"}
+
+
+
