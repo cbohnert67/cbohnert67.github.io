@@ -48,4 +48,9 @@ Ci-dessous vous trouverez ainsi un planning prévisionnel, puis un résumé des 
 ![Planning prévisionnel des projets](/images/planning_previsionnel.png){:class="img-center"}
 
 
+![Stratégies à déployer](/images/strategies_deployees.png){:class="img-center"}
+
+
+
+
 
