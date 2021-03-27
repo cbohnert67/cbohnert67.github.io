@@ -64,6 +64,6 @@ Mon plan d'action en date du 26/03/2021 :
 ![Objectif smart Communication](/images/objectifs_communication.png){:class="img-center"}
 
 
-Bien entendu, cela évoluera,  et je vous invite à patienter et à revenir très bientôt pour continuer à lire mon récit... 
+Bien entendu, cela évoluera,  et je vous invite à patienter et à revenir un peu plus tard pour continuer à lire mon récit... 
 
 À bientôt ! :D
