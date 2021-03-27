@@ -52,7 +52,7 @@ Ci-dessous vous trouverez ainsi un planning prévisionnel, puis un résumé des 
 
 
 
-Voici à présent un aperçu de ce qui m'attend comme travail pour développer les compétences métier :
+Voici à présent un aperçu de ce qui m'attend comme travail pour développer les compétences métier. Mon plan d'action en date du 26/03/2021 :
 
 
 ![Objectif smart Python](/images/objectifs_python.png){:class="img-center"}
@@ -62,6 +62,4 @@ Voici à présent un aperçu de ce qui m'attend comme travail pour développer l
 ![Objectif smart Communication](/images/objectifs_communication.png){:class="img-center"}
 
 
-
-
-
+Bien entendu, cela évoluera,  et je vous invite à patienter et à revenir très bientôt pour continuer à lire mon récit... :D
