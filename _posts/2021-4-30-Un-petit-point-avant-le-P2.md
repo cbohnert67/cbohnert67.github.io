@@ -26,6 +26,9 @@ Cette manière d'enseigner peut paraître absurde, je vous l'accorde, mais rassu
 
 Ce que j'aimerais à présent discuter concerne ce que j'ai fait pour le P2 et donc ce qu'il ne faut pas faire ! J'en parle avant d'aller dans les détails du P2, certes, mais j'estime que c'est nécessaire d'une part, et d'autre part, car je vais retravailler mon notebook avant de le mettre en ligne sur github.
 
+## Apprendre à conduire avant de vouloir construire une voiture !
+
+C'est la meilleure analogie que je puisse imaginer et pour décrire la formation que je poursuis et pour décrire mon état d'esprit à cet instant, post-P2. Je m'explique :
 
 
 
