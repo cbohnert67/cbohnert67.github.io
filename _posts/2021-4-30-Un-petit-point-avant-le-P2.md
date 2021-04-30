@@ -31,6 +31,11 @@ Ce que j'aimerais à présent discuter concerne ce que j'ai fait pour le P2 et d
 C'est la meilleure analogie que je puisse imaginer et pour décrire la formation que je poursuis et pour décrire mon état d'esprit à cet instant, post-P2. Je m'explique :
 
 
+- La formation OC de Data Scientist a pour objectif de vous convertir en... Data Scientist. Oui ! Mais attention, c'est un métier qui était tellement à la mode que la Harvard Business Review décriait en 2012 :
+
+![Harvard Business Review Article](/images/data-scientist-the-sexiest-job-of-the-21st-century.jpg){:class="img-center"}
+
+
 
 
 
