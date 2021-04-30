@@ -24,7 +24,9 @@ Compétences ? Mais quelles compétences ? Je suis dans cette formation pour acq
 
 Cette manière d'enseigner peut paraître absurde, je vous l'accorde, mais rassurez-vous, le travail que l'on nous donne est bien pensé, bien dosé. J'en parlerai de projet en projet.
 
-Ce que j'aimerais à présent discuter concerne ce que j'ai fait pour le P2 et donc ce qu'il ne faut pas faire ! J'en parle avant d'aller dans les détails du P2 mais j'estime que c'est nécessaire, et, car je vais retravailler mon notebook avant de le mettre en ligne sur github.
+Ce que j'aimerais à présent discuter concerne ce que j'ai fait pour le P2 et donc ce qu'il ne faut pas faire ! J'en parle avant d'aller dans les détails du P2, certes, mais j'estime que c'est nécessaire d'une part, et d'autre part, car je vais retravailler mon notebook avant de le mettre en ligne sur github.
+
+
 
 
 
