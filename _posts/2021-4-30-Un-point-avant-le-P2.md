@@ -46,7 +46,7 @@ On parle d'ailleurs de plus en plus de Data Analyst, Data Engineer, Data Archite
 
 L'image de la licorne si belle si rare si louée se craquelle et se casse en mille métiers, presqu'une dizaine d'années plus tard.
 
-Aussi, travailler avec des données, faire de la Data Science, c'est faire appel à un paquet de connaissances et compétences techniques. 
+Aussi, travailler avec des données, faire de la Data Science, c'est faire appel à un paquet de connaissances et de compétences techniques. 
 
 
 
