@@ -26,7 +26,9 @@ Cette manière d'enseigner peut paraître absurde, je vous l'accorde, mais rassu
 
 Ce que j'aimerais à présent discuter concerne ce que j'ai fait pour le P2 et donc ce qu'il ne faut pas faire ! J'en parle avant d'aller dans les détails du P2, certes, mais j'estime que c'est nécessaire d'une part, et d'autre part, car je vais retravailler mon notebook avant de le mettre en ligne sur github.
 
-## Apprendre à conduire avant de vouloir construire une voiture !
+```
+Apprendre à conduire avant de vouloir construire une voiture !
+```
 
 C'est la meilleure analogie que je puisse imaginer et pour décrire la formation que je poursuis et pour décrire mon état d'esprit à cet instant, post-P2. Je m'explique :
 
@@ -34,15 +36,17 @@ La formation OC de Data Scientist a pour objectif de vous convertir en... Data S
 
 ![Harvard Business Review Article](/images/data-scientist-the-sexiest-job-of-the-21st-century.jpg){:class="img-center"}
 
-Bien entendu qu'il rayonne encore aujourd'hui beaucoup, qu'il y a une pénurie de talents dans ce domaine en pleine expansion. Mais cela mérite qe l'on s'attarde sur la question : qu'est-ce qu'un Data Scientist ? Et plus précisemment, qu'est-ce qu'un Data Scientist chez OC ?
+Bien entendu qu'il rayonne encore aujourd'hui beaucoup, qu'il y a une pénurie de talents dans ce domaine en pleine expansion. Mais cela mérite que l'on s'attarde sur la question : qu'est-ce qu'un Data Scientist ? Et plus précisemment, qu'est-ce qu'un Data Scientist chez OC ?
 
 Nous voyons plein d'offres d'emploi sur le réseau LinkedIn. Nous voyons plein plein de formations en Data Science. Nous voyons plein plein plein de cours et de tutoriels sur la Toile. Mais derrière ce métier se cache une réalité bien vague, tellement elle peut être diversifiée ! 
 
-D'ailleurs, nous voyons, toujours dans les offres d'emploi, dans les offres de formation et dans les supports pédagogiques, se dessiner une représentation bien plus sophistiquer du rôle de ce bonhomme dans une entreprise. 
+D'ailleurs, nous voyons, toujours et encore dans les offres d'emploi, dans les offres de formation et dans les supports pédagogiques, se dessiner une représentation bien plus sophistiquée du rôle de ce bonhomme dans une entreprise que celui dépeint par la fameuse Licorne. 
 
-On parle de plus en plus de Data Analyst, Data Engineer, Data Architect, et puis n'oublions pas le Machine Learning Engineer, et l'ingénieur IA, tout simplement !
+On parle de plus en plus de Data Analyst, Data Engineer, Data Architect, et puis n'oublions pas le Machine Learning Engineer, et l'ingénieur IA, tout simplement ! J'en oublie probablement. 
 
-L'image de la licorne si belle si rare si recherchée se craquelle et se casse en mille métiers. 
+L'image de la licorne si belle si rare si louée se craquelle et se casse en mille métiers, presqu'une dizaine d'années plus tard.
+
+
 
 
 
