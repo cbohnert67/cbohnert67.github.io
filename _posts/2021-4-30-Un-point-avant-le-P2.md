@@ -48,7 +48,7 @@ L'image de la licorne si belle si rare si louée se craquelle et se casse en mil
 
 Aussi, travailler avec des données, faire de la Data Science, c'est faire appel à un paquet de connaissances et de compétences techniques. 
 
-
+![Road to Data Scientist](/images/RoadToDataScientist1.png){:class="img-center"}
 
 
 
