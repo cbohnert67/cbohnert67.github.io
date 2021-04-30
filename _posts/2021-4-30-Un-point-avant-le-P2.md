@@ -16,7 +16,7 @@ Comme indiqué dans le précédent article, [Projet P1 validé, les choses séri
 
 Les missions étant scénarisées certes, l'on nous invite tout de même à travailler sur de véritables jeux de données, dans l'optique de répondre à une problématique potentiellement réelle, à fournir et à présenter des livrables en un temps imparti. Point, ou presque...
 
-Comprenez par cette cynique boutade, que ce que je vous raconte est bel est bien la réalité de la pédagogie orientée projet chez OC : 
+Comprenez, par cette cynique boutade, que ce que je vous raconte est bel est bien la réalité de la pédagogie orientée projet chez OC : 
 
 Nous sommes face à une problématique et nous devons y répondre grâce à nos compétences. 
 
