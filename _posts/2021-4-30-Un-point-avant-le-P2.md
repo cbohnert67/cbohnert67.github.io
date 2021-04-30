@@ -8,7 +8,7 @@ Il s'agit d'une note de recentrage, mais pas d'inquiétude, le P2 est validé ! 
 
 J'ai toutefois besoin de faire un point sur ma progression afin que cela puisse m'aider à me recentrer. En effet, plonger presque tout nu dans un projet Openclassrooms (OC) de la formation Data Scientist, peut faire peur, voire, peut faire mal.
 
-C'est pourquoi je vais tenter dans cet article de vous décrire mes premières impressions sur la pédagogie d'OC et la formation Data Scientist.
+C'est pourquoi je vais tenter dans cet article de vous décrire mes premières impressions sur la pédagogie d'OC et leur formation Data Scientist.
 
 ![Thumbs up!](/images/thumbs-up.jpg){:class="img-center"}
 
