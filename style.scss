@@ -226,9 +226,10 @@ img {
 .site-description {
   margin: -5px 0 0 0;
   color: $gray;
-  font-size: 40px;
+  font-size: 30px;
   padding-top: 15px;
   float: left;
+  text-align: left;
   @include mobile {
     margin: 3px 0;
   }
