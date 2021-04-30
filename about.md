@@ -7,7 +7,7 @@ published: true
 
 ### Computational User eXperiences
 
-Un blog accompagnant mon github et relatant mon aprentissage de la programmation en python, de certains aspects des mathématiques appliquées et de quelques techniques de l'intelligence artificielle. 
+Le récit de mon apprentissage Openclassrooms de Data Scientist en devenir.
 
 ### Un peu de moi
 
