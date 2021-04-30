@@ -17,7 +17,7 @@ Intéressé par la pratique de la recherche de modèles mathématiques et de l'a
 
 J'ai la chance de bénéficier d'un financement pour la formation Openclassrooms. 
 
-Pour être pleinement acteur de mon apprentissage, je nourris ce blog du mieux que je peux afin de vous partager mon expérience de Data Scientist en devenir.
+Pour être pleinement acteur de mon apprentissage, je nourris ce récit du mieux que je peux afin de vous partager mon expérience de Data Scientist en devenir.
 
 ### Pour me contacter
 
