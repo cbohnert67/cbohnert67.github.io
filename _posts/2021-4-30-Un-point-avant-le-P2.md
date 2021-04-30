@@ -6,9 +6,9 @@ published: true
 
 Il s'agit d'une note de recentrage, mais pas d'inquiétude, le P2 est validé ! Youpi !
 
-J'ai toutefois besoin de faire un point sur ma progression afin que cela puisse m'aider à me recentrer. En effet, plonger presque tout nu dans un projet Openclassrooms (OC) de la formation Data Scientist, peut faire peur, voire peut faire mal.
+J'ai toutefois besoin de faire un point sur ma progression afin que cela puisse m'aider à me recentrer. En effet, plonger presque tout nu dans un projet Openclassrooms (OC) de la formation Data Scientist, peut faire peur, voire, peut faire mal.
 
-C'est pourquoi je vais tenter dans cet article de vous décrire mes premières impressions sur la pédagogie d'OC.
+C'est pourquoi je vais tenter dans cet article de vous décrire mes premières impressions sur la pédagogie d'OC et la formation Data Scientist.
 
 ![Thumbs up!](/images/thumbs-up.jpg){:class="img-center"}
 
@@ -22,29 +22,31 @@ Nous sommes face à une problématique et nous devons y répondre grâce à nos 
 
 Compétences ? Mais quelles compétences ? Je suis dans cette formation pour acquérir des compétences, justement ! C'est naze !
 
-Cette manière d'enseigner peut paraître absurde, je vous l'accorde, mais rassurez-vous, le travail que l'on nous donne est bien pensé, bien dosé. J'en parlerai de projet en projet.
+Cette manière d'enseigner peut paraître absurde, je vous l'accorde, mais rassurez-vous, le travail que l'on nous donne est bien pensé, bien dosé. J'en parlerai de projet en projet, donc d'article en article. 
 
-Ce que j'aimerais à présent discuter concerne ce que j'ai fait pour le P2 et donc ce qu'il ne faut pas faire ! J'en parle avant d'aller dans les détails du P2, certes, mais j'estime que c'est nécessaire d'une part, et d'autre part, car je vais retravailler mon notebook avant de le mettre en ligne sur github.
+Pour aller à l'essentiel, chez OC, il va falloir...
 
 >Apprendre à conduire avant de vouloir construire une voiture !
 
-C'est la meilleure analogie que je puisse imaginer et pour décrire la formation que je poursuis et pour décrire mon état d'esprit à cet instant, post-P2. Je m'explique :
+C'est la meilleure analogie que je puisse imaginer et pour décrire la formation que je poursuis et pour décrire mon état d'esprit à cet instant, post-P2. 
 
-La formation OC de Data Scientist a pour objectif de vous convertir en... Data Scientist. Oui ! Mais attention, c'est un métier qui était tellement à la mode que la Harvard Business Review qualifiait en 2012 ce métier de '... métier le plus sexy du 21ème siècle' :
+Je m'explique :
+
+La formation OC de Data Scientist a pour objectif de vous convertir en... Data Scientist. Oui ! C'est un métier qui était tellement à la mode que la Harvard Business Review le  qualifiait en 2012 de '... métier le plus sexy du 21ème siècle' :
 
 ![Harvard Business Review Article](/images/data-scientist-the-sexiest-job-of-the-21st-century.jpg){:class="img-center"}
 
-Bien entendu qu'il rayonne encore aujourd'hui beaucoup, qu'il y a une pénurie de talents dans ce domaine en pleine expansion. Mais cela mérite que l'on s'attarde sur la question : qu'est-ce qu'un Data Scientist ? Et plus précisemment, qu'est-ce qu'un Data Scientist chez OC ?
+Bien entendu, il rayonne encore aujourd'hui beaucoup, il y a une pénurie de talents dans l'univers en pleine expansion de la Data. Mais cela mérite que l'on s'attarde sur la question : qu'est-ce qu'un Data Scientist ? Et plus précisemment, qu'est-ce qu'un Data Scientist au sens de la formation OC ?
 
 Nous voyons plein d'offres d'emploi sur le réseau LinkedIn. Nous voyons plein plein de formations en Data Science. Nous voyons plein plein plein de cours et de tutoriels sur la Toile. Mais derrière ce métier se cache une réalité bien vague, tellement elle peut être diversifiée ! 
 
-D'ailleurs, nous voyons, toujours et encore dans les offres d'emploi, dans les offres de formation et dans les supports pédagogiques, se dessiner une représentation bien plus sophistiquée du rôle de ce bonhomme dans une entreprise que celui dépeint par la fameuse Licorne. 
+En effet, nous voyons, dans les offres d'emploi, dans les offres de formation et dans les supports pédagogiques, commencer à se dessiner une représentation bien plus sophistiquée que le rôle de ce bonhomme  bossant dans une startup de la French Tech, qu'est celui dépeint par la fameuse Licorne américaine. 
 
-On parle de plus en plus de Data Analyst, Data Engineer, Data Architect, et puis n'oublions pas le Machine Learning Engineer, et l'ingénieur IA, tout simplement ! J'en oublie probablement. 
+On parle d'ailleurs de plus en plus de Data Analyst, Data Engineer, Data Architect. N'oublions pas le Machine Learning Engineer, et l'ingénieur IA, de surcroît ! J'en oublie probablement. 
 
 L'image de la licorne si belle si rare si louée se craquelle et se casse en mille métiers, presqu'une dizaine d'années plus tard.
 
-
+Aussi, travailler avec des données, faire de la Data Science, c'est faire appel à un paquet de connaissances et compétences techniques. 
 
 
 
