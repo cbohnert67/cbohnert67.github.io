@@ -54,7 +54,7 @@ Faire de la Data Science, c'est faire appel à un paquet de connaissances (méth
 
 Le travail du Data Scientist est de produire de l'insight. 
 
-![Road to Data Scientist](/images/RoadToDataScientist1.png){:class="img-center"}
+![Data Scientist Insight](/images/insight.jpg){:class="img-center"}
 
 
 
