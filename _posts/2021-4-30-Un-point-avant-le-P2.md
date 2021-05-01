@@ -48,9 +48,9 @@ On parle d'ailleurs de plus en plus de Data Analyst, Data Engineer, Data Archite
 
 L'image de la licorne si belle, si rare, si louée par Harvard se craquelle et se décompose en mille métiers, presqu'une dizaine d'années plus tard.
 
-Aussi, ce métier consiste avant tout à travailler avec des données. Si l'on aime pas travailler avec des chiffres, des graphiques, se poser des questions et émettre des hypothèses, les tester, les valider, les invalider, et tout un tas d'activité de ce type, en résumé, manipuler l'information, alors, ce n'est pas un métier pour vous !
+Aussi, ce métier consiste avant tout à travailler avec des données. Si l'on aime pas travailler avec des chiffres, des graphiques, se poser des questions et émettre des hypothèses, les tester, les valider, les invalider, et tout un tas d'activités de ce type, en résumé, manipuler l'information, alors, ce n'est pas un métier pour vous !
 
-Faire de la Data Science, c'est faire appel à un paquet de connaissances (méthodes mathématiques et statistiques) et de compétences techniques (programmation) pour éclairer ses collègues ou ses clients à propos d'un problème, souvent mal formulé, faisant appel à tout un tas de données structurées, ou non. 
+Faire de la Data Science, c'est faire appel à un paquet de connaissances (méthodes mathématiques et statistiques) et de compétences techniques (programmation) pour éclairer ses collègues ou ses clients à propos d'un problème, souvent mal formulé, faisant appel à tout un tas de données structurées, ou non :
 
 Le travail du Data Scientist est de produire de l'insight. 
 
