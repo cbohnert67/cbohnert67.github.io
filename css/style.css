@@ -1,0 +1,9 @@
+.bg-teal { background-color: #3f3d56; }
+
+a { color: teal !important;}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
