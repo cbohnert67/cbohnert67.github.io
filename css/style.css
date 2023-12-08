@@ -7,3 +7,5 @@ a { color: teal !important;}
     height: 15vw;
     object-fit: cover;
 }
+
+.text-justify  { text-align: justify !important; }
