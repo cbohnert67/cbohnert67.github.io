@@ -8,4 +8,7 @@ a { color: teal !important;}
     object-fit: cover;
 }
 
-.text-justify  { text-align: justify !important; }
+.text-justify  { 
+    width: 100% !important;
+    text-align: justify !important; 
+}
