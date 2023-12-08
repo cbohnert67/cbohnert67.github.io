@@ -11,3 +11,10 @@ a { color: teal !important;}
 p  { 
     text-align: justify !important; 
 }
+
+a.nav-link {
+    color: #fff !important;
+    margin-right: 20px !important;
+    height: 50px !important;
+    font-size: x-large !important;
+}
