@@ -70,6 +70,12 @@ a.nav-link:hover {
         padding: 5%;
         margin: 10%;
     }
+
+    #email {
+        width: 100% !important;
+        margin-left: 0% !important;
+        font-size: 1.7rem !important;
+    }
 }
 
 
