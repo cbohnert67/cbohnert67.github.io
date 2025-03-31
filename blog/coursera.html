@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Cédric Bohnert</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
+
+    <style>
+        /* Dark mode styles consistent with portfolio */
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        .dark-mode .bg-teal {
+            background-color: #005a5a !important;
+        }
+        
+        .dark-mode .card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #333;
+        }
+        
+        .dark-mode .article-content {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        .dark-mode .article-content a {
+            color: #4db8ff;
+        }
+        
+        /* Article styling */
+        .article-header {
+            border-bottom: 2px solid #20c997;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .article-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .article-content h2 {
+            color: #20c997;
+            margin-top: 2rem;
+        }
+        
+        .article-content h3 {
+            margin-top: 1.5rem;
+        }
+        
+        .meta-info {
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        .dark-mode .meta-info {
+            color: #adb5bd;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 1rem 0;
+        }
+        
+        .dark-mode .code-block {
+            background-color: #2d2d2d;
+            color: #f8f9fa;
+        }
+        /* Bouton de bascule */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .dark-mode .theme-toggle {
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleDarkMode()">
+        <span id="theme-icon">🌙</span>
+    </button>
+    
+    <div class="container">
+        
+        <!-- Header with navigation -->
+        <div id="header" class="row p-5">
+            <div class="col-md-12 text-center">
+                <h1 class="display-1">
+                    CÉDRIC BOHNERT
+                </h1>
+                <h2 class="display-2">
+                    Blog EdTech & Data
+                </h2>
+            </div>
+            
+        </div>
+        
+        <!-- Menu -->
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg bg-teal rounded">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center lead" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#presentation">Présentation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#competences">Compétences</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- Fin Menu -->
+        
+        <!-- Article Content -->
+        <div class="row p-5">
+            <div class="col-md-8 offset-md-2 article-content">
+                <div class="article-header">
+                    <h1 id="article">Coursera sous la loupe - Comment j'explore l'éducation en ligne?</h1>
+                    <div class="meta-info">
+                        Publié le <span id="article-date">[Date du jour]</span> | Catégorie : Journal d'apprentissage
+                    </div>
+                </div>
+                
+                
+                <h2>Mon coup de cœur du mois : Coursera comme cas d'étude EdTech</h2>
+                
+                <h3>Ce qui m'a fasciné</h3>
+                <p><strong>1. L'ingénierie pédagogique invisible</strong></p>
+                <ul>
+                    <li>Les parcours "Guided Projects" avec environnement cloud intégré</li>
+                    <li>Le système de peer-reviewed assignments qui crée une communauté apprenante</li>
+                    <li>L'équilibre subtil entre vidéos, quizzes et labs pratiques</li>
+                </ul>
+                
+                <p><strong>2. La data au service de l'éducation</strong> (ce que j'aimerais reverse-engineer)</p>
+                <ul>
+                    <li>L'adaptive learning basique via les recommandations de cours</li>
+                    <li>L'analyse des temps de réponse aux quizzes</li>
+                    <li>Le scoring des compétences via les Specializations</li>
+                </ul>
+                
+                <p><strong>3. Les innovations à surveiller</strong></p>
+                <ul>
+                    <li>Les diplômes 100% en ligne partenaires d'universités</li>
+                    <li>L'intégration timide de l'IA générative dans les feedbacks</li>
+                    <li>La certification par projets professionnalisants</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <strong>Question ouverte :</strong> Avez-vous expérimenté leurs nouvelles fonctionnalités comme les "Coursera Labs" ?
+                </div>
+                
+                <h2>Mes prochaines explorations techniques</h2>
+                <p><strong>En réflexion :</strong></p>
+                <p><em>Analyse de mes propres learning data :</em> Récupérer via l'API Coursera (si disponible) mes stats de progression pour les visualiser avec Streamlit</p>
+                
+                <p><em>Clone minimaliste :</em> Prototyper une plateforme simplifiée avec :</p>
+                <div class="code-block">
+                    # Architecture envisagée<br>
+                    Frontend : Streamlit ou Dash<br>
+                    Backend : FastAPI<br>
+                    Database : PostgreSQL pour stocker les progressions<br>
+                    Analytics : Pandas + Plotly pour les visualisations
+                </div>
+                
+                <p><em>Benchmark technique :</em> Comparer l'UX learning de Coursera, edX et Udacity sous l'angle data</p>
+                
+                <p class="text-center"><em>À suivre dans le prochain article...</em></p>
+                
+                <h2>Ce que cela change pour ma pratique</h2>
+                <ol>
+                    <li><strong>Pédagogie :</strong> J'enrichis mes supports de formation avec des formats inspirés des "short videos" de Coursera</li>
+                    <li><strong>Veille techno :</strong> Je surveille leur blog engineering pour comprendre leurs choix stack</li>
+                    <li><strong>Autoformation :</strong> J'adopte leur méthodologie de micro-learning pour mes propres études</li>
+                </ol>
+                
+                <div class="card bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Lecture inspirante du mois</h5>
+                        <p class="card-text">📄 <em>"How Coursera Uses Data Science to Improve Learning"</em> (Publication interne partagée lors d'un webinar)</p>
+                    </div>
+                </div>
+                
+                <h3>Prochaines étapes</h3>
+                <ul>
+                    <li>Finaliser mon audit technique de la plateforme</li>
+                    <li>Rencontrer un mentor technique dans l'équipe Coursera</li>
+                    <li>Esquisser un POC d'analyse de learning analytics</li>
+                </ul>
+                
+                <div class="text-center mt-5">
+                    <p><em>Vous utilisez Coursera pour vos projets Data/IA ? Parlons-en sur <a href="[votre_linkedin]">LinkedIn</a> ou par <a href="mailto:cbohnert.datascience@gmail.com">mail</a> de nos expériences comparées !</em></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="row p-5">
+            <div class="col-md-12 p-5">
+                <h4 id="contact" class="p-2 bg-teal text-white rounded text-center">Voulez-vous me contacter ?</h4>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="row p-2 mb-5">
+                <div class="col-md-12 display-5 text-center mb-5">
+                    <a id="email" href="mailto:cbohnert.datascience@gmail.com">cbohnert.datascience@gmail.com</a>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="https://www.linkedin.com/in/cedricbohnert/" target="_blank"><img src="../img/linkedin.svg" alt="LinkedIn"></a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a href="https://github.com/cbohnert67/" target="_blank"><img src="../img/github.svg" alt="GitHub"></a>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col-md-12 text-center">
+                <h5 class="p-5">Réalisé avec ❤ par Cédric Bohnert.</h5>
+            </div>
+        </div>
+    </div>
+    
+    <button onclick="topFunction()" id="topBtn" title="Go to top">Haut</button>
+    
+    <script>
+        // Set current date
+        document.getElementById('article-date').textContent = new Date().toLocaleDateString('fr-FR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        // Fonction pour basculer entre les modes sombre et clair
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Function to toggle language
+        function toggleLanguage() {
+            window.location.href = "index-en.html"; // Redirect to French version
+        }
+        
+        // Vérifier le mode au chargement de la page
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-icon').textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>

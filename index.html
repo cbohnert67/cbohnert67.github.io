@@ -8,15 +8,95 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
+    <style>
+        /* Styles pour le mode sombre */
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        .dark-mode .bg-teal {
+            background-color: #005a5a !important;
+        }
+        
+        .dark-mode .card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #333;
+        }
+        
+        .dark-mode .navbar {
+            background-color: #1e1e1e !important;
+        }
+        
+        .dark-mode .nav-link {
+            color: #e0e0e0 !important;
+        }
+        
+        .dark-mode a {
+            color: #4db8ff;
+        }
+        
+        .dark-mode #email {
+            color: #4db8ff;
+        }
+        
+        /* Bouton de bascule */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .dark-mode .theme-toggle {
+            background: #333;
+            color: #fff;
+        }
+        /* Language toggle button */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 70px;
+            z-index: 1000;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+        
+        .dark-mode .lang-toggle {
+            background: #333;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        <span id="lang-icon">EN</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleDarkMode()">
+        <span id="theme-icon">🌙</span>
+    </button>
+    
     <div class="container">
-        <div id="langage" class="row">
-            <div class="col-md-12">
-                <a href="index-en.html">English</a>
-                <a href="index.html">Français</a>
-            </div>
-        </div>
         <!-- Titre -->
         <div class="row p-5">
             <div class="col-md-12 text-center">
@@ -24,34 +104,31 @@
                     CÉDRIC BOHNERT
                 </h1>
                 <h2 class="display-2">
-                    Concepteur Développeur Python
+                    Concepteur Développeur Data & IA
                 </h2>
             </div>
         </div>
         <!-- Fin Titre -->
 
         <!-- Menu -->
-        <div class="row">
+        <div class="col-md-12">
             <nav class="navbar navbar-expand-lg bg-teal rounded">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-center lead" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#a-propos">À propos</a>
+                            <a class="nav-link" href="#a-propos">Présentation</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#competences">Compétences</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#conception-developpement">Conception & Développement</a>
+                            <a class="nav-link" href="#portfolio">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#datascience">Data Science</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contenu">Création de Contenu</a>
+                            <a class="nav-link" href="#blog">Blog</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact</a>
@@ -71,22 +148,32 @@
                 <h4 id="a-propos" class="p-2 text-white rounded bg-teal text-center mb-5">Qui suis-je ?</h4>
                 
                 <p class="text-justify lead p-1">
-                    Passionné par le eLearning, la Data IA et les technologies du Web, je prépare un
-                    Bachelor Développeur d'Applications Python chez Studi et je suis à la recherche
-                    d'un poste dans une entreprise handi-accueillante afin d'accélérer ma montée en
-                    compétences.
+                    Passionné par l'e-learning, la data science et l'intelligence artificielle, je suis récemment diplômé d'un Bachelor en Développement d'Applications Python.
+                    Mon objectif est d'accompagner vos projets en mettant à profit mes compétences en conception et développement orientés Data et IA.
                 </p>
                 <p class="text-justify lead p-1">
-                    Fort d'une formation en chimie analytique, j'ai plongé dans le monde des données quantitatives, cultivant rigueur et curiosité scientifique.
-                    En tant qu'enseignant en mathématiques, j'ai affiné mes compétences en communication et en gestion de projet "solopreneur".
-                    Moteur au sein d'une association promouvant la philosophie du Libre, j'ai acquis des compétences en développement, innovation et formation.                </p>
-                <p class="text-justify lead p-1">
-                    Je m'intéresse particulièrement aux domaines de l'éducation, de la santé et des sciences.
-                    En dehors du travail, j'aime créer du contenu (JdR avec GPT 3.5), explorer les villes et partir en randonnée.
-                    Bénéficiaire d'une RQTH, patient expert, j'ai acquis les compétences nécessaires à la gestion de mon handicap.
+                    Avec une formation initiale en chimie analytique, j'ai développé une rigueur méthodologique et une curiosité scientifique que j'ai appliquées dans le monde des données quantitatives.
+                    Mon expérience en enseignement des mathématiques m'a permis d'affiner mes compétences en communication technique, rédaction et gestion de projets, renforcées par mon parcours en tant que solopreneur.
                 </p>
-                
-            </div>
+                <p class="text-justify lead p-1">
+                    Impliqué dans des initiatives associatives promouvant la philosophie du Libre, j'ai enrichi mon profil avec des compétences en innovation, développement et formation.
+                </p>
+                <p class="text-justify lead p-1">
+                    Je vous propose des prestations autour :
+
+                    <ul class="text-justify lead">
+                        <li>du développement de scripts et applications Python/Django/Flask,</li>
+                        <li>de l'analyse statistique descriptive et prédictive, exploitant les avancées en machine learning (ML) et deep learning (DL),</li>
+                        <li>de la création de contenus pédagogiques pour l'enseignement des mathématiques et des STEM.</li>
+                    </ul></p>
+                <p class="text-justify lead p-1">
+                    Mes domaines de prédilection incluent l'éducation, la santé et les sciences, où je vise à concevoir des solutions technologiques efficaces et innovantes.
+                    </br></br>
+                    En dehors du travail, je suis passionné par la création de contenu, notamment des jeux de rôle assistés par l'IA, ainsi que par l'exploration urbaine, les randonnées et les découvertes musicales.
+                    </br></br>
+                    Besoin d'un développeur engagé et polyvalent pour vos projets Data et IA ? Contactez-moi, je serais ravi d'échanger sur vos besoins !                </p>
+                    </p>
+                </div>
         </div>
         <!-- Fin Présentation -->
 
@@ -94,22 +181,55 @@
         <div class="row p-5 gx-5">
             <div class="col-md-8 p-5 competences">
                 <h4 id="competences" class="p-2 bg-teal text-white rounded text-center mb-5">Que sais-je faire ?</h4>
-                
-                <ul class="lead">
-                    <li>Conception & Développement d'Applications avec Python, Flask et Django</li>
-                    <li>Conception & Développement de Tableaux de Bord avec Python et Streamlit</li>
-                    <li>Langages : HTML, CSS, Javascript & Python</li>
-                    <li>Modélisation & architecture des applications avec UML</li>
-                    <li>SGBD : ORM, SQL & conception MERISE</li>
-                    <li>Méthodes Agile, SCRUM, et CRISP-DM</li>
-                    <li>Versioning avec Git</li>
-                    <li>Environnements virtuels avec Pip & Conda</li>
-                    <li>Réalisation des supports techniques avec Markdown & LaTex</li>
+                <p class="text-justify lead p-1">
+                Développement Full-Stack & Data Applications
+                <ul class="text-justify lead">
+                    <li>Conception et développement d'applications web avec Python, Flask et Django</li>
+                    <li>Création de tableaux de bord interactifs avec Python et Streamlit</li>
+                    <li>Maîtrise des langages front-end : HTML, CSS, JavaScript</li>
                 </ul>
-                
-                
-                  
-            </div>
+                </p>
+                <p class="text-justify lead p-1">
+                Data Science & Machine Learning
+                <ul class="text-justify lead">
+                    <li>Analyse de données avec Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
+                    <li>Modélisation statistique et machine learning avec Scikit-learn</li>
+                    <li>Création de modèles de deep learning avec TensorFlow et Keras</li>
+                    <li>Traitement du langage naturel (NLP) avec NLTK et SpaCy</li>
+                </ul>
+                </p>
+                <p class="text-justify lead p-1">
+                    Modélisation & Bases de Données
+                <ul class="text-justify lead">
+                    <li>Architecture logicielle avec UML</li>
+                    <li>Gestion de bases de données via ORM, SQL et modélisation MERISE</li>
+                </ul>
+                </p>
+                <p class="text-justify lead p-1">
+                    Environnement de Développement
+                <ul class="text-justify lead">
+                    <li>Développement sous Windows (Anaconda)</li>
+                    <li>Développement sous Linux (Debian, Ubuntu)</li>
+                    <li>Utilisation de Jupyter Notebook et Visual Studio Code</li>
+                    <li>Gestion de versions avec Git et GitHub</li>
+                </ul>
+                </p>
+                <p class="text-justify lead p-1">
+                Méthodologies & Outils
+                <ul class="text-justify lead">
+                    <li>Développement agile (SCRUM) et gestion de projets data (CRISP-DM)</li>
+                    <li>Versioning avec Git et gestion d'environnements virtuels (Pip, Conda)</li>
+                    <li>Rédaction de supports techniques avec Markdown & LaTeX</li>
+                </ul>
+                </p>
+                <p class="text-justify lead p-1">
+                    Langues
+                <ul class="text-justify lead">
+                    <li>Français : Langue maternelle</li>
+                    <li>Anglais : Niveau B2</li>
+                </ul>
+                </p>
+           </div>
             <div class="col-md-4 align-self-center">
                 <img class="img-fluid" src="./img/skills.svg" alt="Compétences de développeur">
             </div>
@@ -120,7 +240,7 @@
         <div class="row p-5 projets">
 
             <div class="col-md-12 p-5">
-                <h4 id="conception-developpement" class="p-2 bg-teal text-white rounded text-center">Réalisations: Conception & Développement</h4>
+                <h4 id="portfolio" class="p-2 bg-teal text-white rounded text-center">Mes réalisations</h4>
             </div>
 
             <div class="row p-5">
@@ -160,56 +280,69 @@
                       </div>                      
                 </div>
             </div>
-
-            <div class="col-md-12 p-5">
-                <h4 id="datascience" class="p-2 bg-teal text-white rounded text-center">Réalisations: Data Science</h4>
-            </div>
-
-            <div class="row p-5">
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <img src="img/working_experiences.svg" class="card-img-top" alt="Logo DataCamp">
-                      
-                        <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title">Histoires de données</h5>
-                          <p class="card-text">Quelques projets DataCamp réalisés en Anglais autour de la Data Science.</p>
-                          <a href="https://github.com/cbohnert67/Datacamp-Storytelling-Projects" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                        </div>
-                      </div>                      
-                </div>
-                
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <img src="img/all_the_data.svg" class="card-img-top" alt="All the Data">
-                      
-                        <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title">Data Science</h5>
-                          <p class="card-text">Les principaux projets de Data Science réalisés dans le cadre d'Openclassrooms.</p>
-                          <a href="#" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                        </div>
-                      </div>                      
-                </div>
+           <div class="row p-5">
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card">
+                    <img src="img/working_experiences.svg" class="card-img-top" alt="Logo DataCamp">
+                  
+                    <div class="card-body text-center d-flex flex-column">
+                      <h5 class="card-title">Histoires de données</h5>
+                      <p class="card-text">Quelques projets DataCamp réalisés en Anglais autour de la Data Science.</p>
+                      <a href="https://github.com/cbohnert67/Datacamp-Storytelling-Projects" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
+                    </div>
+                  </div>                      
             </div>
             
-            <div class="col-md-12 p-5">
-                <h4 id="contenu" class="p-2 bg-teal text-white rounded text-center">Réalisations: Création de Contenu</h4>
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card">
+                    <img src="img/all_the_data.svg" class="card-img-top" alt="All the Data">
+                  
+                    <div class="card-body text-center d-flex flex-column">
+                      <h5 class="card-title">Data Science</h5>
+                      <p class="card-text">Les principaux projets de Data Science réalisés dans le cadre d'Openclassrooms.</p>
+                      <a href="#" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
+                    </div>
+                  </div>                      
             </div>
+            
+            <div class="col-md-4 d-flex align-items-stretch">
+                <div class="card">
+                    <img src="img/treasure.svg" class="card-img-top" alt="Chasse au trésor">
 
-            <div class="row p-5">
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <img src="img/treasure.svg" class="card-img-top" alt="Chasse au trésor">
-
-                        <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title">Les Légendes d'Hermès</h5>
-                          <p class="card-text">Un jeu de rôle sur table inspiré d'Ars Magica et créé avec chatGPT 3.5.</p>
-                          <a href="#" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                        </div>
-                      </div>                      
-                </div>
+                    <div class="card-body text-center d-flex flex-column">
+                      <h5 class="card-title">Les Légendes d'Hermès</h5>
+                      <p class="card-text">Un jeu de rôle sur table inspiré d'Ars Magica et créé avec chatGPT 3.5.</p>
+                      <a href="#" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
+                    </div>
+                  </div>                      
             </div>
+           </div>
+                
         </div>
         <!-- Fin Réalisations -->
+
+        <div class="row p-5">
+
+            <div class="col-md-12 p-5">
+                <h4 id="blog" class="p-2 bg-teal text-white rounded text-center">Mon blog</h4>
+                <p class="lead pt-5">Après avoir rafraîchi mon portfolio, je lance enfin cette section blog que j'envisageais depuis longtemps. Ce sera mon carnet de bord numérique où je partagerai :</p>
+                <ul class="lead p-5">
+                    <li>Mes réflexions sur l'autoformation et l'éducation</li>
+                    <li>Mon parcours d'autoformation en data science et IA</li>
+                    <li>Mes découvertes dans le domaine de l'EdTech</li>
+                    <li>Des analyses d'outils pédagogiques innovants</li>
+                    <li>Mes expérimentations techniques (succès comme échecs)</li>
+                </ul>
+            </div>
+           
+
+            <div class="col-md-12 text-center mb-5">
+                <a href="./blog/coursera.html" class="display-6">Coursera sous la loupe - Comment j'explore l'éducation en ligne?</a>
+            </div>
+        </div>
+        <!-- Fin Blog -->
+
+
 
         <!-- Footer -->
         <div class="row p-5">
@@ -232,11 +365,40 @@
         </div>
         <div class="row p-2">
             <div class="col-md-12 text-center">
-                <h5 class="p-5">Réalisé avec ❤ - δW par δW - par Cédric Bohnert.</h5>
+                <h5 class="p-5">Réalisé avec ❤ par Cédric Bohnert.</h5>
             </div>
         </div>
         <!-- Fin Footer -->
     </div>
     <button onclick="topFunction()" id="topBtn" title="Go to top">Haut</button>
+    
+    <script>
+        // Fonction pour basculer entre les modes sombre et clair
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Function to toggle language
+        function toggleLanguage() {
+            window.location.href = "index-en.html"; // Redirect to French version
+        }
+        
+        // Vérifier le mode au chargement de la page
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-icon').textContent = '☀️';
+            }
+        });
+    </script>
 </body>
 </html>
