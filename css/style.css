@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 .bg-teal { background-color: #3f3d56; }
 
 a { color: teal !important;}

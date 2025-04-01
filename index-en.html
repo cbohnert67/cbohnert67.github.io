@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
     <style>
+        /* Parallax effect for illustrations */
+        .parallax-img {
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+        }
         /* Styles for dark mode */
         .dark-mode {
             background-color: #121212;
@@ -144,7 +149,7 @@
         <!-- About -->
         <div class="row p-5 gx-5">
             <div class="col-md-4 align-self-center">
-                <img class="img-fluid" src="./img/developer_activity.svg" alt="Developer activity">
+                <img class="img-fluid parallax-img" src="./img/developer_activity.svg" alt="Developer activity">
             </div>
             <div class="col-md-8 p-5 about">
                 <h4 id="about" class="p-2 text-white rounded bg-teal text-center mb-5">Who am I?</h4>
@@ -233,7 +238,7 @@
                 </p>
            </div>
             <div class="col-md-4 align-self-center">
-                <img class="img-fluid" src="./img/skills.svg" alt="Developer skills">
+                <img class="img-fluid parallax-img" src="./img/skills.svg" alt="Developer skills">            </div>
             </div>
         </div>
         <!-- End Skills -->
@@ -395,6 +400,27 @@
                 document.getElementById('theme-icon').textContent = '☀️';
             }
         });
+
+        
+        // Parallax effect for illustrations
+window.addEventListener('scroll', function() {
+    const parallaxImages = document.querySelectorAll('.parallax-img');
+    const scrollPosition = window.pageYOffset;
+    
+    parallaxImages.forEach(function(image) {
+        // Adjust the 0.3 value to control the speed of the parallax effect
+        const moveValue = scrollPosition * 0.3;
+        image.style.transform = `translateY(-${moveValue}px)`;
+    });
+    });
+
+    // Reset position on resize to prevent artifacts
+    window.addEventListener('resize', function() {
+        const parallaxImages = document.querySelectorAll('.parallax-img');
+        parallaxImages.forEach(function(image) {
+            image.style.transform = 'translateY(0)';
+        });
+    });
     </script>
 </body>
 </html>
