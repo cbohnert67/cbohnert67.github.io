@@ -1,427 +1,389 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cédric Bohnert</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
+    <title>CV Interactif - Cédric Bohnert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Teal and Dark / Light Neutrals -->
+    <!-- Application Structure Plan: A single-page, vertically scrolling application divided into clear, thematic sections: an introduction header, a skills dashboard with illustration, an education section, an interactive timeline for experiences, and a contact footer. This structure allows a recruiter to quickly get an overview and then dive deeper. The interactivity (hover effects, clickable timeline, theme toggle, language switch) is designed to engage the user and reveal information progressively. -->
+    <!-- Visualization & Content Choices: 
+        - Profile: Presented upfront to give an immediate summary. Goal: Inform. Method: Text block.
+        - Skills: Radar Chart (Chart.js) paired with a thematic illustration. Goal: Compare/Organize. Method: Canvas visualization and static image. Interaction: Tooltips on hover. Justification: The chart provides a compelling visual summary of skills, while the illustration adds visual appeal and context.
+        - Education: Static cards. Goal: Inform. Method: HTML/CSS grid. Justification: Clear, scannable format for academic credentials.
+        - Experiences: Interactive Vertical Timeline. Goal: Show Change/Organize. Method: HTML/CSS/JS. Interaction: Clicking reveals details. Justification: An interactive timeline reduces clutter and shows progression.
+        - Contact/Links: Icon-based links. Goal: Inform/Action. Method: HTML links. Justification: Standard, universally understood.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
-        /* Parallax effect for illustrations */
-        .parallax-img {
-            transition: transform 0.3s ease-out;
-            will-change: transform;
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Styles pour le mode sombre */
-        .dark-mode {
-            background-color: #121212;
-            color: #e0e0e0;
+        .timeline-item-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, background-color 0.3s ease;
+            padding: 0 1.5rem;
         }
-        
-        .dark-mode .bg-teal {
-            background-color: #005a5a !important;
+        .timeline-item-content.active {
+            max-height: 500px;
+            padding: 1.5rem 1.5rem;
         }
-        
-        .dark-mode .card {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
-            border: 1px solid #333;
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 450px;
+            max-height: 600px;
         }
-        
-        .dark-mode .navbar {
-            background-color: #1e1e1e !important;
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 550px;
+            }
         }
-        
-        .dark-mode .nav-link {
-            color: #e0e0e0 !important;
+        .theme-toggle-button .sun-icon,
+        .dark .theme-toggle-button .moon-icon {
+            display: none;
         }
-        
-        .dark-mode a {
-            color: #4db8ff;
+        .dark .theme-toggle-button .sun-icon {
+            display: block;
         }
-        
-        .dark-mode #email {
-            color: #4db8ff;
-        }
-        
-        /* Bouton de bascule */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #f8f9fa;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .dark-mode .theme-toggle {
-            background: #333;
-            color: #fff;
-        }
-        /* Language toggle button */
-        .lang-toggle {
-            position: fixed;
-            top: 20px;
-            right: 70px;
-            z-index: 1000;
-            background: #f8f9fa;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            font-weight: bold;
-        }
-        
-        .dark-mode .lang-toggle {
-            background: #333;
-            color: #fff;
-        }
+
     </style>
 </head>
-<body>
-    <button class="lang-toggle" onclick="toggleLanguage()">
-        <span id="lang-icon">EN</span>
-    </button>
-    <button class="theme-toggle" onclick="toggleDarkMode()">
-        <span id="theme-icon">🌙</span>
-    </button>
-    
-    <div class="container">
-        <!-- Titre -->
-        <div class="row p-5">
-            <div class="col-md-12 text-center">
-                <h1 class="display-1">
-                    CÉDRIC BOHNERT
-                </h1>
-                <h2 class="display-2">
-                    Concepteur Développeur Data & IA
-                </h2>
-            </div>
-        </div>
-        <!-- Fin Titre -->
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-300 antialiased">
 
-        <!-- Menu -->
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg bg-teal rounded">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center lead" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#a-propos">Présentation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#competences">Compétences</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#portfolio">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <!-- Fin Menu -->
-
-        <!-- Présentation -->
-        <div class="row p-5 gx-5">
-            <div class="col-md-4 align-self-center">
-                <img class="img-fluid parallax-img" src="./img/developer_activity.svg" alt="Developer activity">            </div>
-            <div class="col-md-8 p-5 a-propos">
-                <h4 id="a-propos" class="p-2 text-white rounded bg-teal text-center mb-5">Qui suis-je ?</h4>
-                
-                <p class="text-justify lead p-1">
-                    Passionné par l'e-learning, la data science et l'intelligence artificielle, je suis récemment diplômé d'un Bachelor en Développement d'Applications Python.
-                    Mon objectif est d'accompagner vos projets en mettant à profit mes compétences en conception et développement orientés Data et IA.
-                </p>
-                <p class="text-justify lead p-1">
-                    Avec une formation initiale en chimie analytique, j'ai développé une rigueur méthodologique et une curiosité scientifique que j'ai appliquées dans le monde des données quantitatives.
-                    Mon expérience en enseignement des mathématiques m'a permis d'affiner mes compétences en communication technique, rédaction et gestion de projets, renforcées par mon parcours en tant que solopreneur.
-                </p>
-                <p class="text-justify lead p-1">
-                    Impliqué dans des initiatives associatives promouvant la philosophie du Libre, j'ai enrichi mon profil avec des compétences en innovation, développement et formation.
-                </p>
-                <p class="text-justify lead p-1">
-                    Je vous propose des prestations autour :
-
-                    <ul class="text-justify lead">
-                        <li>du développement de scripts et applications Python/Django/Flask,</li>
-                        <li>de l'analyse statistique descriptive et prédictive, exploitant les avancées en machine learning (ML) et deep learning (DL),</li>
-                        <li>de la création de contenus pédagogiques pour l'enseignement des mathématiques et des STEM.</li>
-                    </ul></p>
-                <p class="text-justify lead p-1">
-                    Mes domaines de prédilection incluent l'éducation, la santé et les sciences, où je vise à concevoir des solutions technologiques efficaces et innovantes.
-                    </br></br>
-                    En dehors du travail, je suis passionné par la création de contenu, notamment des jeux de rôle assistés par l'IA, ainsi que par l'exploration urbaine, les randonnées et les découvertes musicales.
-                    </br></br>
-                    Besoin d'un développeur engagé et polyvalent pour vos projets Data et IA ? Contactez-moi, je serais ravi d'échanger sur vos besoins !                </p>
-                    </p>
-                </div>
-        </div>
-        <!-- Fin Présentation -->
-
-        <!-- Compétences -->
-        <div class="row p-5 gx-5">
-            <div class="col-md-8 p-5 competences">
-                <h4 id="competences" class="p-2 bg-teal text-white rounded text-center mb-5">Que sais-je faire ?</h4>
-                <p class="text-justify lead p-1">
-                Développement Full-Stack & Data Applications
-                <ul class="text-justify lead">
-                    <li>Conception et développement d'applications web avec Python, Flask et Django</li>
-                    <li>Création de tableaux de bord interactifs avec Python et Streamlit</li>
-                    <li>Maîtrise des langages front-end : HTML, CSS, JavaScript</li>
-                </ul>
-                </p>
-                <p class="text-justify lead p-1">
-                Data Science & Machine Learning
-                <ul class="text-justify lead">
-                    <li>Analyse de données avec Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
-                    <li>Modélisation statistique et machine learning avec Scikit-learn</li>
-                    <li>Création de modèles de deep learning avec TensorFlow et Keras</li>
-                    <li>Traitement du langage naturel (NLP) avec NLTK et SpaCy</li>
-                </ul>
-                </p>
-                <p class="text-justify lead p-1">
-                    Modélisation & Bases de Données
-                <ul class="text-justify lead">
-                    <li>Architecture logicielle avec UML</li>
-                    <li>Gestion de bases de données via ORM, SQL et modélisation MERISE</li>
-                </ul>
-                </p>
-                <p class="text-justify lead p-1">
-                    Environnement de Développement
-                <ul class="text-justify lead">
-                    <li>Développement sous Windows (Anaconda)</li>
-                    <li>Développement sous Linux (Debian, Ubuntu)</li>
-                    <li>Utilisation de Jupyter Notebook et Visual Studio Code</li>
-                    <li>Gestion de versions avec Git et GitHub</li>
-                </ul>
-                </p>
-                <p class="text-justify lead p-1">
-                Méthodologies & Outils
-                <ul class="text-justify lead">
-                    <li>Développement agile (SCRUM) et gestion de projets data (CRISP-DM)</li>
-                    <li>Versioning avec Git et gestion d'environnements virtuels (Pip, Conda)</li>
-                    <li>Rédaction de supports techniques avec Markdown & LaTeX</li>
-                </ul>
-                </p>
-                <p class="text-justify lead p-1">
-                    Langues
-                <ul class="text-justify lead">
-                    <li>Français : Langue maternelle</li>
-                    <li>Anglais : Niveau B2</li>
-                </ul>
-                </p>
-           </div>
-            <div class="col-md-4 align-self-center">
-                <img class="img-fluid parallax-img" src="./img/skills.svg" alt="Developer skills">            </div>
-        </div>
-        <!-- Fin Compétences -->
-
-        <!-- Réalisations -->
-        <div class="row p-5 projets">
-
-            <div class="col-md-12 p-5">
-                <h4 id="portfolio" class="p-2 bg-teal text-white rounded text-center">Mes réalisations</h4>
-            </div>
-
-            <div class="row p-5">
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <img src="img/news.svg" class="card-img-top" alt="Feedreaderweb">
-                      
-                        <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title">Lecteur de Flux RSS</h5>
-                          <p class="card-text">Un lecteur simple de flux RSS réalisé avec le framework Flask.</p>
-                          <a href="https://github.com/cbohnert67/Feedreaderweb" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                        </div>
-                      </div>                      
-                </div>
-
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <img src="img/newspaper.svg" class="card-img-top" alt="Feedreaderweb">
-                      
-                        <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title">Le Monde en Flux</h5>
-                          <p class="card-text">Un simple tableau de bord du journal Le Monde réalisé avec le framework Flask.</p>
-                          <a href="https://github.com/cbohnert67/Le_Monde_en_Flux" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                        </div>
-                      </div>                      
-                </div>
-
-                <div class="col-md-4 d-flex align-items-stretch">
-                    <div class="card">
-                        <img src="img/job_hunt.svg" class="card-img-top" alt="Dashboard PE BMO">
-
-                        <div class="card-body text-center d-flex flex-column">
-                          <h5 class="card-title">Besoin en Main d'Oeuvre</h5>
-                          <p class="card-text">Un tableau de bord simple pour visualiser les résultats de l'enquête BMO de Pôle Emploi.</p>
-                          <a href="https://github.com/cbohnert67/PE-BMO-Dashboard" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                        </div>
-                      </div>                      
-                </div>
-            </div>
-           <div class="row p-5">
-            <div class="col-md-4 d-flex align-items-stretch">
-                <div class="card">
-                    <img src="img/working_experiences.svg" class="card-img-top" alt="Logo DataCamp">
-                  
-                    <div class="card-body text-center d-flex flex-column">
-                      <h5 class="card-title">Histoires de données</h5>
-                      <p class="card-text">Quelques projets DataCamp réalisés en Anglais autour de la Data Science.</p>
-                      <a href="https://github.com/cbohnert67/Datacamp-Storytelling-Projects" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                    </div>
-                  </div>                      
-            </div>
-            
-            <div class="col-md-4 d-flex align-items-stretch">
-                <div class="card">
-                    <img src="img/all_the_data.svg" class="card-img-top" alt="All the Data">
-                  
-                    <div class="card-body text-center d-flex flex-column">
-                      <h5 class="card-title">Data Science</h5>
-                      <p class="card-text">Les principaux projets de Data Science réalisés dans le cadre d'Openclassrooms.</p>
-                      <a href="#" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                    </div>
-                  </div>                      
-            </div>
-            
-            <div class="col-md-4 d-flex align-items-stretch">
-                <div class="card">
-                    <img src="img/treasure.svg" class="card-img-top" alt="Chasse au trésor">
-
-                    <div class="card-body text-center d-flex flex-column">
-                      <h5 class="card-title">Les Légendes d'Hermès</h5>
-                      <p class="card-text">Un jeu de rôle sur table inspiré d'Ars Magica et créé avec chatGPT 3.5.</p>
-                      <a href="#" target="_blank" class="btn bg-teal text-white">Visiter sur Github</a>
-                    </div>
-                  </div>                      
-            </div>
-           </div>
-                
-        </div>
-        <!-- Fin Réalisations -->
-
-        <div class="row p-5">
-
-            <div class="col-md-12 p-5">
-                <h4 id="blog" class="p-2 bg-teal text-white rounded text-center">Mon blog</h4>
-                <p class="lead pt-5">Après avoir rafraîchi mon portfolio, je lance enfin cette section blog que j'envisageais depuis longtemps. Ce sera mon carnet de bord numérique où je partagerai :</p>
-                <ul class="lead p-5">
-                    <li>Mes réflexions sur l'autoformation et l'éducation</li>
-                    <li>Mon parcours d'autoformation en data science et IA</li>
-                    <li>Mes découvertes dans le domaine de l'EdTech</li>
-                    <li>Des analyses d'outils pédagogiques innovants</li>
-                    <li>Mes expérimentations techniques (succès comme échecs)</li>
-                </ul>
-            </div>
-           
-
-            <div class="col-md-12 text-center mb-5">
-                <a href="./blog/coursera.html" class="display-6">Coursera sous la loupe - Comment j'explore l'éducation en ligne?</a>
-            </div>
-        </div>
-        <!-- Fin Blog -->
-
-
-
-        <!-- Footer -->
-        <div class="row p-5">
-            <div class="col-md-12 p-5">
-                <h4 id="contact" class="p-2 bg-teal text-white rounded text-center">Voulez-vous me contacter ?</h4>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="row p-2 mb-5">
-                <div class="col-md-12 display-5 text-center mb-5">
-                    <a  id="email" href="mailto:cbohnert.datascience@gmail.com">cbohnert.datascience@gmail.com</a>
-                </div>
-            </div>
-            <div class="col-md-2 text-center">
-                <a  href="https://www.linkedin.com/in/cedricbohnert/" target="_blank"><img src="./img/linkedin.svg"></a>
-            </div>
-            <div class="col-md-2 text-center">
-                <a href="https://github.com/cbohnert67/" target="_blank"><img src="./img/github.svg"></a>
-            </div>
-        </div>
-        <div class="row p-2">
-            <div class="col-md-12 text-center">
-                <h5 class="p-5">Réalisé avec ❤ par Cédric Bohnert.</h5>
-            </div>
-        </div>
-        <!-- Fin Footer -->
+    <div class="fixed top-4 right-4 z-50 flex items-center space-x-2">
+        <button id="language-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5 font-semibold">EN</button>
+        <button id="theme-toggle" type="button" class="theme-toggle-button text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5">
+            <span class="moon-icon">🌙</span>
+            <span class="sun-icon">☀️</span>
+        </button>
     </div>
-    <button onclick="topFunction()" id="topBtn" title="Go to top">Haut</button>
-    
-    <script>
-        // Fonction pour basculer entre les modes sombre et clair
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const themeIcon = document.getElementById('theme-icon');
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <!-- En-tête et Profil -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white">Cédric BOHNERT</h1>
+            <p data-lang-key="jobTitle" class="mt-2 text-xl sm:text-2xl text-teal-600 dark:text-teal-400"></p>
+            <p data-lang-key="profileDescription" class="mt-4 max-w-3xl mx-auto text-slate-600 dark:text-slate-400"></p>
+            <div class="mt-6 flex justify-center items-center space-x-6 text-sm">
+                <a href="https://cbohnert67.github.io" target="_blank" data-lang-key="portfolioLink" class="text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"></a>
+                <span class="text-slate-300 dark:text-slate-600">|</span>
+                <a href="https://www.linkedin.com/in/cedricbohnert" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300">LinkedIn</a>
+                <span class="text-slate-300 dark:text-slate-600">|</span>
+                <span data-lang-key="location" class="text-slate-700 dark:text-slate-300"></span>
+            </div>
+        </header>
+
+        <!-- Section Compétences -->
+        <section id="skills" class="mb-20">
+             <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                <div class="text-center md:text-left">
+                    <h2 data-lang-key="skillsTitle" class="text-3xl font-bold text-slate-900 dark:text-white mb-4"></h2>
+                    <p data-lang-key="skillsDescription" class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto md:mx-0"></p>
+                </div>
+                <div class="flex justify-center">
+                    <img src="https://i.ibb.co/9vVzwpC/undraw-developer-activity-4zqd.png" 
+                         alt="Developer Activity Illustration" 
+                         class="w-full max-w-xs md:max-w-sm h-auto rounded-lg transition-transform duration-300 hover:scale-105"
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x300/1e293b/94a3b8?text=Illustration';">
+                </div>
+            </div>
+            <div class="w-full bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg dark:shadow-teal-900/20 p-6 transition-colors duration-300">
+                <div class="chart-container">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Formation & Certifications -->
+        <section id="education" class="mb-20">
+            <h2 data-lang-key="educationTitle" class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4"></h2>
+            <p data-lang-key="educationDescription" class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto"></p>
+            <div id="education-container" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Les éléments de formation seront injectés ici par JS -->
+            </div>
+        </section>
+
+        <!-- Section Expériences -->
+        <section id="experience">
+            <h2 data-lang-key="experienceTitle" class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4"></h2>
+            <p data-lang-key="experienceDescription" class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto"></p>
             
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.textContent = '☀️';
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                themeIcon.textContent = '🌙';
-                localStorage.setItem('darkMode', 'disabled');
+            <div class="relative w-full max-w-3xl mx-auto">
+                <!-- Ligne verticale -->
+                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-200 dark:bg-slate-700 transition-colors duration-300"></div>
+
+                <div id="timeline-container" class="space-y-4">
+                    <!-- Les éléments de la timeline seront injectés ici par JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white py-8 mt-16 transition-colors duration-300">
+        <div class="container mx-auto px-4 text-center">
+            <h3 data-lang-key="contactTitle" class="text-2xl font-bold text-slate-900 dark:text-white"></h3>
+            <p data-lang-key="contactDescription" class="mt-2 text-slate-600 dark:text-slate-300"></p>
+            <div class="mt-4 flex justify-center items-center space-x-6 text-slate-800 dark:text-slate-200">
+                <span>06 63 11 66 72</span>
+                <span class="text-slate-400 dark:text-slate-600">|</span>
+                <span>cedric.bohnert.pro@email.com</span>
+            </div>
+             <p data-lang-key="rqthStatus" class="text-xs text-slate-500 dark:text-slate-500 mt-4"></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const languageToggleBtn = document.getElementById('language-toggle');
+            let skillsRadarChart;
+            let currentLang = 'fr';
+
+            const translations = {
+                fr: {
+                    jobTitle: "Concepteur Développeur Data IA | Aspirant Ingénieur IA",
+                    profileDescription: "Développeur agile et proactif avec une solide expertise en développement applicatif Python et une passion pour la transformation des données en solutions intelligentes. Mon parcours, de la chimie analytique au développement web, m'a doté d'une rigueur scientifique et d'une grande capacité d'adaptation.",
+                    portfolioLink: "Portfolio/GitHub",
+                    location: "Strasbourg & Full Remote",
+                    skillsTitle: "Tableau de Bord des Compétences",
+                    skillsDescription: "Cette visualisation représente mes domaines de compétences clés pour un poste d'Ingénieur IA. Chaque axe montre une compétence fondamentale, et l'étendue de la zone colorée indique mon niveau de maîtrise. Survolez les points pour plus de détails.",
+                    educationTitle: "Formation & Diplômes",
+                    educationDescription: "Mon parcours académique, alliant la rigueur scientifique à l'expertise technique en développement.",
+                    experienceTitle: "Parcours Professionnel Interactif",
+                    experienceDescription: "Mon parcours est une suite logique d'expériences qui m'ont mené vers la Data et l'IA. Cliquez sur chaque étape pour découvrir les missions et les compétences que j'y ai développées.",
+                    contactTitle: "Contact",
+                    contactDescription: "Prêt à discuter de mon profil et de vos opportunités d'alternance pour 2025.",
+                    rqthStatus: "Statut de Travailleur Handicapé (RQTH)",
+                    chartLegend: "Niveau de Maîtrise",
+                    chartLabels: ['Développement Python (Flask/Django)', 'Gestion de Données (SQL/ORM)', 'Méthodologie Agile (SCRUM)', 'Versioning (Git)', 'Architecture (UML)', 'Développement Web (JS/HTML/CSS)'],
+                    education: [
+                        { degree: "Bachelor Développeur d'Applications Python", institution: "Studi", period: "Juin 2023 - Mars 2024", location: "En ligne" },
+                        { degree: "DUT Chimie", institution: "Université de Strasbourg", period: "Septembre 1997 - Juillet 1999", location: "Strasbourg" }
+                    ],
+                    experiences: [
+                        { year: '2022 - Présent', title: 'Data Analyst (Bénévole)', company: 'Data4Good', description: 'Analyse, structuration et exploitation de jeux de données pour des projets à fort impact social. Implémentation de solutions d\'analyse et mise en pratique des compétences en Data Science.' },
+                        { year: '2013 - 2017', title: 'Créateur de Contenu Multimédia & Cofondateur', company: 'Association Colibulle', description: 'Développement web (WordPress, HTML, CSS), gestion de projet, gestion administrative et communication. Création de supports pédagogiques et animation d\'interventions publiques.' },
+                        { year: '2012 - 2013', title: 'Assistant Informatique', company: 'Association Vetis', description: 'Audit et optimisation de la sécurité du réseau local. Veille technologique et maintenance du parc informatique.' },
+                        { year: '2003 - 2009', title: 'Intervenant de Soutien Scolaire (Indépendant)', company: 'Strasbourg', description: 'Vulgarisation de concepts complexes en mathématiques et sciences physiques. Développement d\'une forte compétence pédagogique.' },
+                        { year: '1999 - 2002', title: 'Technicien en Chimie Analytique', company: 'Laboratoires Roche, IReS, ECPM', description: 'Application de protocoles d\'analyse stricts, garantissant la précision et la fiabilité des résultats. Acquisition d\'une méthodologie de travail rigoureuse et d\'un esprit analytique aiguisé.' }
+                    ]
+                },
+                en: {
+                    jobTitle: "Data AI Designer & Developer | Aspiring AI Engineer",
+                    profileDescription: "Agile and proactive developer with solid expertise in Python application development and a passion for transforming data into intelligent solutions. My journey from analytical chemistry to web development has equipped me with scientific rigor and great adaptability.",
+                    portfolioLink: "Portfolio/GitHub",
+                    location: "Strasbourg & Full Remote",
+                    skillsTitle: "Skills Dashboard",
+                    skillsDescription: "This visualization represents my key skill areas for an AI Engineer position. Each axis shows a fundamental skill, and the extent of the colored area indicates my level of mastery. Hover over the points for more details.",
+                    educationTitle: "Education & Degrees",
+                    educationDescription: "My academic background, combining scientific rigor with technical expertise in development.",
+                    experienceTitle: "Interactive Career Path",
+                    experienceDescription: "My career is a logical sequence of experiences that have led me to Data and AI. Click on each step to discover the missions and skills I developed there.",
+                    contactTitle: "Contact",
+                    contactDescription: "Ready to discuss my profile and your apprenticeship opportunities for 2025.",
+                    rqthStatus: "Disability Status (RQTH)",
+                    chartLegend: "Mastery Level",
+                    chartLabels: ['Python Development (Flask/Django)', 'Data Management (SQL/ORM)', 'Agile Methodology (SCRUM)', 'Versioning (Git)', 'Architecture (UML)', 'Web Development (JS/HTML/CSS)'],
+                    education: [
+                        { degree: "Bachelor's Degree in Python Application Development", institution: "Studi", period: "June 2023 - March 2024", location: "Online" },
+                        { degree: "University Diploma in Chemistry", institution: "University of Strasbourg", period: "September 1997 - July 1999", location: "Strasbourg" }
+                    ],
+                    experiences: [
+                        { year: '2022 - Present', title: 'Data Analyst (Volunteer)', company: 'Data4Good', description: 'Analysis, structuring, and exploitation of datasets for projects with high social impact. Implementation of analysis solutions and practical application of Data Science skills.' },
+                        { year: '2013 - 2017', title: 'Multimedia Content Creator & Co-founder', company: 'Colibulle Association', description: 'Web development (WordPress, HTML, CSS), project management, administrative and organizational management. Creation of educational materials and animation of public interventions.' },
+                        { year: '2012 - 2013', title: 'IT Assistant', company: 'Vetis Association', description: 'Audit and optimization of local network security. Technological watch and maintenance of the IT equipment.' },
+                        { year: '2003 - 2009', title: 'Academic Support Tutor (Freelance)', company: 'Strasbourg', description: 'Simplifying complex concepts in mathematics and physical sciences. Development of strong pedagogical skills.' },
+                        { year: '1999 - 2002', title: 'Analytical Chemistry Technician', company: 'Roche, IReS, ECPM Laboratories', description: 'Application of strict analysis protocols, ensuring the precision and reliability of results. Acquisition of a rigorous work methodology and a sharp analytical mind.' }
+                    ]
+                }
+            };
+            
+            function updateLanguage(lang) {
+                currentLang = lang;
+                document.documentElement.lang = lang;
+                languageToggleBtn.textContent = lang === 'fr' ? 'EN' : 'FR';
+                localStorage.setItem('language', lang);
+
+                document.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                
+                renderEducation(lang);
+                renderTimeline(lang);
+                updateChartTheme();
             }
-        }
 
-        // Function to toggle language
-        function toggleLanguage() {
-            window.location.href = "index-en.html"; // Redirect to French version
-        }
-        
-        // Vérifier le mode au chargement de la page
-        document.addEventListener('DOMContentLoaded', (event) => {
-            if (localStorage.getItem('darkMode') === 'enabled') {
-                document.body.classList.add('dark-mode');
-                document.getElementById('theme-icon').textContent = '☀️';
+            function getChartOptions() {
+                const isDarkMode = document.documentElement.classList.contains('dark');
+                const lang = currentLang;
+                
+                const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                const pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
+                const datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
+                const datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
+
+                return {
+                    data: {
+                        labels: translations[lang].chartLabels,
+                        datasets: [{
+                            label: translations[lang].chartLegend,
+                            data: [85, 80, 90, 95, 75, 70],
+                            backgroundColor: datasetBgColor,
+                            borderColor: datasetColor,
+                            pointBackgroundColor: datasetColor,
+                            pointBorderColor: isDarkMode ? '#0F172A' : '#FFFFFF',
+                            pointHoverBackgroundColor: isDarkMode ? '#0F172A' : '#FFFFFF',
+                            pointHoverBorderColor: datasetColor
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { r: { angleLines: { color: gridColor }, grid: { color: gridColor }, pointLabels: { font: { size: 14 }, color: pointLabelColor }, ticks: { backdropColor: 'transparent', stepSize: 25, display: false }, suggestedMin: 0, suggestedMax: 100 }},
+                        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.parsed.r}%` }}}
+                    }
+                };
             }
-        });
 
-        // Parallax effect for illustrations
-window.addEventListener('scroll', function() {
-    const parallaxImages = document.querySelectorAll('.parallax-img');
-    const scrollPosition = window.pageYOffset;
-    
-    parallaxImages.forEach(function(image) {
-        // Adjust the 0.3 value to control the speed of the parallax effect
-        const moveValue = scrollPosition * 0.3;
-        image.style.transform = `translateY(-${moveValue}px)`;
-    });
-    });
+            function renderChart() {
+                if(skillsRadarChart) skillsRadarChart.destroy();
+                const chartConfig = getChartOptions();
+                const ctx = document.getElementById('skillsRadarChart').getContext('2d');
+                skillsRadarChart = new Chart(ctx, { type: 'radar', data: chartConfig.data, options: chartConfig.options });
+            }
+            
+            function updateChartTheme() {
+                if (!skillsRadarChart) {
+                    renderChart();
+                } else {
+                    const chartConfig = getChartOptions();
+                    skillsRadarChart.data = chartConfig.data;
+                    skillsRadarChart.options = chartConfig.options;
+                    skillsRadarChart.update();
+                }
+            }
+            
+            function renderEducation(lang) {
+                const educationContainer = document.getElementById('education-container');
+                educationContainer.innerHTML = '';
+                const educationItems = translations[lang].education;
 
-    // Reset position on resize to prevent artifacts
-    window.addEventListener('resize', function() {
-        const parallaxImages = document.querySelectorAll('.parallax-img');
-        parallaxImages.forEach(function(image) {
-            image.style.transform = 'translateY(0)';
+                educationItems.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-teal-500/10 transition-all duration-300 flex flex-col";
+                    card.innerHTML = `
+                        <h3 class="text-lg font-bold text-teal-600 dark:text-teal-400">${item.degree}</h3>
+                        <p class="font-semibold text-slate-700 dark:text-slate-200 mt-1">${item.institution}</p>
+                        <div class="mt-auto pt-4">
+                            <p class="text-sm text-slate-500 dark:text-slate-400">${item.period}</p>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">${item.location}</p>
+                        </div>
+                    `;
+                    educationContainer.appendChild(card);
+                });
+            }
+
+            function renderTimeline(lang) {
+                const timelineContainer = document.getElementById('timeline-container');
+                timelineContainer.innerHTML = '';
+                const experiences = translations[lang].experiences;
+
+                experiences.forEach((exp, index) => {
+                    const item = document.createElement('div');
+                    item.className = `relative timeline-item`;
+                    const alignmentClass = index % 2 === 0 ? 'md:pr-8' : 'md:pl-8';
+                    const marginClass = index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto';
+                    item.innerHTML = `
+                        <div class="md:w-1/2 ${marginClass} ${alignmentClass} w-full">
+                            <div class="cursor-pointer bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-teal-500/10 transition-all duration-300 timeline-item-header">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="font-bold text-teal-600 dark:text-teal-400">${exp.year}</p>
+                                        <h3 class="font-semibold text-lg text-slate-800 dark:text-slate-100">${exp.title}</h3>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400">${exp.company}</p>
+                                    </div>
+                                    <div class="w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm transition-transform duration-300 transform chevron">
+                                        <span>+</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-100 dark:bg-slate-800/70 rounded-b-lg timeline-item-content">
+                                <p class="text-slate-600 dark:text-slate-300 text-sm">${exp.description}</p>
+                            </div>
+                        </div>
+                    `;
+                    timelineContainer.appendChild(item);
+                });
+
+                document.querySelectorAll('.timeline-item-header').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const content = header.nextElementSibling;
+                        const chevron = header.querySelector('.chevron span');
+                        const wasActive = content.classList.contains('active');
+                        
+                        document.querySelectorAll('.timeline-item-content.active').forEach(openContent => {
+                            openContent.classList.remove('active');
+                            const otherChevron = openContent.previousElementSibling.querySelector('.chevron span');
+                            otherChevron.textContent = '+';
+                            otherChevron.parentElement.classList.remove('rotate-45');
+                        });
+                        
+                        if(!wasActive) {
+                            content.classList.add('active');
+                            chevron.textContent = '-';
+                            chevron.parentElement.classList.add('rotate-45');
+                        }
+                    });
+                });
+            }
+            
+            // --- Initialisation ---
+            function init() {
+                // Thème
+                if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                
+                // Langue
+                const savedLang = localStorage.getItem('language') || 'fr';
+                updateLanguage(savedLang);
+
+                // Listeners
+                themeToggleBtn.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                    updateChartTheme();
+                });
+
+                languageToggleBtn.addEventListener('click', () => {
+                    const newLang = currentLang === 'fr' ? 'en' : 'fr';
+                    updateLanguage(newLang);
+                });
+            }
+
+            init();
         });
-    });
     </script>
 </body>
 </html>
