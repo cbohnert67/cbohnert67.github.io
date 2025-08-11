@@ -1,3 +1,3 @@
 # cbohnert67.github.io
 
-My resume website.
+My interactive resume website.
