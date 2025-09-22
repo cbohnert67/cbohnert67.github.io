@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     certifications: [
                         { title: "Certificat Professionnel Développeur IA par IBM", provider: "Coursera", date: "2025", link: "https://www.credly.com/badges/89dc6e8c-2f73-483b-91d8-0501fb11790d" },
                         { title: "Programmation Python 3 par l'Université du Michigan", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/6FETXJVPRGWS" },
-                        { title: "Python : Un Voyage Guidé de l'Introduction à l'Application", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/82TNMGS3LMBQ" },
+                        { title: "Python : Un Voyage Guidé de l'Introduction à l'Application par l'Université d'Arizona", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/82TNMGS3LMBQ" },
                         { title: "Calcul Différentiel à travers les Données et la Modélisation par l'Université Johns Hopkins", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/7JFXXS0NZKYM" },
                         { title: "Autoroute vers la Science des Données : Mathématiques Essentielles par l'Université du Colorado Boulder", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/MBEWSA8BGJAH" }
                     ],
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     certifications: [
                         { title: "IBM AI Developer Professional Certificate", provider: "Coursera", date: "2025", link: "https://www.credly.com/badges/89dc6e8c-2f73-483b-91d8-0501fb11790d" },
                         { title: "Python 3 Programming by University of Michigan", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/6FETXJVPRGWS" },
-                        { title: "Python: A Guided Journey from Introduction to Application", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/82TNMGS3LMBQ" },
+                        { title: "Python: A Guided Journey from Introduction to Application by Arizona State University", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/82TNMGS3LMBQ" },
                         { title: "Differential Calculus through Data and Modeling by Johns Hopkins University ", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/7JFXXS0NZKYM" },
                         { title: "Expressway to Data Science: Essential Math by University of Colorado Boulder", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/MBEWSA8BGJAH" }
                     ],
@@ -267,4 +267,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             init();
+
         });
