@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         { title: "Programmation Python 3 par l'Université du Michigan", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/6FETXJVPRGWS" },
                         { title: "Python : Un Voyage Guidé de l'Introduction à l'Application par l'Université d'Arizona", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/82TNMGS3LMBQ" },
                         { title: "Calcul Différentiel à travers les Données et la Modélisation par l'Université Johns Hopkins", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/7JFXXS0NZKYM" },
+                        { title: "Calcul Intégral à travers les Données et la Modélisation par l'Université Johns Hopkins", provider: "Coursera", date: "2025", link: "https://coursera.org/share/bbe0e1d85f0966dbe0f8b781b2b4d01b" },
                         { title: "Autoroute vers la Science des Données : Mathématiques Essentielles par l'Université du Colorado Boulder", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/MBEWSA8BGJAH" }
                     ],
                     experienceTitle: "Parcours Professionnel",
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         { title: "Python 3 Programming by University of Michigan", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/6FETXJVPRGWS" },
                         { title: "Python: A Guided Journey from Introduction to Application by Arizona State University", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/82TNMGS3LMBQ" },
                         { title: "Differential Calculus through Data and Modeling by Johns Hopkins University ", provider: "Coursera", date: "2025", link: "https://www.coursera.org/account/accomplishments/specialization/7JFXXS0NZKYM" },
+                        { title: "Integral Calculus through Data and Modeling by Johns Hopkins University ", provider: "Coursera", date: "2025", link: "https://coursera.org/share/bbe0e1d85f0966dbe0f8b781b2b4d01b" },        
                         { title: "Expressway to Data Science: Essential Math by University of Colorado Boulder", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/MBEWSA8BGJAH" }
                     ],
                     experienceTitle: "Career Path",
@@ -269,3 +271,4 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
