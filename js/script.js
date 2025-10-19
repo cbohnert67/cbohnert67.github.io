@@ -126,22 +126,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function getChartOptions() {
-                          const isDarkMode = document.documentElement.classList.contains('dark');
-                          const lang = currentLang;
+                          var isDarkMode = document.documentElement.classList.contains('dark');
+                          var lang = typeof currentLang === 'string' ? currentLang : 'fr';
                         
-                          const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-                          const pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
-                          const datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
-                          const datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
+                          var gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                          var pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
+                          var datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
+                          var datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
                         
-                          // Nouveau : détails alignés avec chartLabels (même ordre)
-                          const details = (translations?.[lang]?.skillDetails) || [];
+                          // Récupération prudente des détails (évite les erreurs si absents)
+                          var t = translations && translations[lang] ? translations[lang] : { chartLabels: [], chartLegend: '' };
+                          var details = (translations && translations[lang] && translations[lang].skillDetails) ? translations[lang].skillDetails : [];
                         
                           return {
                             data: {
-                              labels: translations[lang].chartLabels,
+                              labels: t.chartLabels,
                               datasets: [{
-                                label: translations[lang].chartLegend,
+                                label: t.chartLegend,
                                 data: [85, 80, 90, 95, 75, 70],
                                 backgroundColor: datasetBgColor,
                                 borderColor: datasetColor,
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
                               responsive: true,
                               maintainAspectRatio: false,
                               elements: {
-                                point: { radius: 3, hoverRadius: 6, hitRadius: 12 } // bonus: plus facile à survoler
+                                point: { radius: 3, hoverRadius: 6, hitRadius: 12 }
                               },
                               scales: {
                                 r: {
@@ -168,32 +169,32 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
                               },
                               plugins: {
-                                      legend: { display: false },
-                                      tooltip: {
-                                        enabled: true,
-                                        intersect: true,
-                                        displayColors: false,
-                                        callbacks: {
-                                          // Titre = nom de la compétence
-                                          title: (items) => (items && items[0] ? items[0].label : ''),
-                                          // Valeur (ex: "Niveau de Maîtrise: 85%")
-                                          label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.r}%`,
-                                          // Détails sous la valeur (sans regex fragile)
-                                          afterLabel: (ctx) => {
-                                            const i = ctx.dataIndex;
-                                            const text = (translations?.[currentLang]?.skillDetails || [])[i] || '';
-                                            // Retourner un tableau ajoute des sauts de ligne dans le tooltip
-                                            return text ? [' ', text] : '';
-                                          }
-                                        }
-                                      }
+                                legend: { display: false },
+                                tooltip: {
+                                  enabled: true,
+                                  intersect: true,
+                                  displayColors: false,
+                                  callbacks: {
+                                    title: function(items) {
+                                      return (items && items[0] && typeof items[0].label === 'string') ? items[0].label : '';
+                                    },
+                                    label: function(ctx) {
+                                      var val = (ctx && ctx.parsed && typeof ctx.parsed.r === 'number') ? ctx.parsed.r : '';
+                                      return t.chartLegend + ': ' + val + '%';
+                                    },
+                                    afterLabel: function(ctx) {
+                                      var i = (ctx && typeof ctx.dataIndex === 'number') ? ctx.dataIndex : -1;
+                                      var text = (i >= 0 && details[i]) ? details[i] : '';
+                                      // Retourner un tableau ajoute une ligne vide + une ligne de détails
+                                      return text ? [' ', text] : '';
                                     }
-
-
-                                    
-                                 
+                                  }
+                                }
+                              }
+                            }
                           };
                         }
+
 
 
             function renderChart() {
@@ -336,6 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
