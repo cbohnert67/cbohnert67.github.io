@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     experienceTitle: "Parcours Professionnel",
                     experienceDescription: "Mon parcours est une suite d'expériences qui m'ont mené vers les mathématiques et la création de contenu. Cliquez sur chaque étape pour découvrir les missions et les compétences que j'y ai développées.",
                     contactTitle: "Contact",
-                    contactDescription: "Prêt à discuter de mon profil et de vos opportunités d'alternance pour 2025:",
+                    contactDescription: "Prêt à discuter de mon profil et de vos opportunités:",
                     rqthStatus: "Statut de Travailleur Handicapé (RQTH)",
                     chartLegend: "Niveau de Maîtrise",
                     chartLabels: ['Raisonnement & modélisation', 'Programmation scientifique', 'Logique & structure', 'Vulgarisation', 'Création visuelle', 'Stratégie numérique'],
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     experienceTitle: "Career Path",
                     experienceDescription: "My career is a sequence of experiences that have led me to Mathematics. Click on each step to discover the missions and skills I developed there.",
                     contactTitle: "Contact",
-                    contactDescription: "Ready to discuss my profile and your apprenticeship opportunities for 2025:",
+                    contactDescription: "Ready to discuss my profile and your opportunities:",
                     rqthStatus: "Disability Status (RQTH)",
                     chartLegend: "Mastery Level",
                     chartLabels: [
@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
