@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fr: {
                     jobTitle: "Aspirant mathématicien - créateur de contenu",
                     profileDescription: "Passionné par les mathématiques, la programmation et la transmission du savoir, je développe des projets qui unissent rigueur scientifique et créativité pédagogique. Mon objectif est de transformer les idées abstraites en expériences d’apprentissage claires et captivantes. À travers la modélisation, le code et la création multimédia, je cherche à rendre les mathématiques accessibles, visuelles et vivantes. Curieux, autonome et orienté partage, je conçois des contenus éducatifs — articles, vidéos et notebooks interactifs — qui aident chacun à penser, comprendre et créer par soi-même.",
-                    portfolioLink: "Portfolio/GitHub",
+                    portfolioLink: "Site web",
                     location: "Strasbourg & Full Remote",
                     skillsTitle: "Compétences",
                     skillsDescription: "Cette visualisation représente mes domaines de compétences clés pour un futur poste de mathématicien/créateur de contenu. Chaque axe montre une compétence fondamentale, et l'étendue de la zone colorée indique mon niveau de maîtrise. Survolez les points pour plus de détails.",
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 en: {
                     jobTitle: "Aspiring mathematician - content creator",
                     profileDescription: "Passionate about mathematics, programming, and knowledge sharing, I create projects that combine scientific rigor with educational creativity. My goal is to transform abstract ideas into clear and engaging learning experiences. Through modeling, code, and multimedia creation, I aim to make mathematics accessible, visual, and alive. Curious, self-driven, and community-minded, I design educational content — articles, videos, and interactive notebooks — that help others think, understand, and create on their own.",
-                    portfolioLink: "Portfolio/GitHub",
+                    portfolioLink: "Website",
                     location: "Strasbourg & Full Remote",
                     skillsTitle: "Skills",
                     skillsDescription: "This visualization represents my key skill areas for a mathematician/content creator position. Each axis shows a fundamental skill, and the extent of the colored area indicates my level of mastery. Hover over the points for more details.",
@@ -278,5 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
