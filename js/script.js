@@ -168,23 +168,27 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
                               },
                               plugins: {
-                                legend: { display: false },
-                                tooltip: {
-                                  enabled: true,
-                                  intersect: true,
-                                  displayColors: false,
-                                  callbacks: {
-                                    // Titre = nom de la compétence
-                                    title: (items) => items?.[0]?.label || '',
-                                    // Ligne de valeur (ex: "Niveau de Maîtrise: 85%")
-                                    label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.r}%`,
-                                    // Détails sous la valeur (retourne un tableau pour faire des sauts de ligne propres)
-                                    afterLabel: (ctx) => {
-                                      const i = ctx.dataIndex;
-                                      const text = (translations?.[currentLang]?.skillDetails || [])[i] || '';
-                                      const lines = text.match(/[^.!?]+[.!?]?/g) || [text]; // coupe sur . ! ?
-                                      return [' ', ...lines.slice(0, 3)];
+                                      legend: { display: false },
+                                      tooltip: {
+                                        enabled: true,
+                                        intersect: true,
+                                        displayColors: false,
+                                        callbacks: {
+                                          // Titre = nom de la compétence
+                                          title: (items) => (items && items[0] ? items[0].label : ''),
+                                          // Valeur (ex: "Niveau de Maîtrise: 85%")
+                                          label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.r}%`,
+                                          // Détails sous la valeur (sans regex fragile)
+                                          afterLabel: (ctx) => {
+                                            const i = ctx.dataIndex;
+                                            const text = (translations?.[currentLang]?.skillDetails || [])[i] || '';
+                                            // Retourner un tableau ajoute des sauts de ligne dans le tooltip
+                                            return text ? [' ', text] : '';
+                                          }
+                                        }
+                                      }
                                     }
+
 
                                     
                                   }
@@ -335,6 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
