@@ -181,11 +181,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                     // Détails sous la valeur (retourne un tableau pour faire des sauts de ligne propres)
                                     afterLabel: (ctx) => {
                                       const i = ctx.dataIndex;
-                                      const text = details[i] || '';
-                                      // Découpe sur ". " pour générer 1–3 lignes lisibles (optionnel)
-                                      const lines = text.split(/(?<=\\.)\\s+/).slice(0, 3);
-                                      return lines.length ? [''].concat(lines) : '';
+                                      const text = (translations?.[currentLang]?.skillDetails || [])[i] || '';
+                                      const lines = text.match(/[^.!?]+[.!?]?/g) || [text]; // coupe sur . ! ?
+                                      return [' ', ...lines.slice(0, 3)];
                                     }
+
+                                    
                                   }
                                 }
                               }
@@ -334,6 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
