@@ -126,65 +126,73 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function getChartOptions() {
-  const isDarkMode = document.documentElement.classList.contains('dark');
-  const lang = currentLang;
+                          const isDarkMode = document.documentElement.classList.contains('dark');
+                          const lang = currentLang;
+                        
+                          const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                          const pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
+                          const datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
+                          const datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
+                        
+                          // Nouveau : détails alignés avec chartLabels (même ordre)
+                          const details = (translations?.[lang]?.skillDetails) || [];
+                        
+                          return {
+                            data: {
+                              labels: translations[lang].chartLabels,
+                              datasets: [{
+                                label: translations[lang].chartLegend,
+                                data: [85, 80, 90, 95, 75, 70],
+                                backgroundColor: datasetBgColor,
+                                borderColor: datasetColor,
+                                pointBackgroundColor: datasetColor,
+                                pointBorderColor: isDarkMode ? '#0F172A' : '#FFFFFF',
+                                pointHoverBackgroundColor: isDarkMode ? '#0F172A' : '#FFFFFF',
+                                pointHoverBorderColor: datasetColor
+                              }]
+                            },
+                            options: {
+                              responsive: true,
+                              maintainAspectRatio: false,
+                              elements: {
+                                point: { radius: 3, hoverRadius: 6, hitRadius: 12 } // bonus: plus facile à survoler
+                              },
+                              scales: {
+                                r: {
+                                  angleLines: { color: gridColor },
+                                  grid: { color: gridColor },
+                                  pointLabels: { font: { size: 14 }, color: pointLabelColor },
+                                  ticks: { backdropColor: 'transparent', stepSize: 25, display: false },
+                                  suggestedMin: 0,
+                                  suggestedMax: 100
+                                }
+                              },
+                              plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                  enabled: true,
+                                  intersect: true,
+                                  displayColors: false,
+                                  callbacks: {
+                                    // Titre = nom de la compétence
+                                    title: (items) => items?.[0]?.label || '',
+                                    // Ligne de valeur (ex: "Niveau de Maîtrise: 85%")
+                                    label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.r}%`,
+                                    // Détails sous la valeur (retourne un tableau pour faire des sauts de ligne propres)
+                                    afterLabel: (ctx) => {
+                                      const i = ctx.dataIndex;
+                                      const text = details[i] || '';
+                                      // Découpe sur ". " pour générer 1–3 lignes lisibles (optionnel)
+                                      const lines = text.split(/(?<=\\.)\\s+/).slice(0, 3);
+                                      return lines.length ? [''].concat(lines) : '';
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          };
+                        }
 
-  const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-  const pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
-  const datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
-  const datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
-  const details = translations[lang].skillDetails || [];
-
-  return {
-    data: {
-      labels: translations[lang].chartLabels,
-      datasets: [{
-        label: translations[lang].chartLegend,
-        data: [85, 80, 90, 95, 75, 70],
-        backgroundColor: datasetBgColor,
-        borderColor: datasetColor,
-        pointBackgroundColor: datasetColor,
-        pointBorderColor: isDarkMode ? '#0F172A' : '#FFFFFF',
-        pointHoverBackgroundColor: isDarkMode ? '#0F172A' : '#FFFFFF',
-        pointHoverBorderColor: datasetColor
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        r: {
-          angleLines: { color: gridColor },
-          grid: { color: gridColor },
-          pointLabels: { font: { size: 14 }, color: pointLabelColor },
-          ticks: { backdropColor: 'transparent', stepSize: 25, display: false },
-          suggestedMin: 0, suggestedMax: 100
-        }
-      },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          enabled: true,
-          intersect: true,           // accrochage au point
-          displayColors: false,      // pas de puce couleur
-          callbacks: {
-            // Titre = nom de la compétence
-            title: (items) => items?.[0]?.label || '',
-            // Ligne valeur (ex: "Niveau de Maîtrise: 85%")
-            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.r}%`,
-            // Détails sous la valeur
-            afterLabel: (ctx) => {
-              const i = ctx.dataIndex;
-              return details[i] ? `\n${details[i]}` : '';
-            }
-          }
-        }
-      }
-    }
-  };
-}
-
-            }
 
             function renderChart() {
                 if(skillsRadarChart) skillsRadarChart.destroy();
@@ -326,6 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
