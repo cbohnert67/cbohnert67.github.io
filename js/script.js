@@ -87,7 +87,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     ]
                 }
             };
-            
+            translations.fr.skillDetails = [
+                          "Traduire un problème réel en modèle mathématique. Logique, dérivées, statistiques, modélisation économique, physique ou sociale. Ex : prédire une épidémie avec une équation différentielle.",
+                          "Transformer des idées mathématiques en simulations et visualisations. Maîtrise de Python, NumPy, Matplotlib, Sympy, Pandas. Ex : notebook interactif sur la loi des grands nombres.",
+                          "Concevoir des algorithmes clairs pour résoudre des problèmes complexes. Structures de données, complexité, simulation numérique. Ex : visualiser un algorithme de tri étape par étape.",
+                          "Rendre les concepts abstraits accessibles et captivants. Storytelling scientifique, design visuel, anticipation des difficultés d’apprentissage. Ex : article illustré sur les intégrales.",
+                          "Donner vie aux mathématiques par l’image et le son. Montage vidéo, graphisme vectoriel, animation pédagogique avec Manim ou Blender. Ex : animation du théorème de Pythagore.",
+                          "Construire une audience autour du savoir. Rédaction SEO, gestion de blog, chaîne YouTube éducative, monétisation via Gumroad ou Patreon. Ex : série 'Les maths de la vie quotidienne'."
+                        ];
+
+            translations.en.skillDetails = [
+                          "Translate real-world problems into clear mathematical models. Logic, derivatives, statistics, and applied modeling in economics, physics, or social sciences. E.g., predict an epidemic with differential equations.",
+                          "Turn mathematical ideas into simulations and visualizations. Skilled in Python, NumPy, Matplotlib, Sympy, Pandas. E.g., build an interactive notebook on the law of large numbers.",
+                          "Design clear algorithms to solve complex problems. Data structures, complexity, numerical simulation. E.g., visualize how a sorting algorithm works step by step.",
+                          "Make abstract ideas engaging and understandable. Scientific storytelling, visual design, anticipating learning difficulties. E.g., write an illustrated article demystifying integrals.",
+                          "Bring mathematics to life through visuals and sound. Video editing, vector graphics, educational animation using Manim or Blender. E.g., animate the Pythagorean theorem dynamically.",
+                          "Build a sustainable audience around your expertise. SEO writing, blog management, YouTube or podcast production, monetization via Gumroad or Patreon. E.g., launch a 'Math in Everyday Life' series."
+                        ];
+
+
             function updateLanguage(lang) {
                 currentLang = lang;
                 document.documentElement.lang = lang;
@@ -108,34 +126,64 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             function getChartOptions() {
-                const isDarkMode = document.documentElement.classList.contains('dark');
-                const lang = currentLang;
-                
-                const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-                const pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
-                const datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
-                const datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
+  const isDarkMode = document.documentElement.classList.contains('dark');
+  const lang = currentLang;
 
-                return {
-                    data: {
-                        labels: translations[lang].chartLabels,
-                        datasets: [{
-                            label: translations[lang].chartLegend,
-                            data: [85, 80, 90, 95, 75, 70],
-                            backgroundColor: datasetBgColor,
-                            borderColor: datasetColor,
-                            pointBackgroundColor: datasetColor,
-                            pointBorderColor: isDarkMode ? '#0F172A' : '#FFFFFF',
-                            pointHoverBackgroundColor: isDarkMode ? '#0F172A' : '#FFFFFF',
-                            pointHoverBorderColor: datasetColor
-                        }]
-                    },
-                    options: {
-                        responsive: true, maintainAspectRatio: false,
-                        scales: { r: { angleLines: { color: gridColor }, grid: { color: gridColor }, pointLabels: { font: { size: 14 }, color: pointLabelColor }, ticks: { backdropColor: 'transparent', stepSize: 25, display: false }, suggestedMin: 0, suggestedMax: 100 }},
-                        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.parsed.r}%` }}}
-                    }
-                };
+  const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+  const pointLabelColor = isDarkMode ? '#CBD5E1' : '#3D3D3D';
+  const datasetColor = isDarkMode ? 'rgba(45, 212, 191, 1)' : 'rgba(13, 148, 136, 1)';
+  const datasetBgColor = isDarkMode ? 'rgba(45, 212, 191, 0.2)' : 'rgba(13, 148, 136, 0.2)';
+  const details = translations[lang].skillDetails || [];
+
+  return {
+    data: {
+      labels: translations[lang].chartLabels,
+      datasets: [{
+        label: translations[lang].chartLegend,
+        data: [85, 80, 90, 95, 75, 70],
+        backgroundColor: datasetBgColor,
+        borderColor: datasetColor,
+        pointBackgroundColor: datasetColor,
+        pointBorderColor: isDarkMode ? '#0F172A' : '#FFFFFF',
+        pointHoverBackgroundColor: isDarkMode ? '#0F172A' : '#FFFFFF',
+        pointHoverBorderColor: datasetColor
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        r: {
+          angleLines: { color: gridColor },
+          grid: { color: gridColor },
+          pointLabels: { font: { size: 14 }, color: pointLabelColor },
+          ticks: { backdropColor: 'transparent', stepSize: 25, display: false },
+          suggestedMin: 0, suggestedMax: 100
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          enabled: true,
+          intersect: true,           // accrochage au point
+          displayColors: false,      // pas de puce couleur
+          callbacks: {
+            // Titre = nom de la compétence
+            title: (items) => items?.[0]?.label || '',
+            // Ligne valeur (ex: "Niveau de Maîtrise: 85%")
+            label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.r}%`,
+            // Détails sous la valeur
+            afterLabel: (ctx) => {
+              const i = ctx.dataIndex;
+              return details[i] ? `\n${details[i]}` : '';
+            }
+          }
+        }
+      }
+    }
+  };
+}
+
             }
 
             function renderChart() {
@@ -278,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
