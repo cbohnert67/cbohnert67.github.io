@@ -6,16 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const translations = {
                 fr: {
-                    jobTitle: "Concepteur Développeur Data IA",
-                    profileDescription: "Développeur agile et proactif avec une solide expertise en développement applicatif Python et une passion pour la transformation des données en solutions intelligentes. Mon parcours, de la chimie analytique au développement web, m'a doté d'une rigueur scientifique et d'une grande capacité d'adaptation.",
+                    jobTitle: "Aspirant mathématicien - créateur de contenu",
+                    profileDescription: "Passionné par les mathématiques, la programmation et la transmission du savoir, je développe des projets qui unissent rigueur scientifique et créativité pédagogique. Mon objectif est de transformer les idées abstraites en expériences d’apprentissage claires et captivantes. À travers la modélisation, le code et la création multimédia, je cherche à rendre les mathématiques accessibles, visuelles et vivantes. Curieux, autonome et orienté partage, je conçois des contenus éducatifs — articles, vidéos et notebooks interactifs — qui aident chacun à penser, comprendre et créer par soi-même.",
                     portfolioLink: "Portfolio/GitHub",
                     location: "Strasbourg & Full Remote",
                     skillsTitle: "Compétences",
-                    skillsDescription: "Cette visualisation représente mes domaines de compétences clés pour un futur poste d'Ingénieur IA. Chaque axe montre une compétence fondamentale, et l'étendue de la zone colorée indique mon niveau de maîtrise. Survolez les points pour plus de détails.",
+                    skillsDescription: "Cette visualisation représente mes domaines de compétences clés pour un futur poste de mathématicien/créateur de contenu. Chaque axe montre une compétence fondamentale, et l'étendue de la zone colorée indique mon niveau de maîtrise. Survolez les points pour plus de détails.",
                     educationTitle: "Formation & Diplômes",
                     educationDescription: "Mon parcours académique, alliant la rigueur scientifique à l'expertise technique en développement.",
                     certificationsTitle: "Certifications",
-                    certificationsDescription: "Mes certifications attestent de mes compétences techniques et de mon engagement dans le domaine de la Data et de l'IA.",
+                    certificationsDescription: "Mes certifications attestent de mes compétences techniques et de mon engagement dans le domaine des Mathématiques.",
                     certifications: [
                         { title: "Certificat Professionnel Développeur IA par IBM", provider: "Coursera", date: "2025", link: "https://www.credly.com/badges/89dc6e8c-2f73-483b-91d8-0501fb11790d" },
                         { title: "Programmation Python 3 par l'Université du Michigan", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/6FETXJVPRGWS" },
@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         { title: "Autoroute vers la Science des Données : Mathématiques Essentielles par l'Université du Colorado Boulder", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/MBEWSA8BGJAH" }
                     ],
                     experienceTitle: "Parcours Professionnel",
-                    experienceDescription: "Mon parcours est une suite logique d'expériences qui m'ont mené vers la Data et l'IA. Cliquez sur chaque étape pour découvrir les missions et les compétences que j'y ai développées.",
+                    experienceDescription: "Mon parcours est une suite d'expériences qui m'ont mené vers les mathématiques et la création de contenu. Cliquez sur chaque étape pour découvrir les missions et les compétences que j'y ai développées.",
                     contactTitle: "Contact",
                     contactDescription: "Prêt à discuter de mon profil et de vos opportunités d'alternance pour 2025:",
                     rqthStatus: "Statut de Travailleur Handicapé (RQTH)",
                     chartLegend: "Niveau de Maîtrise",
-                    chartLabels: ['Développement Python (Flask/Django)', 'Gestion de Données (SQL/ORM)', 'Méthodologie Agile (SCRUM)', 'Versioning (Git)', 'Architecture (UML)', 'Développement Web (JS/HTML/CSS)'],
+                    chartLabels: ['Raisonnement & modélisation', 'Programmation scientifique', 'Logique & structure', 'Vulgarisation', 'Création visuelle', 'Stratégie numérique'],
                     education: [
                         { degree: "Bachelor Développeur d'Applications Python", institution: "Studi", period: "Juin 2023 - Mars 2024", location: "En ligne" },
                         { degree: "DUT Chimie", institution: "Université de Strasbourg", period: "Septembre 1997 - Juillet 1999", location: "Strasbourg" }
@@ -43,16 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     ]
                 },
                 en: {
-                    jobTitle: "Data AI Developer",
-                    profileDescription: "Agile and proactive developer with solid expertise in Python application development and a passion for transforming data into intelligent solutions. My journey from analytical chemistry to web development has equipped me with scientific rigor and great adaptability.",
+                    jobTitle: "Aspiring mathematician - content creator",
+                    profileDescription: "Passionate about mathematics, programming, and knowledge sharing, I create projects that combine scientific rigor with educational creativity. My goal is to transform abstract ideas into clear and engaging learning experiences. Through modeling, code, and multimedia creation, I aim to make mathematics accessible, visual, and alive. Curious, self-driven, and community-minded, I design educational content — articles, videos, and interactive notebooks — that help others think, understand, and create on their own.",
                     portfolioLink: "Portfolio/GitHub",
                     location: "Strasbourg & Full Remote",
                     skillsTitle: "Skills",
-                    skillsDescription: "This visualization represents my key skill areas for an AI Engineer position. Each axis shows a fundamental skill, and the extent of the colored area indicates my level of mastery. Hover over the points for more details.",
+                    skillsDescription: "This visualization represents my key skill areas for a mathematician/content creator position. Each axis shows a fundamental skill, and the extent of the colored area indicates my level of mastery. Hover over the points for more details.",
                     educationTitle: "Education & Degrees",
                     educationDescription: "My academic background, combining scientific rigor with technical expertise in development.",
                     certificationsTitle: "Certifications",
-                    certificationsDescription: "My certifications attest to my technical skills and commitment in the field of Data and AI.",
+                    certificationsDescription: "My certifications attest to my technical skills and commitment in the field of Mathematics.",
                     certifications: [
                         { title: "IBM AI Developer Professional Certificate", provider: "Coursera", date: "2025", link: "https://www.credly.com/badges/89dc6e8c-2f73-483b-91d8-0501fb11790d" },
                         { title: "Python 3 Programming by University of Michigan", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/6FETXJVPRGWS" },
@@ -62,12 +62,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         { title: "Expressway to Data Science: Essential Math by University of Colorado Boulder", provider: "Coursera", date: "2023", link: "https://www.coursera.org/account/accomplishments/specialization/MBEWSA8BGJAH" }
                     ],
                     experienceTitle: "Career Path",
-                    experienceDescription: "My career is a logical sequence of experiences that have led me to Data and AI. Click on each step to discover the missions and skills I developed there.",
+                    experienceDescription: "My career is a sequence of experiences that have led me to Mathematics. Click on each step to discover the missions and skills I developed there.",
                     contactTitle: "Contact",
                     contactDescription: "Ready to discuss my profile and your apprenticeship opportunities for 2025:",
                     rqthStatus: "Disability Status (RQTH)",
                     chartLegend: "Mastery Level",
-                    chartLabels: ['Python Development (Flask/Django)', 'Data Management (SQL/ORM)', 'Agile Methodology (SCRUM)', 'Versioning (Git)', 'Architecture (UML)', 'Web Development (JS/HTML/CSS)'],
+                    chartLabels: [
+                                      "Reasoning & Modeling",
+                                      "Scientific Programming",
+                                      "Logic & Structure",
+                                      "Science Communication",
+                                      "Visual Creation",
+                                      "Digital Strategy"
+                                    ],
                     education: [
                         { degree: "Bachelor's Degree in Python Application Development", institution: "Studi", period: "June 2023 - March 2024", location: "Online" },
                         { degree: "University Diploma in Chemistry", institution: "University of Strasbourg", period: "September 1997 - July 1999", location: "Strasbourg" }
@@ -271,4 +278,5 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
