@@ -182,12 +182,13 @@ document.addEventListener('DOMContentLoaded', function () {
                                       var val = (ctx && ctx.parsed && typeof ctx.parsed.r === 'number') ? ctx.parsed.r : '';
                                       return t.chartLegend + ': ' + val + '%';
                                     },
-                                    afterLabel: function(ctx) {
-                                      var i = (ctx && typeof ctx.dataIndex === 'number') ? ctx.dataIndex : -1;
-                                      var text = (i >= 0 && details[i]) ? details[i] : '';
-                                      // Retourner un tableau ajoute une ligne vide + une ligne de détails
-                                      return text ? [' ', text] : '';
+                                    afterLabel: (ctx) => {
+                                      const i = ctx.dataIndex;
+                                      const text = (translations?.[currentLang]?.skillDetails || [])[i] || '';
+                                      const lines = text.match(/[^.!?]+[.!?]?/g) || [text]; // coupe sur . ! ?
+                                      return [' ', ...lines.slice(0, 3)];
                                     }
+
                                   }
                                 }
                               }
@@ -337,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
