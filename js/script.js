@@ -88,21 +88,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             };
             translations.fr.skillDetails = [
-                          "Traduire un problème réel en modèle mathématique. Logique, dérivées, statistiques, modélisation économique, physique ou sociale. Ex : prédire une épidémie avec une équation différentielle.",
-                          "Transformer des idées mathématiques en simulations et visualisations. Maîtrise de Python, NumPy, Matplotlib, Sympy, Pandas. Ex : notebook interactif sur la loi des grands nombres.",
-                          "Concevoir des algorithmes clairs pour résoudre des problèmes complexes. Structures de données, complexité, simulation numérique. Ex : visualiser un algorithme de tri étape par étape.",
-                          "Rendre les concepts abstraits accessibles et captivants. Storytelling scientifique, design visuel, anticipation des difficultés d’apprentissage. Ex : article illustré sur les intégrales.",
-                          "Donner vie aux mathématiques par l’image et le son. Montage vidéo, graphisme vectoriel, animation pédagogique avec Manim ou Blender. Ex : animation du théorème de Pythagore.",
-                          "Construire une audience autour du savoir. Rédaction SEO, gestion de blog, chaîne YouTube éducative, monétisation via Gumroad ou Patreon. Ex : série 'Les maths de la vie quotidienne'."
+                          "Traduire un problème réel en modèle mathématique.",
+                          "Transformer des idées mathématiques en simulations et visualisations.",
+                          "Concevoir des algorithmes clairs pour résoudre des problèmes complexes.",
+                          "Rendre les concepts abstraits accessibles et captivants.",
+                          "Donner vie aux mathématiques par l’image et le texte.",
+                          "Construire une audience autour du savoir."
                         ];
 
             translations.en.skillDetails = [
-                          "Translate real-world problems into clear mathematical models. Logic, derivatives, statistics, and applied modeling in economics, physics, or social sciences. E.g., predict an epidemic with differential equations.",
-                          "Turn mathematical ideas into simulations and visualizations. Skilled in Python, NumPy, Matplotlib, Sympy, Pandas. E.g., build an interactive notebook on the law of large numbers.",
-                          "Design clear algorithms to solve complex problems. Data structures, complexity, numerical simulation. E.g., visualize how a sorting algorithm works step by step.",
-                          "Make abstract ideas engaging and understandable. Scientific storytelling, visual design, anticipating learning difficulties. E.g., write an illustrated article demystifying integrals.",
-                          "Bring mathematics to life through visuals and sound. Video editing, vector graphics, educational animation using Manim or Blender. E.g., animate the Pythagorean theorem dynamically.",
-                          "Build a sustainable audience around your expertise. SEO writing, blog management, YouTube or podcast production, monetization via Gumroad or Patreon. E.g., launch a 'Math in Everyday Life' series."
+                          "Translate real-world problems into clear mathematical models.",
+                          "Turn mathematical ideas into simulations and visualizations.",
+                          "Design clear algorithms to solve complex problems.",
+                          "Make abstract ideas engaging and understandable.",
+                          "Bring mathematics to life through visuals and text.",
+                          "Build a sustainable audience around your expertise."
                         ];
 
 
@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
