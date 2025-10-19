@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 educationItems.forEach(item => {
                     const card = document.createElement('div');
-                    card.className = "bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-teal-500/10 transition-all duration-300 flex flex-col";
+                    card.className = "text-center bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-teal-500/10 transition-all duration-300 flex flex-col";
                     card.innerHTML = `
                         <h3 class="text-lg font-bold text-teal-600 dark:text-teal-400">${item.degree}</h3>
                         <p class="font-semibold text-slate-700 dark:text-slate-200 mt-1">${item.institution}</p>
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const certifications = translations[lang].certifications;
                 certifications.forEach(cert => {
                     const card = document.createElement('div');
-                    card.className = "bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-teal-500/10 transition-all duration-300 flex flex-col";
+                    card.className = "text-center bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-teal-500/10 transition-all duration-300 flex flex-col";
                     card.innerHTML = `
                         <h3 class="text-lg font-bold text-teal-600 dark:text-teal-400">${cert.title}</h3>
                         <p class="font-semibold text-slate-700 dark:text-slate-200 mt-1">${cert.provider}</p>
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </div>
                             </div>
                             <div class="bg-slate-100 dark:bg-slate-800/70 rounded-b-lg timeline-item-content">
-                                <p class="text-slate-600 dark:text-slate-300 text-sm">${exp.description}</p>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm text-center">${exp.description}</p>
                             </div>
                         </div>
                     `;
@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
             init();
 
         });
+
 
 
 
