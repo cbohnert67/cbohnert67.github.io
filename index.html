@@ -1,136 +1,357 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Interactif - Cédric Bohnert</title>
+    <title>Portfolio de Cédric Bohnert - Projets & Compétences</title>
+    <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- 1. Chargement de particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+        /* Configuration de base et de la police Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            color: #1f2937;
         }
-    </script>
-    
+        /* Style pour les cartes de projet */
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Couleur d'accentuation principale (Teal Vif: #0d9488) */
+        .accent-color {
+            color: #0d9488; /* Teal 700 */
+        }
+        .bg-accent {
+            background-color: #0d9488;
+        }
+
+        /* Styles spécifiques pour le conteneur de particles.js */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10; /* Sous le contenu de la section héros */
+            background-color: transparent; /* Assurez-vous qu'il est transparent s'il n'est pas utilisé comme fond coloré */
+        }
+        
+        /* Conteneur pour la section Héros pour gérer le positionnement du contenu */
+        #hero-container {
+            position: relative;
+            z-index: 20; /* Le contenu doit être au-dessus des particules */
+            /* Tailwind classes already define padding and width */
+        }
+    </style>
 </head>
-<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-300 antialiased">
+<body class="antialiased">
 
-    <div class="fixed top-4 right-4 z-50 flex items-center space-x-2">
-        <button id="language-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5 font-semibold">EN</button>
-        <button id="theme-toggle" type="button" class="theme-toggle-button text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5">
-            <span class="moon-icon">🌙</span>
-            <span class="sun-icon">☀️</span>
-        </button>
-    </div>
-
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-
-        <!-- En-tête et Profil -->
-        <header class="text-center mb-16">
-            <h1 class="text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white">Cédric BOHNERT</h1>
-            <p data-lang-key="jobTitle" class="mt-2 text-xl sm:text-2xl text-teal-600 dark:text-teal-400"></p>
-            <p data-lang-key="profileDescription" class="text-justify mt-4 mx-auto text-slate-600 dark:text-slate-400" style="position: relative;width: 72%;"></p>
-            <div class="mt-6 flex justify-center items-center space-x-6 text-sm">
-                <a href="https://cbohnert67.github.io/Cedric-Bohnert/docs/" target="_blank" data-lang-key="portfolioLink" class="text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"></a>
-                <span class="text-slate-300 dark:text-slate-600">|</span>
-                <a href="https://www.linkedin.com/in/cedricbohnert" target="_blank" class="text-slate-700 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300">LinkedIn</a>
-                <span class="text-slate-300 dark:text-slate-600">|</span>
-                <span data-lang-key="location" class="text-slate-700 dark:text-slate-300"></span>
+    <!-- 1. Navigation (Mobile & Desktop) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <!-- max-w-7xl remplacé par max-w-5xl -->
+        <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <!-- Modification ici pour inclure l'image -->
+            <div class="flex items-center space-x-2">
+                <img src="cbohnert.png" 
+                     alt="Photo de profil de Cédric Bohnert" 
+                     class="w-20 h-20 rounded-full border-2 border-teal-500 shadow-md">
             </div>
-        </header>
-
-        <!-- Section Compétences -->
-        <section id="skills" class="mb-20" style="width:100%;position: relative;">
-             <div class="grid md:grid-cols-2 gap-4 items-center mb-12" style="width: 80%;left: 170px;position: relative;">
-                <div class="text-center md:text-center">
-                    <h2 data-lang-key="skillsTitle" class="text-3xl font-bold text-slate-900 dark:text-white mb-4"></h2>
-                    <p data-lang-key="skillsDescription" class="text-justify text-slate-600 dark:text-slate-400 max-w-2xl mx-auto md:mx-0"></p>
-                </div>
-                <div class="flex justify-center">
-                    <img src="./assets/undraw_developer-activity.svg" 
-                         alt="Developer Activity Illustration" 
-                         class="w-full max-w-[14rem] md:max-w-[16rem] h-auto rounded-lg transition-transform duration-300 hover:scale-105"
-                         onerror="this.onerror=null;this.src='https://placehold.co/400x300/1e293b/94a3b8?text=Illustration';">
-                </div>
-            </div>
-            <div class="w-full bg-white dark:bg-slate-800/50 rounded-2xl p-6 transition-colors duration-300">
-                <div class="chart-container">
-                    <canvas id="skillsRadarChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Formation & Diplômes -->
-        <section id="education" class="mb-20">
-            <h2 data-lang-key="educationTitle" class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4"></h2>
-            <p data-lang-key="educationDescription" class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto   text-justify"></p>
-            <div id="education-container" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Les éléments de formation seront injectés ici par JS -->
-            </div>
-        </section>
-
-        <!-- Section Certifications -->
-        <section id="certifications" class="mb-20">
-            <h2 data-lang-key="certificationsTitle" class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4"></h2>
-            <p data-lang-key="certificationsDescription" class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto   text-justify"></p>
-            <div id="certifications-container" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Les éléments de certification seront injectés ici par JS -->
-            </div>*
-        </section>
-
-        <!-- Section Expériences -->
-        <section id="experience">
-            <h2 data-lang-key="experienceTitle" class="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4"></h2>
-            <p data-lang-key="experienceDescription" class="text-center text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto  text-justify"></p>
+            <!-- Fin de la modification -->
             
-            <div class="relative w-full max-w-3xl mx-auto">
-                <!-- Ligne verticale -->
-                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-200 dark:bg-slate-700 transition-colors duration-300"></div>
+            <!-- Liens de Navigation (Desktop) avec Icônes -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-700 hover:text-teal-600 font-medium transition duration-150 flex items-center">
+                    <!-- Icône Maison -->
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    À Propos
+                </a>
+                <a href="#projects" class="text-gray-700 hover:text-teal-600 font-medium transition duration-150 flex items-center">
+                    <!-- Icône Projets/Dossier -->
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                    Projets
+                </a>
+                <a href="#contact" class="text-gray-700 hover:text-teal-600 font-medium transition duration-150 flex items-center">
+                    <!-- Icône Contact/Envelope -->
+                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Contact
+                </a>
+            </div>
+            <!-- Bouton Menu Mobile (Icône Menu Hamburger) -->
+            <button class="md:hidden text-gray-700 hover:text-teal-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+    </header>
 
-                <div id="timeline-container" class="space-y-4">
-                    <!-- Les éléments de la timeline seront injectés ici par JS -->
+    <main class="py-12">
+        <!-- 2. Section Héros / Introduction -->
+        <!-- La section est mise en position relative pour contenir le fond de particules en position absolue -->
+        <section id="hero" class="relative overflow-hidden bg-gray-100/50">
+            
+            <!-- Conteneur Particles.js (fond) -->
+            <div id="particles-js"></div>
+
+            <!-- Contenu de la section Héros (au premier plan) -->
+            <div id="hero-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center">
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight mb-4">
+                    Bonjour, je suis <span class="accent-color">Cédric Bohnert</span>.
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-700 max-w-5xl mx-auto mb-8">
+                    Aspirant mathématicien passionné par le développement de contenu pédagogique.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#projects" class="bg-accent text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-teal-700 transition duration-300 transform hover:scale-105">
+                        Voir mes Projets
+                    </a>
+                    <a href="#contact" class="bg-white text-gray-800 border border-gray-300 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                        Me Contacter
+                    </a>
                 </div>
             </div>
         </section>
 
+        <!-- 3. Section À Propos -->
+        <section id="about" class="bg-white py-20 sm:py-24">
+            <!-- max-w-7xl remplacé par max-w-5xl -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-12">À Propos de Moi</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-lg text-gray-700 space-y-6">
+                        <p class="text-justify">
+                            Après l'obtention d'un <strong class="font-bold">Bachelor en Développement d'Applications Python</strong>, je poursuis actuellement mes études en <strong class="font-bold">Licence de Mathématiques</strong> à l'Université Marie et Louis Pasteur. Cette double compétence renforce ma passion pour l'<strong class="font-bold">Intelligence Artificielle</strong> et les mécanismes d'apprentissage.
+                        </p>
+                        <p class="text-justify">
+                            Mon parcours combine une solide expertise en <strong class="font-bold">développement avec Python</strong> et une expérience significative en <strong class="font-bold">soutien scolaire</strong> et <strong class="font-bold">création de contenu pédagogique</strong> (mathématiques, sciences physiques). Je crois au pouvoir de la <strong class="font-bold">rigueur mathématique</strong> et de la <strong class="font-bold">clarté technique</strong> pour concevoir des solutions robustes et explicables destinées à l'éducation.
+                        </p>
+                        <p class="text-justify">
+                            Je suis guidé par la <strong class="font-bold">rigueur</strong>, la <strong class="font-bold">curiosité</strong> et l'<strong class="font-bold">autodidaxie</strong>. Je suis prêt à relever des défis où je peux conjuguer mes compétences en <strong class="font-bold">modélisation mathématique</strong>, en <strong class="font-bold">développement d'application</strong>, et en <strong class="font-bold">création de support pédagogique</strong>.
+                        </p>
+                    </div>
+                    <!-- Liste de Compétences / Technologies Clés -->
+                    <div class="p-6 bg-gray-50 rounded-xl shadow-inner">
+                        <h3 class="text-2xl font-semibold mb-4 accent-color">Compétences Clés</h3>
+                        <div class="grid grid-cols-1 gap-3">
+                            <!-- Chaque compétence est sur une ligne -->
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-lg text-left">Python (Dev & Data Science)</span>
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-lg text-left">Modélisation Mathématique</span>
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-lg text-left">LaTeX & Markdown (Support Pédagogique)</span>
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-lg text-left">JavaScript (HTML/CSS)</span>
+                            <span class="bg-teal-100 text-teal-800 text-base font-medium px-4 py-2 rounded-lg text-left">Méthodologie Agile (SCRUM)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Section Projets (La section principale) -->
+        <section id="projects" class="py-20 sm:py-24 bg-gray-50">
+            <!-- max-w-7xl remplacé par max-w-5xl -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Mes Projets</h2>
+
+                <div class="grid grid-cols-1 gap-10">
+                    
+                    <!-- Carte de Projet Unique: MathsQuest - Aventure Mathématique -->
+                    <div class="project-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold mb-3 accent-color">MathsQuest - Aventure Mathématique</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">
+                            <strong class="font-bold">Application pédagogique</strong> conçue pour rendre l'apprentissage des mathématiques plus engageant pour les élève des classes du <strong class="font-bold">cycle 3 (CM1, CM2 et 6ème)</strong>. Utilise la <strong class="font-bold">gamification</strong> et l'interactivité pour aider l'élève à s'approprier les concepts mathématiques développés à ce niveau.
+                        </p>
+                        
+                        <!-- Technologies utilisées - Couleurs unifiées en TEAL -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-0.5 rounded-full">Pédagogie active</span>
+                            <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-0.5 rounded-full">Gamification</span>
+                            <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-0.5 rounded-full">Interface Web (HTML/CSS/JS)</span>
+                            <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-0.5 rounded-full">Déploiement Cloud (Cloud Run)</span>
+                        </div>
+                        
+                        <!-- Liens d'Action -->
+                        <div class="mt-auto flex space-x-4 pt-4 border-t border-gray-100">
+                            <!-- Lien vers le code (supposé être sur votre GitHub général en l'absence de repo spécifique) -->
+                            <a href="https://github.com/cbohnert67" target="_blank" class="text-gray-700 hover:text-teal-600 font-medium flex items-center transition duration-150">
+                                <!-- Icône GitHub (SVG) -->
+                                <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.693.084-.693 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.493.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.652.242 2.873.118 3.176.766.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.56 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                Code Source (GitHub)
+                            </a>
+                            <!-- Lien de Démo (lien fourni par l'utilisateur) -->
+                            <a href="https://mathsquest-aventure-mathematique-961188910769.us-west1.run.app/" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium flex items-center transition duration-150">
+                                <!-- Icône de Lien -->
+                                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                Démo Live (MathsQuest)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L'appel à l'action pour GitHub reste pertinent pour voir le reste du travail -->
+                <div class="text-center mt-16">
+                    <a href="https://github.com/cbohnert67" target="_blank" class="inline-flex items-center bg-gray-800 text-white font-semibold py-3 px-8 rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.693.084-.693 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.493.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.652.242 2.873.118 3.176.766.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.56 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        Voir tous mes projets sur GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Section Contact -->
+        <section id="contact" class="py-20 sm:py-24">
+            <!-- max-w-7xl remplacé par max-w-5xl -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">Contactez-moi</h2>
+                <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                    Que vous ayez un projet à discuter, une opportunité d'emploi ou simplement une question, n'hésitez pas à me contacter.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
+                    <!-- Contact par Email -->
+                    <a href="mailto:bohnert.cedric@gmail.com" class="bg-teal-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-teal-700 transition duration-300">
+                        Envoyer un Email
+                    </a>
+                    
+                    <!-- Lien LinkedIn -->
+                    <a href="https://www.linkedin.com/in/cedricbohnert/" target="_blank" class="bg-gray-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-600 transition duration-300 flex items-center justify-center">
+                        <!-- Icône LinkedIn (SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.57-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        Mon Profil LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white py-8 mt-16 transition-colors duration-300">
-        <div class="container mx-auto px-4 text-center">
-            <h3 data-lang-key="contactTitle" class="text-2xl font-bold text-slate-900 dark:text-white"></h3>
-            <p data-lang-key="contactDescription" class="mt-2 text-slate-600 dark:text-slate-300"></p>
-            <div class="mt-4 flex justify-center items-center space-x-6 text-slate-800 dark:text-slate-200">
-                <span>07 63 11 66 72</span>
-                <span class="text-slate-400 dark:text-slate-600">|</span>
-                <span>cbohnert.datascience@gmail.com</span>
+    <!-- Pied de Page -->
+    <footer class="bg-gray-800 text-white py-8">
+        <!-- max-w-7xl remplacé par max-w-5xl -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; 2025 Cédric Bohnert. Tous droits réservés.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#about" class="text-gray-400 hover:text-white text-sm">À Propos</a>
+                <a href="#projects" class="text-gray-400 hover:text-white text-sm">Projets</a>
+                <a href="https://github.com/cbohnert67" target="_blank" class="text-gray-400 hover:text-white text-sm">GitHub</a>
             </div>
-             <p data-lang-key="rqthStatus" class="text-xs text-slate-500 dark:text-slate-500 mt-4"></p>
         </div>
     </footer>
-    <script src="./js/script.js"></script>
 
-    
+    <script>
+        // 2. Initialisation de particles.js
+        window.onload = function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#0d9488" /* Couleur accent (Teal 700) */
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#0d9488"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#0d9488", /* Couleur accent (Teal 700) */
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 200,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        }
+    </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
