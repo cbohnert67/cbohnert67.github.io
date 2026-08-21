@@ -1,1 +1,3 @@
-# Portfolio de Cédric Bohnert & Méthode Liouaï
+# Portfolio de Cédric Bohnert
+
+Merci pour votre visite !
