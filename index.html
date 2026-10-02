@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark scroll-smooth">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cédric Bohnert | Google AI Specialist & Mathematical Modeling</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <!-- Tailwind CSS CDN -->
+    <title>Cédric Bohnert — Liouaï Digital Education | Pédagogie & Passion Mathématique</title>
+    
+    <!-- Tailwind CSS avec prise en charge du Dark Mode -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,1015 +16,651 @@
                         brand: {
                             50: '#f0fdfa',
                             100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            900: '#134e4a',
-                        },
-                        tealAccent: {
+                            200: '#99f6e4',
+                            300: '#5eead4',
                             400: '#2dd4bf',
                             500: '#14b8a6',
-                            600: '#0d9488',
-                        },
-                        google: {
-                            blue: '#2dd4bf',
-                            red: '#EA4335',
-                            yellow: '#FBBC05',
-                            green: '#34A853'
+                            600: '#0d9488', // Teal 700 d'origine
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2e'
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
+                        brand: ['Outfit', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Polices Google : Inter & Outfit pour l'identité de marque -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            overflow-x: hidden;
-        }
-        
-        /* Glassmorphism utility classes */
-        .glass-panel {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .glass-card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .brand-title {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.01em;
         }
 
-        .glass-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(45, 212, 191, 0.4);
-            box-shadow: 0 12px 30px -10px rgba(20, 184, 166, 0.25);
-        }
-
-        /* Glowing text & gradients */
-        .text-gradient {
-            background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 50%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .text-teal-gradient {
-            background: linear-gradient(90deg, #2dd4bf 0%, #14b8a6 40%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Canvas background */
-        #graphCanvas {
-            position: fixed;
+        /* Arrière-plan du canevas interactif */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
+            z-index: 1;
+            pointer-events: auto;
         }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0f19;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0d9488;
+        #hero-content {
+            position: relative;
+            z-index: 2;
         }
 
-        /* Light Mode Theme Overrides */
-        html:not(.dark) body {
-            background-color: #f8fafc;
-            color: #0f172a;
+        .pill-badge {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
-        html:not(.dark) ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        html:not(.dark) ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-        }
-
-        html:not(.dark) .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(15, 23, 42, 0.1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-        }
-
-        html:not(.dark) .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        html:not(.dark) .glass-card:hover {
-            border-color: rgba(13, 148, 136, 0.5);
-            box-shadow: 0 12px 30px -10px rgba(13, 148, 136, 0.2);
-        }
-
-        html:not(.dark) .text-white,
-        html:not(.dark) .text-slate-100 {
-            color: #0f172a !important;
-        }
-
-        html:not(.dark) .text-slate-200,
-        html:not(.dark) .text-slate-300 {
-            color: #334155 !important;
-        }
-
-        html:not(.dark) .text-slate-400 {
-            color: #64748b !important;
-        }
-
-        html:not(.dark) .border-slate-800 {
-            border-color: #e2e8f0 !important;
-        }
-
-        html:not(.dark) .border-slate-700 {
-            border-color: #cbd5e1 !important;
-        }
-
-        html:not(.dark) .bg-slate-900 {
-            background-color: #f1f5f9 !important;
-        }
-
-        html:not(.dark) .bg-slate-800 {
-            background-color: #e2e8f0 !important;
-        }
-
-        html:not(.dark) .bg-teal-950,
-        html:not(.dark) .bg-cyan-950,
-        html:not(.dark) .bg-emerald-950,
-        html:not(.dark) .bg-yellow-950 {
-            background-color: #f0fdfa !important;
+        .pill-badge:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
         }
     </style>
 </head>
-<body class="relative min-h-screen text-slate-200 transition-colors duration-300">
+<body class="bg-gray-50 text-gray-800 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Background Moving Canvas Graph -->
-    <canvas id="graphCanvas"></canvas>
-
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Brand / Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 via-emerald-600 to-cyan-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
-                        CB
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-bold text-slate-100 tracking-tight text-lg">Cédric Bohnert</span>
-                        <span class="text-xs text-teal-500 dark:text-teal-400 font-mono">Google AI & Math Modeling</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-                    <a href="#about" class="text-slate-300 hover:text-teal-400 transition-colors" data-fr="À Propos" data-en="About">À Propos</a>
-                    <a href="#google-ai" class="text-slate-300 hover:text-teal-400 transition-colors" data-fr="Google AI" data-en="Google AI">Google AI</a>
-                    <a href="#kaggle" class="text-slate-300 hover:text-teal-400 transition-colors" data-fr="Kaggle Work" data-en="Kaggle Work">Kaggle Work</a>
-                    <a href="#simulations" class="text-slate-300 hover:text-teal-400 transition-colors" data-fr="Modélisation" data-en="Modeling">Modélisation</a>
-                    <a href="#certifications" class="text-slate-300 hover:text-teal-400 transition-colors" data-fr="Certifications" data-en="Certifications">Certifications</a>
-                    <a href="https://github.com/cbohnert67" target="_blank" class="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-semibold flex items-center gap-2 transition-all shadow-lg shadow-teal-600/30">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    
-                    <!-- Language Toggle Switcher (Desktop) -->
-                    <button id="langToggleBtn" class="px-3 py-1.5 rounded-xl glass-panel text-teal-400 hover:text-teal-300 hover:scale-105 transition-all text-xs font-mono font-bold flex items-center gap-1 cursor-pointer" title="Changer de langue / Switch language">
-                        <i class="fas fa-globe text-sm"></i>
-                        <span id="langLabel">FR</span>
-                    </button>
-
-                    <!-- Day / Night Theme Toggle Button (Desktop) -->
-                    <button id="themeToggleBtn" class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-teal-400 hover:text-teal-300 hover:scale-105 transition-all cursor-pointer" title="Changer le thème Jour/Nuit">
-                        <i id="themeToggleIcon" class="fas fa-sun text-lg"></i>
-                    </button>
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 transition-colors duration-200">
+        <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            
+            <!-- Identité & Logo -->
+            <a href="#hero" class="flex items-center space-x-3 group focus:outline-none">
+                <img src="cbohnert.png" 
+                     onerror="this.src='https://placehold.co/100x100/0d9488/ffffff?text=CB'" 
+                     alt="Cédric Bohnert" 
+                     class="w-12 h-12 rounded-full border-2 border-brand-600 dark:border-brand-400 object-cover shadow-sm group-hover:scale-105 transition duration-200">
+                <div class="flex flex-col">
+                    <span class="font-bold text-gray-900 dark:text-white text-base tracking-tight leading-tight group-hover:text-brand-600 dark:group-hover:text-brand-400 transition">Cédric Bohnert</span>
+                    <span class="text-xs font-semibold tracking-wider uppercase text-brand-600 dark:text-brand-400 brand-title">Liouaï Digital Education</span>
                 </div>
+            </a>
 
-                <!-- Mobile Header Right Actions -->
-                <div class="flex items-center gap-2 md:hidden">
-                    <button id="langToggleBtnMobile" class="px-2.5 py-1 rounded-lg glass-panel text-teal-400 text-xs font-mono font-bold flex items-center gap-1">
-                        <i class="fas fa-globe text-xs"></i>
-                        <span id="langLabelMobile">FR</span>
-                    </button>
-                    <button id="themeToggleBtnMobile" class="w-9 h-9 rounded-lg glass-panel flex items-center justify-center text-teal-400 p-2">
-                        <i id="themeToggleIconMobile" class="fas fa-sun text-base"></i>
-                    </button>
-                    <button id="mobileMenuBtn" class="text-slate-300 hover:text-white p-2">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+            <!-- Liens Navigation Desktop -->
+            <div class="hidden md:flex items-center space-x-7 text-sm font-medium">
+                <a href="#vocation" class="text-gray-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.vocation">Vocation</a>
+                <a href="#brand" class="text-gray-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.brand">Liouaï</a>
+                <a href="#creation" class="text-gray-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.creation">Supports & Didactique</a>
+                <a href="#contact" class="text-gray-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.contact">Contact</a>
             </div>
-        </div>
 
-        <!-- Mobile Navigation Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 pt-2 pb-4 space-y-3">
-            <a href="#about" class="block py-2 text-slate-300 hover:text-teal-400" data-fr="À Propos" data-en="About">À Propos</a>
-            <a href="#google-ai" class="block py-2 text-slate-300 hover:text-teal-400" data-fr="Google AI" data-en="Google AI">Google AI</a>
-            <a href="#kaggle" class="block py-2 text-slate-300 hover:text-teal-400" data-fr="Kaggle Work" data-en="Kaggle Work">Kaggle Work</a>
-            <a href="#simulations" class="block py-2 text-slate-300 hover:text-teal-400" data-fr="Modélisation" data-en="Modeling">Modélisation</a>
-            <a href="#certifications" class="block py-2 text-slate-300 hover:text-teal-400" data-fr="Certifications" data-en="Certifications">Certifications</a>
-            <a href="https://github.com/cbohnert67" target="_blank" class="block w-full text-center py-2 bg-teal-600 text-white rounded-lg font-semibold">
-                <i class="fab fa-github mr-1"></i> GitHub Profile
-            </a>
-        </div>
-    </nav>
+            <!-- Boutons de Contrôle (FR/EN + Sombre/Clair) -->
+            <div class="flex items-center space-x-2.5">
+                <!-- Bouton Langue FR/EN -->
+                <button id="lang-btn" 
+                        class="px-2.5 py-1.5 text-xs font-semibold rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 transition flex items-center gap-1.5 focus:outline-none"
+                        title="Changer de langue / Switch language">
+                    <span id="lang-display" class="font-mono uppercase font-bold">FR</span>
+                    <svg class="w-3.5 h-3.5 text-gray-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                </button>
 
-    <!-- Hero Section -->
-    <header class="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <!-- Status Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel border-teal-500/30 text-xs text-teal-300 font-mono mb-6 animate-pulse">
-            <span class="w-2 h-2 rounded-full bg-teal-400"></span>
-            <span data-fr="Life-Long Learner & Développeur Google AI" data-en="Life-Long Learner & Google AI Developer">Life-Long Learner & Développeur Google AI</span>
-        </div>
+                <!-- Bouton Mode Clair / Sombre -->
+                <button id="theme-btn" 
+                        class="p-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 transition focus:outline-none"
+                        title="Basculer le mode sombre/clair">
+                    <svg id="theme-icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
 
-        <!-- Main Title -->
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-            Cédric Bohnert
-            <span class="block text-3xl sm:text-5xl text-slate-400 font-semibold mt-2" data-fr-html="Concepteur d'Outils <span class='text-teal-gradient'>Google AI</span> & Modélisation Mathématique" data-en-html="<span class='text-teal-gradient'>Google AI Tools</span> Developer & Mathematical Modeling">
-                Concepteur d'Outils <span class="text-teal-gradient">Google AI</span> & Modélisation Mathématique
-            </span>
-        </h1>
-
-        <!-- Subtitle Description -->
-        <p class="max-w-3xl text-slate-300 text-base sm:text-lg mb-8 leading-relaxed font-light" data-fr-html="Passionné autodidacte en constante évolution. J'associe la puissance des grands modèles multimodaux de l'écosystème <span class='text-teal-400 font-semibold'>Google Gemini & AI Studio</span> à la rigueur des <span class='text-cyan-400 font-semibold'>mathématiques appliquées</span> et du calcul scientifique." data-en-html="Self-taught enthusiast and lifelong learner. I combine the power of <span class='text-teal-400 font-semibold'>Google Gemini & AI Studio</span> multimodal models with the rigor of <span class='text-cyan-400 font-semibold'>applied mathematics</span> and scientific computing.">
-            Passionné autodidacte en constante évolution. J'associe la puissance des grands modèles multimodaux de l'écosystème <span class="text-teal-400 font-semibold">Google Gemini & AI Studio</span> à la rigueur des <span class="text-cyan-400 font-semibold">mathématiques appliquées</span> et du calcul scientifique.
-        </p>
-
-        <!-- Action Call Buttons -->
-        <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
-            <a href="#kaggle" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white font-medium shadow-lg shadow-teal-500/25 flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
-                <i class="fas fa-chart-line"></i> Kaggle Work
-            </a>
-            <a href="#simulations" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800 text-slate-200 border border-slate-700 font-medium flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
-                <i class="fas fa-square-root-variable text-teal-400"></i> <span data-fr="Modélisation & Maths" data-en="Modeling & Math">Modélisation & Maths</span>
-            </a>
-            <a href="#certifications" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800 text-slate-200 border border-slate-700 font-medium flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
-                <i class="fas fa-graduation-cap text-yellow-400"></i> <span data-fr="7 Spécialisations Coursera" data-en="7 Coursera Specializations">7 Spécialisations Coursera</span>
-            </a>
-        </div>
-
-        <!-- Interactive Canvas Control Widget -->
-        <div class="w-full max-w-xl glass-panel p-4 rounded-2xl border border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-sliders-h text-teal-400"></i>
-                <span data-fr="Graphe dynamique :" data-en="Dynamic graph:">Graphe dynamique :</span>
-            </div>
-            <div class="flex items-center gap-4 flex-wrap">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <span data-fr="Vitesse" data-en="Speed">Vitesse</span>
-                    <input type="range" id="graphSpeed" min="0.2" max="3" step="0.1" value="1" class="w-20 accent-teal-500">
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <span data-fr="Liaisons" data-en="Connections">Liaisons</span>
-                    <input type="range" id="graphDistance" min="80" max="220" step="10" value="130" class="w-20 accent-teal-500">
-                </label>
-                <button id="toggleGraphMode" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-teal-300 transition-colors" data-fr="Mode: Réseau Neural" data-en="Mode: Neural Network">
-                    Mode: Réseau Neural
+                <!-- Menu Burger Mobile -->
+                <button id="mobile-toggle" class="md:hidden p-2 rounded-lg text-gray-700 dark:text-slate-300 hover:text-brand-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
+        </nav>
+
+        <!-- Menu Déroulant Mobile -->
+        <div id="mobile-drawer" class="hidden md:hidden px-4 pt-3 pb-6 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 space-y-3">
+            <a href="#vocation" class="block py-1.5 text-base font-medium text-gray-700 dark:text-slate-200 hover:text-brand-600" data-i18n="nav.vocation">Vocation</a>
+            <a href="#brand" class="block py-1.5 text-base font-medium text-gray-700 dark:text-slate-200 hover:text-brand-600" data-i18n="nav.brand">Liouaï</a>
+            <a href="#creation" class="block py-1.5 text-base font-medium text-gray-700 dark:text-slate-200 hover:text-brand-600" data-i18n="nav.creation">Supports & Didactique</a>
+            <a href="#contact" class="block py-1.5 text-base font-medium text-gray-700 dark:text-slate-200 hover:text-brand-600" data-i18n="nav.contact">Contact</a>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24">
+    <main>
+        <section id="hero" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-gray-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-16">
+            <div id="particles-js"></div>
 
-        <!-- About Me Section -->
-        <section id="about" class="scroll-mt-24">
-            <div class="glass-panel rounded-3xl p-8 sm:p-10 border border-slate-800 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-8 space-y-4">
-                        <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-teal-400 bg-teal-950/60 px-3 py-1 rounded-md">
-                            <i class="fas fa-user-astronaut"></i> <span data-fr="Profil & Philosophie" data-en="Profile & Philosophy">Profil & Philosophie</span>
-                        </div>
-                        <h2 class="text-3xl font-bold text-white tracking-tight" data-fr="Autodidacte Passionné & Apprenant Continu (Life-Long Learner)" data-en="Self-Taught Enthusiast & Lifelong Learner">
-                            Autodidacte Passionné & Apprenant Continu (Life-Long Learner)
-                        </h2>
-                        <p class="text-slate-300 leading-relaxed font-light text-base" data-fr="Mon parcours repose sur un engagement profond envers l'apprentissage autonome et continu. Je me consacre à la compréhension intime des modèles théoriques et à leur traduction pratique en applications modernes." data-en="My journey relies on a deep commitment to autonomous and continuous learning. I dedicate myself to deeply understanding theoretical models and translating them into practical, modern applications.">
-                            Mon parcours repose sur un engagement profond envers l'apprentissage autonome et continu. Je me consacre à la compréhension intime des modèles théoriques et à leur traduction pratique en applications modernes.
-                        </p>
-                        <p class="text-slate-300 leading-relaxed font-light text-base" data-fr-html="Spécialisé dans l'écosystème <strong class='text-teal-400 font-semibold'>Google AI (Gemini, Google AI Studio, Vertex AI)</strong>, je conçois des workflows intelligents intégrant le <em class='text-teal-300'>Function Calling</em>, l'ingénierie de prompts contextuels et le RAG, adossés à des bases solides en <strong class='text-cyan-300 font-semibold'>mathématiques appliquées</strong>, calcul différentiel/intégral et analyse de données." data-en-html="Specializing in the <strong class='text-teal-400 font-semibold'>Google AI ecosystem (Gemini, Google AI Studio, Vertex AI)</strong>, I design intelligent workflows integrating <em class='text-teal-300'>Function Calling</em>, contextual prompt engineering, and RAG, backed by a strong foundation in <strong class='text-cyan-300 font-semibold'>applied mathematics</strong>, calculus, and data analysis.">
-                            Spécialisé dans l'écosystème <strong class="text-teal-400 font-semibold">Google AI (Gemini, Google AI Studio, Vertex AI)</strong>, je conçois des workflows intelligents intégrant le <em class="text-teal-300">Function Calling</em>, l'ingénierie de prompts contextuels et le RAG, adossés à des bases solides en <strong class="text-cyan-300 font-semibold">mathématiques appliquées</strong>, calcul différentiel/intégral et analyse de données.
-                        </p>
-                    </div>
-
-                    <div class="lg:col-span-4 grid grid-cols-2 gap-4">
-                        <div class="glass-card p-5 rounded-2xl text-center border border-slate-700/50">
-                            <div class="text-3xl font-extrabold text-teal-400 font-mono mb-1">7+</div>
-                            <div class="text-xs text-slate-400 font-medium" data-fr="Spécialisations Coursera" data-en="Coursera Specializations">Spécialisations Coursera</div>
-                        </div>
-                        <div class="glass-card p-5 rounded-2xl text-center border border-slate-700/50">
-                            <div class="text-3xl font-extrabold text-teal-300 font-mono mb-1">Gemini</div>
-                            <div class="text-xs text-slate-400 font-medium" data-fr="Spécialiste Google AI" data-en="Google AI Specialist">Spécialiste Google AI</div>
-                        </div>
-                        <div class="glass-card p-5 rounded-2xl text-center border border-slate-700/50">
-                            <div class="text-3xl font-extrabold text-cyan-400 font-mono mb-1">Kaggle</div>
-                            <div class="text-xs text-slate-400 font-medium" data-fr="Projets & Notebooks" data-en="Work & Notebooks">Projets & Notebooks</div>
-                        </div>
-                        <div class="glass-card p-5 rounded-2xl text-center border border-slate-700/50">
-                            <div class="text-3xl font-extrabold text-emerald-400 font-mono mb-1">Math</div>
-                            <div class="text-xs text-slate-400 font-medium" data-fr="Modélisation & Simulation" data-en="Modeling & Simulation">Modélisation & Simulation</div>
-                        </div>
-                    </div>
+            <div id="hero-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <!-- Badge Liouaï Digital Education -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-100/90 text-brand-900 dark:bg-brand-950/80 dark:text-brand-300 border border-brand-300 dark:border-brand-800 mb-8 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                    <span class="brand-title tracking-wider uppercase" data-i18n="hero.badge">Liouaï Digital Education</span>
                 </div>
-            </div>
-        </section>
 
-        <!-- Google AI Section -->
-        <section id="google-ai" class="scroll-mt-24 space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
-                <div>
-                    <div class="text-xs font-mono uppercase tracking-wider text-teal-400 font-semibold mb-1">
-                        <i class="fab fa-google mr-1"></i> <span data-fr="Expertise Clé" data-en="Core Expertise">Expertise Clé</span>
-                    </div>
-                    <h2 class="text-3xl font-bold text-white tracking-tight" data-fr="Spécialisation Google AI & Outils LLM" data-en="Google AI & LLM Tools Specialization">Spécialisation Google AI & Outils LLM</h2>
-                </div>
-                <p class="text-slate-400 text-sm max-w-md" data-fr="Conception et intégration d'architectures basées sur les modèles multimodaux de nouvelle génération de Google." data-en="Design and integration of architectures built on Google's next-generation multimodal models.">
-                    Conception et intégration d'architectures basées sur les modèles multimodaux de nouvelle génération de Google.
+                <!-- Titre Principal -->
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight mb-6">
+                    <span data-i18n="hero.title_part1">Révéler la beauté et la clarté</span> <br class="hidden sm:inline">
+                    <span class="text-brand-600 dark:text-brand-400 underline decoration-brand-300 dark:decoration-brand-700 underline-offset-8" data-i18n="hero.title_part2">des Mathématiques</span>.
+                </h1>
+
+                <!-- Sous-titre -->
+                <p class="text-lg sm:text-2xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-10 text-justify sm:text-center" data-i18n="hero.subtitle">
+                    Auteur didactique, passeur de savoirs et concepteur de supports d'apprentissage. Je crée des passerelles vivantes entre intuition géométrique, élégance formelle et plaisir authentique de comprendre.
                 </p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-teal-400 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl font-bold">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Google AI Studio & Gemini API</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed" data-fr="Prototypage rapide, création de prompts système structurés, réglage de la température et gestion du contexte multimodal avec Gemini 1.5/2.0 Flash & Pro." data-en="Rapid prototyping, structured system prompt design, temperature tuning, and multimodal context management with Gemini 1.5/2.0 Flash & Pro.">
-                            Prototypage rapide, création de prompts système structurés, réglage de la température et gestion du contexte multimodal avec Gemini 1.5/2.0 Flash & Pro.
-                        </p>
-                        <ul class="text-xs font-mono text-slate-400 space-y-2">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-teal-400"></i> Structured JSON Output</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-teal-400"></i> Multi-modal Vision & Audio</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-teal-400"></i> System Instructions Fine-tuning</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-cyan-400 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl font-bold">
-                            <i class="fas fa-code-branch"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Function Calling & Agentic Tools</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed" data-fr="Interfaçage dynamique entre les capacités du LLM et des fonctions Python/JS externes, permettant d'exécuter du code, d'interroger des bases de données et d'automatiser des flux." data-en="Dynamic interfacing between LLM capabilities and external Python/JS functions, enabling code execution, database querying, and workflow automation.">
-                            Interfaçage dynamique entre les capacités du LLM et des fonctions Python/JS externes, permettant d'exécuter du code, d'interroger des bases de données et d'automatiser des flux.
-                        </p>
-                        <ul class="text-xs font-mono text-slate-400 space-y-2">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> OpenAPI / Schema Declarations</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Tool Invocation Loops</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> Custom Python Calculators & APIs</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="glass-card p-6 rounded-2xl border-t-2 border-t-emerald-400 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl font-bold">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Vertex AI & RAG Pipelines</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed" data-fr="Mise en place de systèmes de recherche d'information augmentée par la génération (RAG), vectorisation de documents scientifiques et déploiement cloud." data-en="Implementation of Retrieval-Augmented Generation (RAG) systems, scientific document vectorization, and cloud deployment.">
-                            Mise en place de systèmes de recherche d'information augmentée par la génération (RAG), vectorisation de documents scientifiques et déploiement cloud.
-                        </p>
-                        <ul class="text-xs font-mono text-slate-400 space-y-2">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Text Embeddings & Search</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Google Cloud Integration</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Document Parsing & Analysis</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Kaggle Work Section -->
-        <section id="kaggle" class="scroll-mt-24 space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
-                <div>
-                    <div class="text-xs font-mono uppercase tracking-wider text-teal-400 font-semibold mb-1">
-                        <i class="fas fa-microchip mr-1"></i> Data Science & Machine Learning
-                    </div>
-                    <h2 class="text-3xl font-bold text-white tracking-tight">Kaggle Work (`kaggle_work`)</h2>
-                </div>
-                <div class="flex items-center gap-3">
-                    <a href="https://github.com/cbohnert67/kaggle_work" target="_blank" class="text-xs font-mono px-3 py-1.5 rounded-lg glass-panel hover:bg-slate-800 text-teal-300 border border-teal-500/30 flex items-center gap-2">
-                        <i class="fab fa-github"></i> cbohnert67/kaggle_work
+                <!-- Appels à l'action -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#vocation" class="px-8 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-600/25 hover:shadow-brand-600/35 transition duration-200 transform hover:-translate-y-0.5" data-i18n="hero.cta_vocation">
+                        Découvrir ma vocation
+                    </a>
+                    <a href="#brand" class="px-8 py-3.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-800 dark:text-white border border-gray-300 dark:border-slate-700 font-semibold shadow-sm transition duration-200 transform hover:-translate-y-0.5" data-i18n="hero.cta_brand">
+                        L'univers Liouaï
                     </a>
                 </div>
             </div>
-
-            <!-- Featured Project Card: Smartphone Recommendation System -->
-            <div class="glass-card p-6 sm:p-8 rounded-3xl border-2 border-teal-500/40 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
-                    <div class="space-y-3 max-w-3xl">
-                        <div class="flex flex-wrap items-center gap-3">
-                            <span class="px-3 py-1 rounded-full bg-teal-950/80 text-teal-300 text-xs font-mono border border-teal-800/60 inline-flex items-center gap-1.5">
-                                <i class="fas fa-star text-yellow-400"></i> <span data-fr="Projet En Vedette" data-en="Featured Project">Projet En Vedette</span>
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Application Web & Algorithme de Recommandation" data-en="Web App & Recommendation Algorithm">Application Web & Algorithme de Recommandation</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-bold text-white group-hover:text-teal-300 transition-colors">
-                            Smartphone Recommendation System
-                        </h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-light" data-fr="Un outil interactif d'analyse et de recommandation de smartphones basé sur un filtrage intelligent et une modélisation multi-critères. Explorez les spécifications techniques, évaluez le rapport qualité/prix et obtenez des recommandations sur mesure." data-en="An interactive smartphone analysis and recommendation tool based on intelligent filtering and multi-criteria modeling. Explore technical specs, evaluate value for money, and receive tailored recommendations.">
-                            Un outil interactif d'analyse et de recommandation de smartphones basé sur un filtrage intelligent et une modélisation multi-critères. Explorez les spécifications techniques, évaluez le rapport qualité/prix et obtenez des recommandations sur mesure.
-                        </p>
-                        <div class="flex flex-wrap gap-2 pt-1 text-xs font-mono text-slate-400">
-                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Python / Data Mining</span>
-                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Web Interactive UI</span>
-                            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Scoring & Filtering</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto shrink-0">
-                        <a href="https://cbohnert67.github.io/kaggle_work/smartphone_recommendation_system/" target="_blank" class="px-6 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-teal-600/30">
-                            <i class="fas fa-external-link-alt"></i> <span data-fr="Ouvrir l'Application Web" data-en="Open Web Application">Ouvrir l'Application Web</span>
-                        </a>
-                        <a href="https://github.com/cbohnert67/kaggle_work/tree/main/smartphone_recommendation_system" target="_blank" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm flex items-center justify-center gap-2 transition-all">
-                            <i class="fab fa-github"></i> <span data-fr="Code Source" data-en="Source Code">Code Source</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </section>
 
-        <!-- Modeling & Simulation Section -->
-        <section id="simulations" class="scroll-mt-24 space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
-                <div>
-                    <div class="text-xs font-mono uppercase tracking-wider text-teal-400 font-semibold mb-1">
-                        <i class="fas fa-square-root-variable mr-1"></i> Applied Mathematics
-                    </div>
-                    <h2 class="text-3xl font-bold text-white tracking-tight">Modeling & Simulation Explorations</h2>
-                </div>
-                <div class="flex items-center gap-3">
-                    <a href="https://github.com/cbohnert67/modeling_and_simulation_explorations" target="_blank" class="text-xs font-mono px-3 py-1.5 rounded-lg glass-panel hover:bg-slate-800 text-teal-300 border border-teal-500/30 flex items-center gap-2">
-                        <i class="fab fa-github"></i> cbohnert67/modeling_and_simulation_explorations
-                    </a>
-                </div>
-            </div>
-
-            <!-- Grid of Modeling Explorations -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Sim Item 1 -->
-                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl font-bold">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-fr="Calcul Différentiel & Intégral" data-en="Differential & Integral Calculus">Calcul Différentiel & Intégral</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed" data-fr="Résolution numérique d'équations différentielles ordinaires (EDO), intégration par méthodes adaptatives (RK4) et modélisation de taux de croissance à partir de données réelles." data-en="Numerical resolution of ordinary differential equations (ODEs), adaptive integration methods (RK4), and growth rate modeling from real-world data.">
-                        Résolution numérique d'équations différentielles ordinaires (EDO), intégration par méthodes adaptatives (RK4) et modélisation de taux de croissance à partir de données réelles.
-                    </p>
-                </div>
-
-                <!-- Sim Item 2 -->
-                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl font-bold">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-fr="Systèmes Complexes & Graphes" data-en="Complex Systems & Graphs">Systèmes Complexes & Graphes</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed" data-fr="Simulation de propagation sur réseaux, algorithmes de centralité, détection de communautés et dynamique d'états discrets." data-en="Network propagation simulation, centrality algorithms, community detection, and discrete state dynamics.">
-                        Simulation de propagation sur réseaux, algorithmes de centralité, détection de communautés et dynamique d'états discrets.
-                    </p>
-                </div>
-
-                <!-- Sim Item 3 -->
-                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl font-bold">
-                        <i class="fas fa-dice-d20"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white" data-fr="Processus Stochastiques" data-en="Stochastic Processes">Processus Stochastiques</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed" data-fr="Simulations de Monte-Carlo, chaînes de Markov, distributions de probabilité stationnaires et processus de diffusion de particules." data-en="Monte Carlo simulations, Markov chains, stationary probability distributions, and particle diffusion processes.">
-                        Simulations de Monte-Carlo, chaînes de Markov, distributions de probabilité stationnaires et processus de diffusion de particules.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications" class="scroll-mt-24 space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
-                <div>
-                    <div class="text-xs font-mono uppercase tracking-wider text-yellow-400 font-semibold mb-1">
-                        <i class="fas fa-certificate mr-1"></i> Continuous Education & Academic Degrees
-                    </div>
-                    <h2 class="text-3xl font-bold text-white tracking-tight" data-fr="Diplômes, Spécialisations & Certifications" data-en="Degrees, Specializations & Certifications">Diplômes, Spécialisations & Certifications</h2>
-                </div>
+        <section id="vocation" class="py-20 sm:py-28 bg-white dark:bg-slate-900 transition-colors duration-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <!-- Category Filter Buttons -->
-                <div class="flex flex-wrap gap-2 text-xs font-mono" id="certFilters">
-                    <button data-filter="all" class="px-3 py-1.5 rounded-lg bg-teal-600 text-white font-medium filter-btn active" data-fr="Toutes" data-en="All">Toutes</button>
-                    <button data-filter="diploma" class="px-3 py-1.5 rounded-lg glass-panel hover:bg-slate-800 text-slate-300 filter-btn" data-fr="Diplômes" data-en="Degrees">Diplômes</button>
-                    <button data-filter="google" class="px-3 py-1.5 rounded-lg glass-panel hover:bg-slate-800 text-slate-300 filter-btn" data-fr="Google AI" data-en="Google AI">Google AI</button>
-                    <button data-filter="math" class="px-3 py-1.5 rounded-lg glass-panel hover:bg-slate-800 text-slate-300 filter-btn" data-fr="Maths" data-en="Math">Maths</button>
-                    <button data-filter="python" class="px-3 py-1.5 rounded-lg glass-panel hover:bg-slate-800 text-slate-300 filter-btn" data-fr="Python" data-en="Python">Python</button>
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase mb-2" data-i18n="vocation.label">Vision Pédagogique</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white" data-i18n="vocation.title">La Passion de la Transmission</h3>
                 </div>
+
+                <div class="grid md:grid-cols-12 gap-10 items-stretch">
+                    
+                    <!-- Récit de vocation -->
+                    <div class="md:col-span-7 space-y-5 text-gray-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed text-justify">
+                        <p data-i18n="vocation.p1">
+                            Les mathématiques ne se réduisent pas à une suite mécanique de recettes ou de formules abstraites : elles incarnent une aventure humaine de la pensée, une quête d'harmonie universelle et une formidable école de liberté intellectuelle.
+                        </p>
+                        <p data-i18n="vocation.p2">
+                            Animé par un amour profond pour l'analyse, l'algèbre et la géométrie, j'aborde chaque théorème comme une histoire à partager. Transmettre ne consiste pas à simplifier à outrance jusqu'à dénaturer le sens, mais à concevoir les échafaudages didactiques qui rendent le sommet accessible à chacun.
+                        </p>
+                        <p data-i18n="vocation.p3">
+                            À travers mes accompagnements pédagogiques et mes créations d'ouvrages, mon engagement est d'aider les apprenants à surmonter les blocages, à reconstruire une relation de confiance avec l'abstraction et à ressentir l'immense satisfaction de la démonstration limpide.
+                        </p>
+                    </div>
+
+                    <!-- Principes Didactiques -->
+                    <div class="md:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-brand-50/70 dark:bg-slate-800/80 border border-brand-100 dark:border-slate-700 shadow-inner">
+                        <div>
+                            <h4 class="text-xl font-bold text-brand-900 dark:text-brand-300 mb-6 flex items-center gap-2">
+                                <span class="text-brand-600 dark:text-brand-400 text-xl font-mono">§</span>
+                                <span data-i18n="vocation.rules_title">Piliers Didactiques</span>
+                            </h4>
+
+                            <ul class="space-y-4 text-sm text-gray-700 dark:text-slate-300">
+                                <li class="flex items-start gap-3">
+                                    <span class="p-1 rounded bg-brand-200/60 dark:bg-brand-900/60 text-brand-800 dark:text-brand-300 mt-0.5">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    </span>
+                                    <div>
+                                        <strong class="font-semibold text-gray-900 dark:text-white" data-i18n="vocation.rule1_title">L'intuition avant le symbole :</strong>
+                                        <span data-i18n="vocation.rule1_desc"> Donner à voir et à éprouver la nécessité d'un concept avant de formaliser son énoncé.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="p-1 rounded bg-brand-200/60 dark:bg-brand-900/60 text-brand-800 dark:text-brand-300 mt-0.5">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    </span>
+                                    <div>
+                                        <strong class="font-semibold text-gray-900 dark:text-white" data-i18n="vocation.rule2_title">Rigueur & Clarté Graphique :</strong>
+                                        <span data-i18n="vocation.rule2_desc"> Soigner la mise en page et les figures pour libérer la charge cognitive de l'élève.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="p-1 rounded bg-brand-200/60 dark:bg-brand-900/60 text-brand-800 dark:text-brand-300 mt-0.5">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    </span>
+                                    <div>
+                                        <strong class="font-semibold text-gray-900 dark:text-white" data-i18n="vocation.rule3_title">Autonomie & Esprit Critique :</strong>
+                                        <span data-i18n="vocation.rule3_desc"> Encourager le questionnement permanent plutôt que la récitation passive.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-brand-200/60 dark:border-slate-700 text-xs font-mono text-brand-700 dark:text-brand-400">
+                            &gt; Comprendre en profondeur pour penser avec liberté.
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
+        </section>
 
-            <!-- Certifications List Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="certGrid">
+        <section id="brand" class="py-20 sm:py-28 bg-gray-50/70 dark:bg-slate-950 transition-colors duration-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-gradient-to-br from-brand-950 via-slate-900 to-brand-900 text-white rounded-3xl p-8 sm:p-14 shadow-2xl border border-brand-700/40 relative overflow-hidden">
+                    
+                    <!-- Motif d'arrière-plan discret -->
+                    <div class="absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-brand-500/10 blur-3xl pointer-events-none"></div>
 
-                <!-- Academic Diploma: Studi / HETIC Bachelor -->
-                <div class="cert-card cert-diploma cert-python glass-card p-6 rounded-2xl border-l-4 border-l-teal-400 flex flex-col justify-between md:col-span-2">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
-                                <i class="fas fa-user-graduate"></i> Studi & HETIC
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Obtenu : Mars 2024" data-en="Obtained: March 2024">Obtenu : Mars 2024</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white" data-fr="Bachelor Développeur d'Application Python" data-en="Bachelor Python Application Developer">Bachelor Développeur d'Application Python</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed" data-fr="Diplôme accrédité certifiant la maîtrise du développement logiciel Python, l'architecture d'applications, le génie logiciel, la modélisation de bases de données et la conception de solutions web et orientées objet." data-en="Accredited degree certifying mastery in Python software development, application architecture, software engineering, database modeling, and web/OOP solution design.">
-                            Diplôme accrédité certifiant la maîtrise du développement logiciel Python, l'architecture d'applications, le génie logiciel, la modélisation de bases de données et la conception de solutions web et orientées objet.
+                    <div class="relative z-10 max-w-3xl">
+                        <span class="inline-block py-1 px-3 rounded-full text-xs font-bold tracking-widest text-brand-300 bg-brand-900/80 border border-brand-500/30 uppercase brand-title mb-4" data-i18n="brand.badge">
+                            La Maison d'Édition & de Didactique
+                        </span>
+
+                        <h3 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6 brand-title">
+                            Liouaï Digital Education
+                        </h3>
+
+                        <p class="text-base sm:text-lg text-slate-200 leading-relaxed mb-6 text-justify" data-i18n="brand.p1">
+                            Fondé avec l'ambition de redonner ses lettres de noblesse à l'écrit mathématique, <strong>Liouaï Digital Education</strong> est un projet indépendant dédié à la conception de manuels d'étude, de fascicules raisonnés et de ressources didactiques ouvertes.
                         </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono" data-fr="Diplôme à finalité professionnelle" data-en="Professional qualification degree">Diplôme à finalité professionnelle</span>
-                        <a href="https://github.com/cbohnert67/cbohnert67.github.io/blob/main/diplomes/C%C3%A9dric_BOHNERT_DIPL%C3%94ME_STUDI_MARS_24_011_Dipl%C3%B4me_Studi_HETIC.pdf" target="_blank" class="text-xs font-semibold text-teal-400 hover:underline flex items-center gap-2">
-                            <span data-fr="Consulter le Diplôme (PDF)" data-en="View Diploma (PDF)">Consulter le Diplôme (PDF)</span> <i class="fas fa-file-pdf text-red-400 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Cert 1: Google AI -->
-                <div class="cert-card cert-google glass-card p-6 rounded-2xl border-l-4 border-l-teal-400 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
-                                <i class="fab fa-google"></i> Google
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Août 2026" data-en="Completed: August 2026">Complété : Août 2026</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Google AI Professional Certificate</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Spécialisation professionnelle axée sur la maîtrise des fondamentaux de l'IA, l'ingénierie de prompts contextuels et le développement d'applications avec les outils Google AI." data-en="Professional specialization focusing on AI fundamentals, contextual prompt engineering, and application development using Google AI tools.">
-                            Spécialisation professionnelle axée sur la maîtrise des fondamentaux de l'IA, l'ingénierie de prompts contextuels et le développement d'applications avec les outils Google AI.
+                        <p class="text-base sm:text-lg text-slate-200 leading-relaxed mb-8 text-justify" data-i18n="brand.p2">
+                            Chaque support édité sous le label Liouaï privilégie la clarté explicative, le soin typographique et l'articulation logique des concepts. L'objectif est d'offrir aux étudiants, aux autodidactes et aux enseignants des compagnons de travail exigeants, beaux et stimulants.
                         </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">ID: Google AI Studio / Gemini</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-teal-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Cert 2: Math for ML -->
-                <div class="cert-card cert-math glass-card p-6 rounded-2xl border-l-4 border-l-cyan-600 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">
-                                <i class="fas fa-university"></i> Imperial College London
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Septembre 2025" data-en="Completed: September 2025">Complété : Septembre 2025</span>
+                        <div class="grid sm:grid-cols-3 gap-4 pt-4 border-t border-brand-700/40">
+                            <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                                <h5 class="text-sm font-bold text-brand-300 mb-1" data-i18n="brand.feat1_title">Édition Soignée</h5>
+                                <p class="text-xs text-slate-300" data-i18n="brand.feat1_desc">Mise en page haute précision, rigueur typographique et élégance visuelle.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                                <h5 class="text-sm font-bold text-brand-300 mb-1" data-i18n="brand.feat2_title">Pédagogie Émancipatrice</h5>
+                                <p class="text-xs text-slate-300" data-i18n="brand.feat2_desc">Fascicules progressifs pour vaincre l'inhibition devant l'abstraction.</p>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                                <h5 class="text-sm font-bold text-brand-300 mb-1" data-i18n="brand.feat3_title">Partage Ouvert</h5>
+                                <p class="text-xs text-slate-300" data-i18n="brand.feat3_desc">Ressources d'étude accessibles pour les passionnés et curieux de sciences.</p>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Mathematics for Machine Learning Specialization</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Algèbre linéaire, calcul multivarié et analyse en composantes principales (ACP) appliqués aux fondements théoriques des algorithmes d'apprentissage automatique." data-en="Linear algebra, multivariate calculus, and Principal Component Analysis (PCA) applied to the theoretical foundations of machine learning algorithms.">
-                            Algèbre linéaire, calcul multivarié et analyse en composantes principales (ACP) appliqués aux fondements théoriques des algorithmes d'apprentissage automatique.
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">Linear Algebra & Multivariate Calculus</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-cyan-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cert 3: Integral Calculus -->
-                <div class="cert-card cert-math glass-card p-6 rounded-2xl border-l-4 border-l-teal-600 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
-                                <i class="fas fa-university"></i> Johns Hopkins University
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Septembre 2025" data-en="Completed: September 2025">Complété : Septembre 2025</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Integral Calculus through Data and Modeling</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Méthodes d'intégration numérique, accumulation de taux de variation et modélisation de fonctions continues à partir de jeux de données expérimentales." data-en="Numerical integration methods, rate accumulation modeling, and continuous functions derived from experimental datasets.">
-                            Méthodes d'intégration numérique, accumulation de taux de variation et modélisation de fonctions continues à partir de jeux de données expérimentales.
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">Data Integration & Modeling</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-teal-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cert 4: Differential Calculus -->
-                <div class="cert-card cert-math glass-card p-6 rounded-2xl border-l-4 border-l-teal-600 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
-                                <i class="fas fa-university"></i> Johns Hopkins University
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Avril 2025" data-en="Completed: April 2025">Complété : Avril 2025</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Differential Calculus through Data and Modeling</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Analyse des dérivées, optimisation dynamique, modèles de croissance et équations différentielles appliquées aux systèmes physiques et économiques." data-en="Derivative analysis, dynamic optimization, growth models, and differential equations applied to physical and economic systems.">
-                            Analyse des dérivées, optimisation dynamique, modèles de croissance et équations différentielles appliquées aux systèmes physiques et économiques.
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">Rates of Change & Optimization</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-teal-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cert 5: ASU Python -->
-                <div class="cert-card cert-python glass-card p-6 rounded-2xl border-l-4 border-l-emerald-600 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
-                                <i class="fas fa-university"></i> Arizona State University
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Août 2025" data-en="Completed: August 2025">Complété : Août 2025</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Python: A Guided Journey from Introduction to Application</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Développement guidé d'applications avancées, programmation orientée objet (POO), manipulation de structures de données complexes et intégration de modules." data-en="Guided development of advanced applications, Object-Oriented Programming (OOP), complex data structure manipulation, and module integration.">
-                            Développement guidé d'applications avancées, programmation orientée objet (POO), manipulation de structures de données complexes et intégration de modules.
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">Software Architecture & Applications</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-emerald-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cert 6: UMich Python 3 -->
-                <div class="cert-card cert-python glass-card p-6 rounded-2xl border-l-4 border-l-yellow-600 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-yellow-950 text-yellow-300 border border-yellow-800">
-                                <i class="fas fa-university"></i> University of Michigan
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Novembre 2023" data-en="Completed: November 2023">Complété : Novembre 2023</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Python 3 Programming Specialization</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Fondations solides en Python 3, traitement de documents JSON/APIs, bibliothèques Pillow (imagerie), Tesseract OCR et scraping web structuré." data-en="Solid Python 3 foundations, JSON/API parsing, Pillow image processing, Tesseract OCR, and structured web scraping.">
-                            Fondations solides en Python 3, traitement de documents JSON/APIs, bibliothèques Pillow (imagerie), Tesseract OCR et scraping web structuré.
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">APIs, OCR & Computer Vision basics</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-yellow-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cert 7: CU Boulder Essential Math -->
-                <div class="cert-card cert-math glass-card p-6 rounded-2xl border-l-4 border-l-teal-500 flex flex-col justify-between md:col-span-2">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center gap-1.5 text-xs font-mono px-2.5 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800">
-                                <i class="fas fa-university"></i> University of Colorado Boulder
-                            </span>
-                            <span class="text-xs font-mono text-slate-400" data-fr="Complété : Novembre 2023" data-en="Completed: November 2023">Complété : Novembre 2023</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Expressway to Data Science: Essential Math Specialization</h3>
-                        <p class="text-slate-300 text-sm" data-fr="Compétences mathématiques essentielles pour la science des données : algèbre matricielle, calcul des probabilités, statistiques inférentielles et théorie des ensembles." data-en="Essential mathematical skills for data science: matrix algebra, probability theory, inferential statistics, and set theory.">
-                            Compétences mathématiques essentielles pour la science des données : algèbre matricielle, calcul des probabilités, statistiques inférentielles et théorie des ensembles.
-                        </p>
-                    </div>
-                    <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-mono">Data Science Fundamentals</span>
-                        <a href="https://www.coursera.org" target="_blank" class="text-xs font-semibold text-teal-400 hover:underline flex items-center gap-1">
-                            <span data-fr="Vérifier" data-en="Verify">Vérifier</span> <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
                     </div>
                 </div>
 
             </div>
         </section>
 
+        <section id="creation" class="py-20 sm:py-28 bg-white dark:bg-slate-900 transition-colors duration-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-16">
+                    <h2 class="text-xs font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase mb-2" data-i18n="skills.label">Savoir-Faire</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white" data-i18n="skills.title">Création de Supports & Médiation</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <!-- Domaine 1 : Édition Scientifique & LaTeX -->
+                    <div class="p-8 rounded-2xl bg-gray-50 dark:bg-slate-800/60 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6 font-mono font-bold text-lg">
+                                TeX
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-i18n="skills.card1_title">Édition & Typographie Scientifique</h4>
+                            <p class="text-sm text-gray-600 dark:text-slate-300 leading-relaxed mb-6" data-i18n="skills.card1_desc">
+                                Conception de polycopiés de cours, fascicules d'exercices corrigés détaillés et manuels de révision répondant aux standards esthétiques et éditoriaux les plus stricts.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">LaTeX / TikZ</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Typst & Quarto</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Livrets d'exercices</span>
+                        </div>
+                    </div>
+
+                    <!-- Domaine 2 : Visualisation Mathématique & Manim -->
+                    <div class="p-8 rounded-2xl bg-gray-50 dark:bg-slate-800/60 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-i18n="skills.card2_title">Médiation Visuelle & Dynamique</h4>
+                            <p class="text-sm text-gray-600 dark:text-slate-300 leading-relaxed mb-6" data-i18n="skills.card2_desc">
+                                Scénarisation d'animations géométriques pour matérialiser les notions de limites, d'invariance, de transformations vectorielles et rendre palpable la géométrie dans l'espace.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Manim (Animations)</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Storyboarding didactique</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Figures vectorielles</span>
+                        </div>
+                    </div>
+
+                    <!-- Domaine 3 : Didactique & Accompagnement -->
+                    <div class="p-8 rounded-2xl bg-gray-50 dark:bg-slate-800/60 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-i18n="skills.card3_title">Didactique & Remédiation</h4>
+                            <p class="text-sm text-gray-600 dark:text-slate-300 leading-relaxed mb-6" data-i18n="skills.card3_desc">
+                                Diagnostic individualisé des obstacles cognitifs, progression adaptée au rythme de l'apprenant, remédiation ciblée et soutien à l'autodidaxie pour adolescents et adultes.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Pédagogie différenciée</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Accompagnement d'adultes</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-200 dark:border-slate-600 pill-badge">Méthodologie d'étude</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 sm:py-28 bg-gray-50/70 dark:bg-slate-950 transition-colors duration-200 border-t border-gray-200/60 dark:border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <h2 class="text-xs font-bold tracking-widest text-brand-600 dark:text-brand-400 uppercase mb-2" data-i18n="contact.label">Échange & Collaboration</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-6" data-i18n="contact.title">Engageons la discussion</h3>
+                
+                <p class="text-lg text-gray-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed" data-i18n="contact.desc">
+                    Vous souhaitez échanger autour d'un projet éditorial, concevoir des supports didactiques pour votre structure ou en savoir plus sur les publications Liouaï ? C'est toujours un plaisir de dialoguer.
+                </p>
+
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <!-- Bouton Email Direct -->
+                    <a href="mailto:liouai.digital.education@gmail.com" class="px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-600/20 hover:shadow-brand-600/30 transition flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span data-i18n="contact.email_btn">Envoyer un message</span>
+                    </a>
+
+                    <!-- Bouton LinkedIn -->
+                    <a href="https://www.linkedin.com/in/cedricbohnert/" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-800 dark:text-slate-200 border border-gray-300 dark:border-slate-700 font-semibold shadow-sm transition flex items-center gap-2">
+                        <svg class="w-5 h-5 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.57-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+
+                <!-- Copier l'adresse avec retour visuel -->
+                <div class="mt-8 flex justify-center items-center gap-2">
+                    <button id="copy-email-btn" class="inline-flex items-center gap-1.5 text-xs font-mono text-gray-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition cursor-pointer">
+                        <span>liouai.digital.education@gmail.com</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </button>
+                    <span id="copy-feedback" class="text-xs text-brand-600 dark:text-brand-400 font-semibold opacity-0 transition-opacity duration-300">Copié !</span>
+                </div>
+
+            </div>
+        </section>
     </main>
 
-    <!-- Footer Section -->
-    <footer class="relative z-10 glass-panel border-t border-slate-800/80 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white font-bold text-sm">
-                    CB
-                </div>
-                <span class="text-sm font-semibold text-slate-300">Cédric Bohnert — Grand Est, France</span>
+    <footer class="bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-slate-800/80 py-8 transition-colors duration-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-slate-400 text-center sm:text-left">
+            <div>
+                <p>&copy; <span id="current-year"></span> Cédric Bohnert. <span class="brand-title uppercase font-semibold text-brand-600 dark:text-brand-400">Liouaï Digital Education</span>.</p>
+                <p class="text-[11px] text-gray-400 dark:text-slate-500 mt-0.5" data-i18n="footer.tagline">Partage, rigueur & transmission des savoirs mathématiques.</p>
             </div>
-
-            <div class="flex items-center gap-6 text-slate-400 text-lg">
-                <a href="https://github.com/cbohnert67" target="_blank" class="hover:text-teal-400 transition-colors" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.coursera.org" target="_blank" class="hover:text-teal-400 transition-colors" title="Coursera">
-                    <i class="fas fa-graduation-cap"></i>
-                </a>
-                <a href="https://www.kaggle.com" target="_blank" class="hover:text-cyan-400 transition-colors" title="Kaggle">
-                    <i class="fab fa-kaggle"></i>
-                </a>
-            </div>
-
-            <div class="text-xs text-slate-500 font-mono">
-                © 2026 Cédric Bohnert | Life-Long Learning Portfolio
+            <div class="flex space-x-6">
+                <a href="#vocation" class="hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.vocation">Vocation</a>
+                <a href="#brand" class="hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.brand">Liouaï</a>
+                <a href="#creation" class="hover:text-brand-600 dark:hover:text-brand-400 transition" data-i18n="nav.creation">Supports</a>
+                <a href="https://www.linkedin.com/in/cedricbohnert/" target="_blank" class="hover:text-brand-600 dark:hover:text-brand-400 transition">LinkedIn</a>
             </div>
         </div>
     </footer>
 
-    <!-- Details Modal Overlay -->
-    <div id="detailsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-        <div class="glass-panel w-full max-w-lg p-6 rounded-2xl border border-slate-700 shadow-2xl relative space-y-4">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
-                <i class="fas fa-times text-lg"></i>
-            </button>
-            <h3 id="modalTitle" class="text-xl font-bold text-white pr-8"></h3>
-            <p id="modalBody" class="text-slate-300 text-sm leading-relaxed font-light"></p>
-            <div class="pt-4 border-t border-slate-800 flex justify-end">
-                <button onclick="closeModal()" class="px-4 py-2 rounded-lg bg-teal-600 text-white font-medium text-xs" data-fr="Fermer" data-en="Close">Fermer</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Language Toggle Controller
-        let currentLang = localStorage.getItem('lang') || 'fr';
-
-        const langToggleBtn = document.getElementById('langToggleBtn');
-        const langToggleBtnMobile = document.getElementById('langToggleBtnMobile');
-        const langLabel = document.getElementById('langLabel');
-        const langLabelMobile = document.getElementById('langLabelMobile');
-
-        function updateLanguageUI() {
-            // Update Toggle Button Labels
-            if (langLabel) langLabel.innerText = currentLang.toUpperCase();
-            if (langLabelMobile) langLabelMobile.innerText = currentLang.toUpperCase();
-            document.documentElement.lang = currentLang;
-
-            // Translate Text Elements
-            document.querySelectorAll('[data-fr]').forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
-                if (text) el.innerText = text;
-            });
-
-            // Translate HTML Elements (with inner formatting tags)
-            document.querySelectorAll('[data-fr-html]').forEach(el => {
-                const htmlContent = el.getAttribute(`data-${currentLang}-html`);
-                if (htmlContent) el.innerHTML = htmlContent;
-            });
-
-            // Update Dynamic Graph Toggle Text if present
-            const graphBtn = document.getElementById('toggleGraphMode');
-            if (graphBtn) {
-                if (graphMode === 'network') {
-                    graphBtn.innerText = currentLang === 'fr' ? 'Mode: Réseau Neural' : 'Mode: Neural Network';
-                } else {
-                    graphBtn.innerText = currentLang === 'fr' ? 'Mode: Onde Mathématique' : 'Mode: Mathematical Wave';
-                }
+        // 1. Dictionnaire complet des traductions bilingues
+        const translations = {
+            fr: {
+                "nav.vocation": "Vocation",
+                "nav.brand": "Liouaï",
+                "nav.creation": "Supports & Didactique",
+                "nav.contact": "Contact",
+                "hero.badge": "Liouaï Digital Education",
+                "hero.title_part1": "Révéler la beauté et la clarté",
+                "hero.title_part2": "des Mathématiques",
+                "hero.subtitle": "Auteur didactique, passeur de savoirs et concepteur de supports d'apprentissage. Je crée des passerelles vivantes entre intuition géométrique, élégance formelle et plaisir authentique de comprendre.",
+                "hero.cta_vocation": "Découvrir ma vocation",
+                "hero.cta_brand": "L'univers Liouaï",
+                "vocation.label": "Vision Pédagogique",
+                "vocation.title": "La Passion de la Transmission",
+                "vocation.p1": "Les mathématiques ne se réduisent pas à une suite mécanique de recettes ou de formules abstraites : elles incarnent une aventure humaine de la pensée, une quête d'harmonie universelle et une formidable école de liberté intellectuelle.",
+                "vocation.p2": "Animé par un amour profond pour l'analyse, l'algèbre et la géométrie, j'aborde chaque théorème comme une histoire à partager. Transmettre ne consiste pas à simplifier à outrance jusqu'à dénaturer le sens, mais à concevoir les échafaudages didactiques qui rendent le sommet accessible à chacun.",
+                "vocation.p3": "À travers mes accompagnements pédagogiques et mes créations d'ouvrages, mon engagement est d'aider les apprenants à surmonter les blocages, à reconstruire une relation de confiance avec l'abstraction et à ressentir l'immense satisfaction de la démonstration limpide.",
+                "vocation.rules_title": "Piliers Didactiques",
+                "vocation.rule1_title": "L'intuition avant le symbole :",
+                "vocation.rule1_desc": " Donner à voir et à éprouver la nécessité d'un concept avant de formaliser son énoncé.",
+                "vocation.rule2_title": "Rigueur & Clarté Graphique :",
+                "vocation.rule2_desc": " Soigner la mise en page et les figures pour libérer la charge cognitive de l'élève.",
+                "vocation.rule3_title": "Autonomie & Esprit Critique :",
+                "vocation.rule3_desc": " Encourager le questionnement permanent plutôt que la récitation passive.",
+                "brand.badge": "La Maison d'Édition & de Didactique",
+                "brand.p1": "Fondé avec l'ambition de redonner ses lettres de noblesse à l'écrit mathématique, <strong>Liouaï Digital Education</strong> est un projet indépendant dédié à la conception de manuels d'étude, de fascicules raisonnés et de ressources didactiques ouvertes.",
+                "brand.p2": "Chaque support édité sous le label Liouaï privilégie la clarté explicative, le soin typographique et l'articulation logique des concepts. L'objectif est d'offrir aux étudiants, aux autodidactes et aux enseignants des compagnons de travail exigeants, beaux et stimulants.",
+                "brand.feat1_title": "Édition Soignée",
+                "brand.feat1_desc": "Mise en page haute précision, rigueur typographique et élégance visuelle.",
+                "brand.feat2_title": "Pédagogie Émancipatrice",
+                "brand.feat2_desc": "Fascicules progressifs pour vaincre l'inhibition devant l'abstraction.",
+                "brand.feat3_title": "Partage Ouvert",
+                "brand.feat3_desc": "Ressources d'étude accessibles pour les passionnés et curieux de sciences.",
+                "skills.label": "Savoir-Faire",
+                "skills.title": "Création de Supports & Médiation",
+                "skills.card1_title": "Édition & Typographie Scientifique",
+                "skills.card1_desc": "Conception de polycopiés de cours, fascicules d'exercices corrigés détaillés et manuels de révision répondant aux standards esthétiques et éditoriaux les plus stricts.",
+                "skills.card2_title": "Médiation Visuelle & Dynamique",
+                "skills.card2_desc": "Scénarisation d'animations géométriques pour matérialiser les notions de limites, d'invariance, de transformations vectorielles et rendre palpable la géométrie dans l'espace.",
+                "skills.card3_title": "Didactique & Remédiation",
+                "skills.card3_desc": "Diagnostic individualisé des obstacles cognitifs, progression adaptée au rythme de l'apprenant, remédiation ciblée et soutien à l'autodidaxie pour adolescents et adultes.",
+                "contact.label": "Échange & Collaboration",
+                "contact.title": "Engageons la discussion",
+                "contact.desc": "Vous souhaitez échanger autour d'un projet éditorial, concevoir des supports didactiques pour votre structure ou en savoir plus sur les publications Liouaï ? C'est toujours un plaisir de dialoguer.",
+                "contact.email_btn": "Envoyer un message",
+                "contact.copied": "Copié !",
+                "footer.tagline": "Partage, rigueur & transmission des savoirs mathématiques."
+            },
+            en: {
+                "nav.vocation": "Vocation",
+                "nav.brand": "Liouaï",
+                "nav.creation": "Didactics & Media",
+                "nav.contact": "Contact",
+                "hero.badge": "Liouaï Digital Education",
+                "hero.title_part1": "Revealing the beauty and clarity",
+                "hero.title_part2": "of Mathematics",
+                "hero.subtitle": "Didactic author, educational mentor, and learning materials creator. I craft living bridges between geometric intuition, formal elegance, and the authentic joy of understanding.",
+                "hero.cta_vocation": "Explore my vocation",
+                "hero.cta_brand": "The Liouaï Initiative",
+                "vocation.label": "Pedagogical Vision",
+                "vocation.title": "The Passion for Transmission",
+                "vocation.p1": "Mathematics is never just a mechanical set of formulas or calculation tricks: it embodies a deeply human intellectual journey, a quest for universal harmony, and a profound school of independent thought.",
+                "vocation.p2": "Driven by a genuine love for analysis, algebra, and geometry, I approach every theorem as a story worth telling. Teaching does not mean over-simplifying until meaning is lost, but building the pedagogical scaffolding that makes the summit reachable for everyone.",
+                "vocation.p3": "Through personalized mentoring and didactic publications, my mission is to help learners overcome mathematical anxiety, rebuild genuine confidence, and experience the immense satisfaction of a crystal-clear proof.",
+                "vocation.rules_title": "Didactic Pillars",
+                "vocation.rule1_title": "Intuition before Symbols:",
+                "vocation.rule1_desc": " Make the necessity of a concept vivid and felt before introducing formal notation.",
+                "vocation.rule2_title": "Visual & Typographical Care:",
+                "vocation.rule2_desc": " Refined layout and purposeful diagrams relieve cognitive overload for the learner.",
+                "vocation.rule3_title": "Autonomy & Inquiring Mind:",
+                "vocation.rule3_desc": " Foster active curiosity and reasoning rather than passive rote memorization.",
+                "brand.badge": "Publishing & Didactic Initiative",
+                "brand.p1": "Founded with the ambition to restore beauty and clarity to mathematical literature, <strong>Liouaï Digital Education</strong> is an independent project dedicated to authoring textbooks, reasoned workbooks, and open educational resources.",
+                "brand.p2": "Every study resource published under the Liouaï imprint prioritizes explanatory depth, typographical precision, and smooth conceptual progression. The goal is to provide students, adult learners, and teachers with inspiring study companions.",
+                "brand.feat1_title": "Artisanal Typesetting",
+                "brand.feat1_desc": "High-precision layout, rigorous mathematical typography, and clean aesthetics.",
+                "brand.feat2_title": "Empowering Didactics",
+                "brand.feat2_desc": "Progressive workbooks designed to overcome cognitive blocks facing abstraction.",
+                "brand.feat3_title": "Open Knowledge",
+                "brand.feat3_desc": "Accessible, high-standard materials for passionate and curious lifelong learners.",
+                "skills.label": "Expertise",
+                "skills.title": "Learning Materials & Mediation",
+                "skills.card1_title": "Scientific Publishing & Typesetting",
+                "skills.card1_desc": "Authoring comprehensive course booklets, detailed solved problem collections, and study guides honoring rigorous publishing standards.",
+                "skills.card2_title": "Visual & Dynamic Mediation",
+                "skills.card2_desc": "Directing geometric animations to visualize limits, invariants, and spatial transformations, turning abstract objects into intuitive reality.",
+                "skills.card3_title": "Didactics & Remediation",
+                "skills.card3_desc": "Individual diagnosis of learning hurdles, tailored study trajectories, targeted remediation, and mentoring for returning STEM learners.",
+                "contact.label": "Collaboration & Inquiry",
+                "contact.title": "Let's Connect",
+                "contact.desc": "Whether you wish to collaborate on educational publishing, design custom didactic materials, or learn more about Liouaï resources, feel free to reach out.",
+                "contact.email_btn": "Send a message",
+                "contact.copied": "Copied!",
+                "footer.tagline": "Sharing, rigor & transmission of mathematical knowledge."
             }
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'fr' ? 'en' : 'fr';
-            localStorage.setItem('lang', currentLang);
-            updateLanguageUI();
-        }
-
-        if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
-        if (langToggleBtnMobile) langToggleBtnMobile.addEventListener('click', toggleLanguage);
-
-        // Theme Toggle Controller
-        const htmlElement = document.documentElement;
-        const themeToggleBtn = document.getElementById('themeToggleBtn');
-        const themeToggleBtnMobile = document.getElementById('themeToggleBtnMobile');
-        const themeToggleIcon = document.getElementById('themeToggleIcon');
-        const themeToggleIconMobile = document.getElementById('themeToggleIconMobile');
-
-        function updateThemeIcons(isDark) {
-            const iconClass = isDark ? 'fa-sun' : 'fa-moon';
-            if (themeToggleIcon) themeToggleIcon.className = `fas ${iconClass} text-lg`;
-            if (themeToggleIconMobile) themeToggleIconMobile.className = `fas ${iconClass} text-base`;
-        }
-
-        function toggleTheme() {
-            const isDark = htmlElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcons(isDark);
-        }
-
-        // Initialize Theme from Saved Preference or Default Dark
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            htmlElement.classList.remove('dark');
-            updateThemeIcons(false);
-        } else {
-            htmlElement.classList.add('dark');
-            updateThemeIcons(true);
-        }
-
-        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-        if (themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
-
-        // Canvas & Moving Graph Variables
-        const canvas = document.getElementById('graphCanvas');
-        const ctx = canvas.getContext('2d');
-
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        let nodes = [];
-        let numNodes = 70;
-        let maxDistance = 130;
-        let speedMultiplier = 1;
-        let graphMode = 'network'; // 'network' or 'waves'
-
-        class Node {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1.2;
-                this.vy = (Math.random() - 0.5) * 1.2;
-                this.radius = Math.random() * 2 + 1.5;
-                this.pulse = Math.random() * Math.PI * 2;
-                this.color = Math.random() > 0.4 ? '#2dd4bf' : (Math.random() > 0.5 ? '#0d9488' : '#06b6d4');
-            }
-
-            update() {
-                this.x += this.vx * speedMultiplier;
-                this.y += this.vy * speedMultiplier;
-                this.pulse += 0.03;
-
-                // Bounce off edges
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                let currentRadius = this.radius + Math.sin(this.pulse) * 0.8;
-                ctx.arc(this.x, this.y, Math.max(1, currentRadius), 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-        }
-
-        function initGraph() {
-            nodes = [];
-            for (let i = 0; i < numNodes; i++) {
-                nodes.push(new Node());
-            }
-        }
-
-        function animateGraph() {
-            ctx.clearRect(0, 0, width, height);
-            const isDark = htmlElement.classList.contains('dark');
-
-            // Draw connecting lines
-            for (let i = 0; i < nodes.length; i++) {
-                nodes[i].update();
-                nodes[i].draw();
-
-                for (let j = i + 1; j < nodes.length; j++) {
-                    let dx = nodes[i].x - nodes[j].x;
-                    let dy = nodes[i].y - nodes[j].y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < maxDistance) {
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        
-                        if (graphMode === 'waves') {
-                            let midX = (nodes[i].x + nodes[j].x) / 2;
-                            let midY = (nodes[i].y + nodes[j].y) / 2 + Math.sin(Date.now() * 0.003 + i) * 15;
-                            ctx.quadraticCurveTo(midX, midY, nodes[j].x, nodes[j].y);
-                        } else {
-                            ctx.lineTo(nodes[j].x, nodes[j].y);
-                        }
-
-                        let alpha = 1 - (dist / maxDistance);
-                        ctx.strokeStyle = isDark 
-                            ? `rgba(20, 184, 166, ${alpha * 0.25})`
-                            : `rgba(13, 148, 136, ${alpha * 0.35})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            requestAnimationFrame(animateGraph);
-        }
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initGraph();
-        });
-
-        // Graph controls
-        document.getElementById('graphSpeed').addEventListener('input', (e) => {
-            speedMultiplier = parseFloat(e.target.value);
-        });
-
-        document.getElementById('graphDistance').addEventListener('input', (e) => {
-            maxDistance = parseFloat(e.target.value);
-        });
-
-        document.getElementById('toggleGraphMode').addEventListener('click', () => {
-            if (graphMode === 'network') {
-                graphMode = 'waves';
-            } else {
-                graphMode = 'network';
-            }
-            updateLanguageUI();
-        });
-
-        // Certification Category Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const certCards = document.querySelectorAll('.cert-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('bg-teal-600', 'text-white'));
-                filterBtns.forEach(b => b.classList.add('glass-panel', 'text-slate-300'));
-                
-                btn.classList.remove('glass-panel', 'text-slate-300');
-                btn.classList.add('bg-teal-600', 'text-white');
-
-                const filter = btn.getAttribute('data-filter');
-
-                certCards.forEach(card => {
-                    if (filter === 'all' || card.classList.contains(`cert-${filter}`)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Modal Functionality
-        function openModal(title, text) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').innerText = text;
-            document.getElementById('detailsModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('detailsModal').classList.add('hidden');
-        }
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Initialize on load
-        window.onload = function() {
-            initGraph();
-            animateGraph();
-            updateLanguageUI();
         };
-    </script>
 
-    <!-- Buy Me a Coffee Widget -->
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="cbohnert67" data-description="Support me on Buy me a coffee!" data-message="" data-color="#40DCA5" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+        // 2. Gestion de l'état (Langue & Thème)
+        let currentLang = localStorage.getItem('liouai_lang') || 'fr';
+        let currentTheme = localStorage.getItem('liouai_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        const langBtn = document.getElementById('lang-btn');
+        const langDisplay = document.getElementById('lang-display');
+        const themeBtn = document.getElementById('theme-btn');
+        const themeIconSun = document.getElementById('theme-icon-sun');
+        const themeIconMoon = document.getElementById('theme-icon-moon');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const copyEmailBtn = document.getElementById('copy-email-btn');
+        const copyFeedback = document.getElementById('copy-feedback');
+
+        // Année courante automatique
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 3. Application de la langue
+        function applyLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('liouai_lang', lang);
+            langDisplay.textContent = lang.toUpperCase();
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.documentElement.setAttribute('lang', lang);
+        }
+
+        langBtn.addEventListener('click', () => {
+            applyLanguage(currentLang === 'fr' ? 'en' : 'fr');
+        });
+
+        // 4. Application du thème clair/sombre
+        function applyTheme(theme) {
+            currentTheme = theme;
+            localStorage.setItem('liouai_theme', theme);
+
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeIconSun.classList.remove('hidden');
+                themeIconMoon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIconSun.classList.add('hidden');
+                themeIconMoon.classList.remove('hidden');
+            }
+
+            setupParticles(theme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // 5. Menu mobile toggle
+        mobileToggle.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-drawer a').forEach(link => {
+            link.addEventListener('click', () => mobileDrawer.classList.add('hidden'));
+        });
+
+        // 6. Copier l'adresse email
+        copyEmailBtn.addEventListener('click', () => {
+            const email = "liouai.digital.education@gmail.com";
+            const temp = document.createElement("input");
+            temp.value = email;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+
+            copyFeedback.textContent = translations[currentLang]["contact.copied"] || "Copié !";
+            copyFeedback.classList.remove('opacity-0');
+            setTimeout(() => {
+                copyFeedback.classList.add('opacity-0');
+            }, 2000);
+        });
+
+        // 7. Initialisation des particules adaptée au thème
+        function setupParticles(theme) {
+            const dotColor = theme === 'dark' ? '#2dd4bf' : '#0d9488';
+            const linkColor = theme === 'dark' ? '#14b8a6' : '#0d9488';
+            const baseOpacity = theme === 'dark' ? 0.35 : 0.45;
+
+            if (window.pJSDom && window.pJSDom.length > 0) {
+                window.pJSDom[0].pJS.fn.vendors.destroypJS();
+                window.pJSDom = [];
+            }
+
+            if (window.particlesJS) {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 50,
+                            "density": { "enable": true, "value_area": 850 }
+                        },
+                        "color": { "value": dotColor },
+                        "shape": { "type": "circle" },
+                        "opacity": {
+                            "value": baseOpacity,
+                            "random": false
+                        },
+                        "size": {
+                            "value": 2.6,
+                            "random": true
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 140,
+                            "color": linkColor,
+                            "opacity": baseOpacity * 0.7,
+                            "width": 1.1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 1.5,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "window",
+                        "events": {
+                            "onhover": { "enable": true, "mode": "grab" },
+                            "onclick": { "enable": true, "mode": "push" },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": { "distance": 170, "line_linked": { "opacity": 0.7 } },
+                            "push": { "particles_nb": 3 }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+        }
+
+        // Lancement initial
+        window.addEventListener('DOMContentLoaded', () => {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
+        });
+    </script>
 </body>
 </html>
